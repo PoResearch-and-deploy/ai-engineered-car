@@ -32,6 +32,7 @@
       <a href="#story" data-i18n="nav.story">Projekt</a>
       <a href="#method" data-i18n="nav.method">Módszer</a>
       <a href="#model" data-i18n="nav.model">3D</a>
+      <a href="probaut/" class="nav__drive" data-i18n="nav.drive">Próbaút</a>
       <a href="#subs" data-i18n="nav.subs">Részegységek</a>
       <a href="#cad" data-i18n="nav.cad">CAD</a>
       <a href="#film" data-i18n="nav.film">Videó</a>
@@ -140,6 +141,11 @@
         <p class="info__sub" data-role="infoSub"></p>
       </aside>
     </div>
+    <a class="drive reveal" href="probaut/" id="driveCta">
+      <span class="drive__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 3.5v6.3M4.3 15.5l5.6-2.4M19.7 15.5l-5.6-2.4" stroke="currentColor" stroke-width="2"/></svg></span>
+      <span class="drive__tx"><b data-i18n="drive.title">Próbaút</b><span data-i18n="drive.sub"></span></span>
+      <span class="drive__go"><span data-i18n="drive.btn">Vezetés</span> <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+    </a>
     <div class="controls reveal">
       <div class="ctl ctl--anim">
         <span class="ctl__lbl"><span data-i18n="model.anim"></span><b id="animGear" hidden></b></span>
@@ -308,8 +314,6 @@
     <div id="logPrompts" class="prompts"></div>
     <h3 class="sub-h reveal" data-i18n="log.issues"></h3>
     <div id="logIssues" class="issues"></div>
-    <h3 class="sub-h reveal" data-i18n="log.lessons"></h3>
-    <ul id="logLessons" class="lessons"></ul>
     <p class="small muted reveal"><a href="content/naplo.md" data-i18n="log.full"></a></p>
   </div>
 </section>

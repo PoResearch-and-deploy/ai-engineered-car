@@ -351,6 +351,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border:0;border-radiu
 .prompt{margin:0;background:var(--panel);border-radius:var(--r);padding:22px 22px 18px;display:flex;flex-direction:column;justify-content:space-between;gap:14px}
 .prompt blockquote{margin:0;font-size:16px;line-height:1.45;color:var(--fg)}
 .prompt figcaption{font-size:13px;color:var(--fg3)}
+.prompt__ed{font-style:italic}
 .issues{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .issue{background:var(--panel);border-radius:var(--r);padding:20px 22px;display:grid;grid-template-columns:auto 1fr;gap:14px}
 .issue__n{font-family:var(--mono);color:var(--fg3);font-size:13px;padding-top:3px}
@@ -378,3 +379,17 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border:0;border-radiu
   .sub__figs figcaption{display:none}
 }
 [hidden]{display:none!important}
+/* Próbaút (probaut/) – link a navigációban és CTA a 3D-nézegető alatt */
+.nav a.nav__drive{color:var(--accent);font-weight:600}
+.nav a.nav__drive:hover{color:var(--fg)}
+.drive{display:flex;align-items:center;gap:16px;margin:16px 0 0;padding:16px 18px;border-radius:var(--r-sm);text-decoration:none;color:var(--fg);
+  background:linear-gradient(100deg,rgba(242,140,40,.22),rgba(242,140,40,.06) 60%,var(--panel));border:1px solid rgba(242,140,40,.55);transition:transform .2s,border-color .2s}
+.drive:hover{transform:translateY(-1px);border-color:var(--accent)}
+.drive__ic{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink)}
+.drive__ic svg{width:26px;height:26px}
+.drive__tx{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0}
+.drive__tx b{font-size:19px;letter-spacing:-.01em}
+.drive__tx span{font-size:14px;color:var(--fg2)}
+.drive__go{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:var(--accent-ink);font-weight:650;padding:10px 18px;border-radius:999px}
+.drive__go svg{width:14px;height:14px}
+@media (max-width:640px){.drive{flex-wrap:wrap}.drive__go{width:100%;justify-content:center}}

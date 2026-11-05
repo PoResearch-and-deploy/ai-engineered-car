@@ -133,9 +133,8 @@ addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
   const draw = () => {
     const L = lang(), hu = L === 'hu';
     $('#logTools').innerHTML = d.tools.map(x => `<div class="reveal"><b>${esc(x[0])}</b><span>${esc(hu ? x[1] : x[2])}</span></div>`).join('');
-    $('#logPrompts').innerHTML = d.prompts.map(p => `<figure class="prompt reveal"><blockquote>„${esc(hu ? p.hu : p.en)}”</blockquote><figcaption>${esc(hu ? p.ctx_hu : p.ctx_en)}</figcaption></figure>`).join('');
+    $('#logPrompts').innerHTML = d.prompts.map(p => `<figure class="prompt reveal"><blockquote>„${esc(hu ? p.hu : p.en)}”</blockquote><figcaption>${esc(hu ? p.ctx_hu : p.ctx_en)}${p.edited ? ` · <span class="prompt__ed">${esc(t('log.edited'))}</span>` : ''}</figcaption></figure>`).join('');
     $('#logIssues').innerHTML = d.issues.map((x, i) => { const [ti, pr, fx] = x[L]; return `<article class="issue reveal"><span class="issue__n">${String(i + 1).padStart(2, '0')}</span><div><h4>${esc(ti)}</h4><p><em>${esc(t('log.problem'))}:</em> ${esc(pr)}</p><p><em class="ok">${esc(t('log.fix'))}:</em> ${esc(fx)}</p></div></article>`; }).join('');
-    $('#logLessons').innerHTML = d.lessons.map(x => `<li class="reveal">${esc(x[L])}</li>`).join('');
     watchReveal($('#log'));
   };
   draw(); onLang(draw);

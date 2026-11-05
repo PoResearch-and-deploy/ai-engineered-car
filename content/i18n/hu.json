@@ -147,11 +147,10 @@
  "dl.ghD": "Az oldal teljes forráskódja és a generáló szkriptek.",
  "log.kicker": "Napló",
  "log.title": "Hogyan dolgoztunk együtt.",
- "log.intro": "Eszközök, néhány jellemző prompt, és az elakadások – a megoldásukkal együtt.",
+ "log.intro": "Eszközök, a felhasználó néhány jellemző utasítása, és az elakadások – a megoldásukkal együtt.",
  "log.tools": "Eszközök",
  "log.prompts": "Példapromptok",
  "log.issues": "Elakadások és megoldások",
- "log.lessons": "Tanulságok",
  "log.problem": "Mi történt",
  "log.fix": "Megoldás",
  "log.full": "A részletes, napról napra vezetett napló (magyarul) →",
@@ -160,5 +159,10 @@
  "end.text": "Követelmények, kinematika, áttételek, ütközésvizsgálat, végeselem, CAD, mozgó 3D és film – egyetlen mérnöki folyamatban, AI-jal vezényelve és emberi döntésekkel kormányozva.",
  "model.rpmCrank": "Főtengely",
  "model.rpmWheel": "Kerék",
- "model.rpmUnit": "1/min"
+ "model.rpmUnit": "1/min",
+ "log.edited": "szerkesztett",
+ "nav.drive": "Próbaút",
+ "drive.title": "Próbaút – vezesd te!",
+ "drive.sub": "Böngészős játék a sivatagban: rugózás, kormányzás és a V8 dugattyúi a valódi kinematika szerint, 1-2-3-N váltóval.",
+ "drive.btn": "Vezetés"
 }

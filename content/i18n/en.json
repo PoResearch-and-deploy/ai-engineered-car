@@ -147,11 +147,10 @@
  "dl.ghD": "The site's full source code and the generator scripts.",
  "log.kicker": "Log",
  "log.title": "How we worked together.",
- "log.intro": "Tools, a few typical prompts, and where we got stuck – with how we got unstuck.",
+ "log.intro": "Tools, a few typical instructions from the user, and where we got stuck – with how we got unstuck.",
  "log.tools": "Tools",
  "log.prompts": "Sample prompts",
  "log.issues": "Problems and solutions",
- "log.lessons": "Lessons",
  "log.problem": "What happened",
  "log.fix": "Solution",
  "log.full": "The detailed day-by-day log (in Hungarian) →",
@@ -160,5 +159,10 @@
  "end.text": "Requirements, kinematics, gear ratios, clash checks, finite elements, CAD, moving 3D and film – one engineering process, orchestrated with AI and steered by human decisions.",
  "model.rpmCrank": "Crankshaft",
  "model.rpmWheel": "Wheel",
- "model.rpmUnit": "rpm"
+ "model.rpmUnit": "rpm",
+ "log.edited": "edited",
+ "nav.drive": "Test drive",
+ "drive.title": "Test drive – take the wheel",
+ "drive.sub": "A browser game in the desert: suspension, steering and the V8 pistons follow the real kinematics, with the 1-2-3-N gearbox.",
+ "drive.btn": "Drive"
 }

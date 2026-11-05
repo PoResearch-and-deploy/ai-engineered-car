@@ -59,40 +59,46 @@
  ],
  "prompts": [
   {
-   "hu": "Szeretnék valami tuti cuccot csinálni, mivel mérnök vagyok, ilyen minőségben is.",
-   "en": "I want to make something really good – I'm an engineer, so in that quality too.",
-   "ctx_hu": "Indítás – a minőségi léc",
-   "ctx_en": "Kick-off – setting the bar"
+   "hu": "Az első futómű kettős keresztlengőkaros legyen: alul két bekötésű gerendás kar, felül A-kar – távtartó nélkül.",
+   "en": "The front suspension should be double wishbone: a two-mount beam arm at the bottom, an A-arm on top – no spacer.",
+   "ctx_hu": "Első futómű – döntés a Python-modell előtt",
+   "ctx_en": "Front suspension – decision before the Python model",
+   "edited": true
   },
   {
-   "hu": "A laikus zsűri nem értené a mélységét.",
-   "en": "A lay jury wouldn't grasp the depth.",
-   "ctx_hu": "Témaválasztás – az AI egy BMW-alkatrészt javasolt",
-   "ctx_en": "Choosing the topic – the AI had proposed a BMW part"
+   "hu": "Mielőtt CAD-be visszük, minden részegység Pythonban bizonyítson: kinematika, ütközés, rácsilleszkedés.",
+   "en": "Before anything goes into CAD, every subassembly has to prove itself in Python: kinematics, clashes, grid fit.",
+   "ctx_hu": "Módszer – Python-ellenőrzés a CAD előtt",
+   "ctx_en": "Method – Python verification before CAD",
+   "edited": true
   },
   {
-   "hu": "Menjünk a nagy truckok irányába… nagy rugóút, magas hasmagasság, összkerékhajtás.",
-   "en": "Let's go towards the big trucks… long travel, high ground clearance, all-wheel drive.",
-   "ctx_hu": "Járműtípus – így lett Trophy truck",
-   "ctx_en": "Vehicle type – how it became a Trophy truck"
+   "hu": "A kúpkerekek osztóköre kapcsolódjon – ne homlokkerékkel és letöréssel közelítsd.",
+   "en": "The bevel gears must mesh on their pitch circles – don't approximate them with spur gears and a chamfer.",
+   "ctx_hu": "Hajtáslánc – kúpkerék-kapcsolódás",
+   "ctx_en": "Driveline – bevel gear mesh",
+   "edited": true
   },
   {
-   "hu": "Nem éri meg saját váltót tervezni?",
-   "en": "Isn't it worth designing our own gearbox?",
-   "ctx_hu": "Váltó – benchmark után saját 3+N konstrukció",
-   "ctx_en": "Gearbox – own 3+N design after a benchmark"
+   "hu": "A merev hídnál a kardán hosszváltozását csúszó taggal kezeld, és ellenőrizd a teljes csuklási tartományban.",
+   "en": "On the solid axle, take up the propshaft length change with a slip joint, and check it over the full articulation range.",
+   "ctx_hu": "Hátsó híd – kardán hosszkiegyenlítés",
+   "ctx_en": "Rear axle – propshaft length compensation",
+   "edited": true
   },
   {
-   "hu": "A renderhez menjünk biztosra, részleteket is beszéljük át.",
-   "en": "Let's play it safe with the render and go through the details first.",
-   "ctx_hu": "Költség és kockázat – render csak egyeztetés után",
-   "ctx_en": "Cost and risk – render only after review"
+   "hu": "Minden elem legalább két ponton rögzüljön a vázhoz – a sárvédő-tartók és a lökhárító most lebegnek.",
+   "en": "Every part has to be fixed to the frame at two points at least – the fender brackets and the bumper are floating now.",
+   "ctx_hu": "Rögzítés – a teljes STEP átnézése után",
+   "ctx_en": "Fixing – after reviewing the full STEP",
+   "edited": true
   },
   {
-   "hu": "A python modell mehet, fontos, ha kész átnézem stepből, hogy mi hiányzik, mi néz ki rosszul.",
-   "en": "Go ahead with the Python model – once it's done I'll review it from the STEP for anything missing or wrong.",
-   "ctx_hu": "Ellenőrzés – emberi átnézés a STEP-ből",
-   "ctx_en": "Verification – human review from the STEP"
+   "hu": "A létrakeret VEM-jét futtasd újra az aktuális geometriával: ugrás utáni földetérés és csavarás.",
+   "en": "Re-run the ladder frame FEA on the current geometry: landing after a jump, and torsion.",
+   "ctx_hu": "Váz – VEM az aktuális geometrián",
+   "ctx_en": "Frame – FEA on the current geometry",
+   "edited": true
   }
  ],
  "issues": [
@@ -227,24 +233,6 @@
     "The SolidWorks review showed that the fender brackets, the nose grille and the side panels were floating, and that pins, bushes and axle-end stops were missing.",
     "A fixing graph for the whole car: each pin and axle in its hole is an edge, and a part only counts as rigid if it sits on a cross-axle joint or on at least two lines. First round: 5 floating parts instead of 42, 49 new fasteners, and the spare wheel laid flat and fixed on two axles. Second round: 0 floating parts left. The door panel got a bracket and moved 28 mm up (the user asked for higher, not further out). The bed sides, bonnet wings and nose grille got brackets too, and the rear pinion now runs in two bearings. That added 61 more parts, so the car now has 592."
    ]
-  }
- ],
- "lessons": [
-  {
-   "hu": "Az AI „vakon” dolgozik a CAD-ben – ezért minden lépés után számmal ellenőriz: térfogat, pozíció, ütközés.",
-   "en": "The AI works “blind” in CAD – so it checks with numbers after every step: volume, position, clashes."
-  },
-  {
-   "hu": "A hiba Pythonban percekbe kerül, CAD-ben órákba. A modellnek előbb kell működnie, mint a CAD-nek.",
-   "en": "A bug costs minutes in Python and hours in CAD. The model has to work before the CAD does."
-  },
-  {
-   "hu": "Az AI hajlamos előreszaladni; a cél, a költség és a „mehet” kimondása emberi feladat maradt.",
-   "en": "The AI tends to run ahead; setting the goal, the budget and the “go” stayed a human job."
-  },
-  {
-   "hu": "Ahol a geometria nem engedi (Ackermann gyári linkkel), ott a jó válasz egy bizonyított, kimondott kompromisszum.",
-   "en": "Where geometry won't allow it (Ackermann with stock links), the right answer is a proven, stated trade-off."
   }
  ]
 }

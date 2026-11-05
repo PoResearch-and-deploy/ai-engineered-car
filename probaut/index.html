@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Próbaút – Trophy truck</title>
+<meta name="description" content="Vezesd a Technic-kompatibilis Trophy truckot a böngészőben: a rugózás, a kormányzás és a V8 dugattyúi a valódi kinematika szerint mozognak.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111'/%3E%3Ccircle cx='16' cy='16' r='8.5' fill='none' stroke='%23F28C28' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23F28C28'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="game.css">
+<script type="importmap">
+{ "imports": {
+  "three": "../assets/vendor/three/three.module.min.js",
+  "three/addons/": "../assets/vendor/three/addons/"
+} }
+</script>
+</head>
+<body>
+<canvas id="cv" aria-label="Próbaút 3D"></canvas>
+
+<div class="hud" id="hud">
+  <div class="bar">
+    <a class="back" id="back" href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span data-t="back">Vissza</span></a>
+    <h1 class="title"><span data-t="title">Próbaút</span><small data-t="sub">Trophy truck · valós kinematika</small></h1>
+    <div class="lang" role="group" aria-label="Nyelv / Language">
+      <button type="button" data-lang="hu" aria-pressed="true">HU</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+
+  <div class="dash" id="dash">
+    <div class="gear"><b id="gear">1</b><span data-t="gear">fokozat</span></div>
+    <div class="speed">
+      <b id="spd">0</b><span class="u"><span data-t="kmh">skála-km/h</span></span>
+      <span class="real"><span data-t="real">valós 1:16</span> <b id="spdReal">0,0</b> km/h</span>
+    </div>
+    <div class="rpm">
+      <div class="rpm__bar"><i id="rpmBar"></i></div>
+      <span><b id="rpm">0</b> <span data-t="rpm">1/min (főtengely)</span></span>
+    </div>
+  </div>
+
+  <div class="keys" id="keys">
+    <button class="keys__x" type="button" id="keysX" aria-label="×">×</button>
+    <p class="keys__h" data-t="keysH">Irányítás</p>
+    <ul>
+      <li><kbd>↑</kbd><kbd>W</kbd> <span data-t="kGas">gáz</span></li>
+      <li><kbd>↓</kbd><kbd>S</kbd> <span data-t="kBrake">fék / tolatás</span></li>
+      <li><kbd>←</kbd><kbd>→</kbd><kbd>A</kbd><kbd>D</kbd> <span data-t="kSteer">kormány</span></li>
+      <li><kbd>Q</kbd><kbd>E</kbd> <span data-t="kShift">váltás le / fel (N-1-2-3)</span></li>
+      <li><kbd>Space</kbd> <span data-t="kHand">kézifék</span></li>
+      <li><kbd>R</kbd> <span data-t="kReset">visszaállítás</span></li>
+      <li><kbd>C</kbd> <span data-t="kCam">kamera</span></li>
+    </ul>
+    <p class="keys__n" data-t="note">Fokozatonként a valós áttétel: főtengely/kerék 5,44 · 3,27 · 1,81. A rugózás, a kormányzás és a V8 dugattyúi a modell kinematikája szerint mozognak.</p>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <div class="touch" id="touch" aria-hidden="true">
+    <div class="touch__l">
+      <button type="button" data-k="left" class="tb">◀</button><button type="button" data-k="right" class="tb">▶</button>
+    </div>
+    <div class="touch__m">
+      <button type="button" data-k="cam" class="tb tb--s">C</button><button type="button" data-k="reset" class="tb tb--s">R</button>
+    </div>
+    <div class="touch__r">
+      <div class="touch__col"><button type="button" data-k="up" class="tb tb--s">+</button><button type="button" data-k="down" class="tb tb--s">−</button></div>
+      <div class="touch__col"><button type="button" data-k="gas" class="tb tb--gas" data-t="tGas">GÁZ</button><button type="button" data-k="brake" class="tb" data-t="tBrake">FÉK</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="load" id="load">
+  <div class="load__in">
+    <span class="spin" aria-hidden="true"></span>
+    <p data-t="loading">A jármű betöltése…</p>
+    <div class="load__bar"><i id="loadBar"></i></div>
+    <p class="load__err" id="loadErr" hidden></p>
+  </div>
+</div>
+
+<script type="module" src="game.js"></script>
+</body>
+</html>
