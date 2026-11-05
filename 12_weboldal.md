@@ -1,4 +1,12 @@
-# 12 – Weboldal (váz, 2026-11-03)
+# 12 – Weboldal
+
+## TARTALOMFRISSÍTÉS (2026-11-05) – ez az érvényes
+Szekciók: Hero (a mozgó glTF-ből készült kép) → Projekt (téma, 485 / 77 / 3+N / 8) → Módszer (kutatás → Python → CAD MCP-n át → ellenőrzés → bemutatás; R1–R4, A1–A7, C1–C5, 114) → **mozgó 3D-nézegető** (változatlan, + glTF/STEP letöltés) → **Részegységek** (8 kártya, `content/subsystems.json`, ábrák `assets/fig/sub/`, csak a pyA-jelentések igazolt számai) → **CAD-folyamat** (4 lépés + 9 SolidWorks-kép a `cad\assy_v2`-ből, `content/cad.json`, `assets/fig/cad/`) → Alkatrészkönyvtár → **Videó** (fülek: previs_v3 / S1 VEM / S2 hajtáslánc „MUNKAVERZIÓ”, + helyőrző a végleges filmnek; S1/S2 nyelv szerint HU/EN) → **VEM** (csak a mostani geometria: 3708 féltengely, létrakeret 3 g + csavarás, fogtő) → **BOM** (77 tétel / 485 db, A6d + A7 V2, kereshető + részegység-szűrő, `content/bom.json`) → **Letöltések** (`downloads/TT_teljes.step.zip` 21 MB – a 120 MB-os STEP + hiánylista; truck.glb; BOM CSV; GitHub) → **Napló** (`content/log.json`: eszközök, 6 szakmai prompt, 10 elakadás + megoldás, 4 tanulság; link a részletes `content/naplo.md`-re) → Zárókártya védjegy-szöveggel → lábléc. Nincs LEGO-logó.
+Generálás: `python3 tools/build_content.py` (ábrák, videók faststart-tal, posterek, STEP-zip, BOM). Ellenőrzés: `tools/check_site.js` (asztali HU + iPhone EN: képek, videók, letöltések, 3D, VEM, nyelvváltás, túllógás) → 0 hiba; képek `_check/site_*.png`.
+A „Számítás” szekció (layout_v2-számok, elavult) kikerült; a régi napló-JSON, VEM-esetek (lengőkar, 3L féltengely, régi létrakeret, gerenda, demó) és a helyőrző modell törölve.
+
+---
+# (korábbi állapot, 2026-11-03)
 
 **Hol:** felhő `/home/claude/work/site/` (4,6 MB, build-lépés nélkül, relatív útvonalak → GitHub Pages `/ai-engineered-car/` alútvonalon is működik). Repó: `PoResearch-and-deploy/ai-engineered-car` (gyökér = ez a mappa; `_check/` nem kell, .gitignore-ban).
 **Állapot:** váz kész, Playwright-ellenőrzés (desktop 1440×900 + iPhone 13, HU+EN): **0 konzolhiba**, a 3D- és a VEM-nézegető betölt. Ellenőrző képek: `site/_check/*.png`.
@@ -23,13 +31,24 @@
 | 9 | BOM | `content/bom.json` | **igen** – a régi (buggy) 37 soros BOM → Trophy truck végleges BOM |
 | 10 | Napló | `content/naplo.hu.json` ← `content/naplo.md` (`tools/build_naplo.py`) | EN: rövid angol összefoglaló + „csak magyarul" jelzés |
 
-## truck.glb – csomópont-konvenció (az animációs/CAD-export ágens ehhez igazodjon)
-- Tengelyek: **+X előre, +Y fel, +Z jobbra** (a makett x előre / y balra / z fel rendszeréből: (x,y,z) → (x, z, −y)). Egység mm, gyökér `truck` csomópont `scale 0.001`.
-- Csoportok: `G_vaz`, `G_elso_futomu` (bal/jobb futómű, első diff, kormány), `G_hatso_hid`, `G_hajtaslanc` (kardánok, középdiff, váltó), `G_V8`, `G_karosszeria`, `G_kerekek`; extras `{"group": "<id>"}`. A kapcsolók ezek `visible`-jét állítják; nevük/színük `parts.json` → `groups`.
-- Alkatrészek: `P_<cikkszám>_<nn>` (pl. `P_44771_03`), extras `{"group","partno","design_id","name"}` → info-kártya. A robbantott nézet ezeket (és a kerékpivotokat) tolja a csoport- és a modellközéppontból kifelé.
-- Kerekek: pivot `W_FL, W_FR, W_RL, W_RR` a kerékközépen; alatta gumi + felni; forgás helyi **+Z** körül (előremenet = −Z irány).
-- Animáció: tetszőleges számú glTF-klip, név szerint listázva (most: `wheels_spin`, 2 s). Ha nincs klip, a nézegető demó kerékforgást generál. Javaslat a végleges modellhez: `drive` (kerekek + kardán + V8 dugattyúk), `steer`, `suspension`, `gearshift`.
-- Ajánlott méret < 10 MB (tömörítés nélkül; DRACO-dekóder nincs beépítve).
+## truck.glb – MOZGÓ teljes autó (2026-11-05, `tools/build_anim_glb.py`)
+- **Tartalom:** A6d teljes jármű (443 elem, `a6d_anim.full_scene()` kinematika – a previs_v3 `export_frames.kin()`-jén át) + A7 **V2** burkolat (42 elem, pótkerék **állítva** a plató végén); LDraw-hálók alkatrészenként egyszer (példányosítva), 30°-os élszöggel simított normálok. 495 csomópont, 136 háló, 21 anyag.
+- **Méret:** nyers 6,6 MB → **1,8 MB** (gltfpack 0.25: `EXT_meshopt_compression` + `KHR_mesh_quantization`, `-kn -km -ke -ac -af 24 -vp 16`). Dekóder helyben: `assets/vendor/three/addons/libs/meshopt_decoder.module.js` (meshoptimizer 0.25, MIT).
+- **Tengelyek:** +X előre, +Y fel, +Z jobbra; gyökér `truck` scale 0.001 (alatta mm). A gltfpack a hálókat névtelen gyerek-csomópontra teszi (dekvantálás) – a `P_` csomópont Object3D, a mozgás azon van.
+- **Csoportok** (`G_<id>`, a6d `reszegyseg` szerint): `vaz` (01–04), `elso_futomu` (06), `kormany` (07), `hatso_hid` (10), `hajtaslanc` (08 osztómű + 09 kardánok), `valto` (11 + 05 váltóház), `V8` (12), `kerekek`, `karosszeria` (A7 V2).
+- **Alkatrészek:** `P_<cikkszám>_<nn>`, extras `{group, partno, name (LDraw-név), design_id, element (a Python-modell elemneve), sub (részegység), explode [mm, glTF-tengely]}`.
+- **Anyagok:** `<csoport>_<fajta>` (fajta = previs-paletta: drive narancs, frame/susp grafit, v8 acél, tyre, rim, panel piros, panel2 fehér …); a burkolaté `karosszeria_*` → a röntgen ezeket teszi átlátszóvá.
+- **Klipek** (mind hurok, a kinematika képkockánkénti mintavétele, TRS-sávok csak a mozgó elemekre):
+  | klip | hossz | mi mozog |
+  |---|---|---|
+  | `gurulas` | 18 s | 2. fokozat, 15 kerékfordulat = 49 főtengely-fordulat (49/15 = 5,444·0,6) → pontosan záródó hurok; kerekek, féltengelyek, diffek, kardánok, váltó, V8 főtengely + hajtórudak + dugattyúk (120 elem) |
+  | `rugozas` | 6 s | 0–2 s első ±14 mm + hátsó ±6 mm együtt; 2–6 s keresztbe csuklás: első ellentétes ±14 mm, hátsó híd ±9° (103 elem, a rugók skálázva) |
+  | `kormanyzas` | 4 s | tetőkormány → oszlop, 2 kardán → pinion → léc → kerekek, ±S_MAX (28 elem) |
+  | `valtas` | 10 s | 1 → 2 → 3 → N → 1: tetőgomb 4×90°, választók, gyűrűk (hiszterézissel, mint a seq2-ben); a főtengely a kapcsolt áttétellel integrálódik, N-ben áll; kerék 0,5 ford/s. Hurokzárás: az 1. fokozat szakaszán −0,6 % sebesség-korrekció. Fokozat-időpontok: `parts.json → gear_marks` (a nézegető kijelzi) |
+  | `robbantas` | 6 s | a previs E_robbantas vektorai: szét 1,8 s, tart, vissza (485 elem) |
+- **Nézegető** (`assets/js/viewer.js`): klip-gombsor, lejátszás/szünet, idővonal, sebesség (0,25–2×), röntgen-kapcsoló, robbantás-csúszka (ugyanazok a vektorok), részegység-lista (név = kiemelés: a többi szellemkép; szem = elrejtés; hover = fény), alkatrész-info (LDraw-név, cikkszám, elemnév). Robbantásnál a kamera finoman hátrébb áll. Automatikus lejátszás (gurulás), kivéve `prefers-reduced-motion`. `el._viewer.state()` az ellenőrzéshez.
+- **Ellenőrzés:** `tools/check_model.js` (Playwright, SwiftShader): betöltés, mind az 5 klip halad, fokozat-kijelző 1./2./3./N, alkatrész-info; képek `_check/model_*.png`. A fej nélküli szoftveres GL csak ~1–6 kép/s – valódi GPU-n folyamatos.
+- Régi (makett-alapú) modell: `_check/model_prev/`.
 
 ## VEM GLB formátum
 Egy mesh / egy primitive, mm, +Y fel: `POSITION` = deformálatlan felület; `COLOR_0` = feszültségszín a `cases.json` `scale` skálájával (grafitkék → kék → türkiz → homok → narancs); `_STRESS` = von Mises MPa csúcsonként; **morph target 0** = valós elmozdulás mm-ben (súly 1 = valós, a csúszka 0–5×). `mesh.extras {case, vmin, vmax, umax_mm}`.
@@ -37,7 +56,7 @@ Egy mesh / egy primitive, mm, +Y fel: `POSITION` = deformálatlan felület; `COL
 Generálás: `tools/build_fem.py` (VTU-ból: `von Mises [MPa]` + `u` pontadat).
 
 ## Szkriptek (`site/tools/`)
-`build_model.py` (truck.glb + parts.json), `build_fem.py` (fem/*.glb + cases.json), `build_data.py` (bom, calc, library + bélyegképek, ábrák, hero), `build_naplo.py`, `check.js` (Playwright: `NODE_PATH=/opt/npm-tools/node_modules node tools/check.js`, előtte `python3 -m http.server 8765`). README.md: HU+EN cserélési útmutató.
+`build_anim_glb.py` (mozgó truck.glb + parts.json; a régi `build_model.py` csak a helyőrzőhöz), `build_fem.py` (fem/*.glb + cases.json), `build_data.py` (bom, calc, library + bélyegképek, ábrák, hero), `build_naplo.py`, `check_model.js` (a 3D-modell klipjei), `check.js` (Playwright: `NODE_PATH=/opt/npm-tools/node_modules node tools/check.js`, előtte `python3 -m http.server 8765`). README.md: HU+EN cserélési útmutató.
 
 ## Nyitott / következő
 1. Végleges truck.glb (összeállítás után) + animációs klipek; 2. film.mp4 + VTT, hero.mp4; 3. VEM-esetek kézi számítással; 4. Trophy truck BOM; 5. napló frissítése a leadás előtt; 6. feltöltés GitHubra + Pages bekapcsolása; 7. a valódi Pages-URL-en egy utolsó check.js-futás.

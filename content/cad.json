@@ -1,0 +1,20 @@
+{
+ "source": "cadlib/naplo_C1–C5, cad\\assy_v2 képernyőképek (SolidWorks 2023, MCP-n át), export/TT_teljes.step",
+ "steps": [
+  {"n": "01", "hu": ["Alkatrészkönyvtár", "Paraméteres Technic-elemek SolidWorksben, az LDraw-geometriához regisztrálva. Minden cikkszám webes forrással ellenőrizve."], "en": ["Part library", "Parametric Technic parts in SolidWorks, registered to the LDraw geometry. Every part number checked against a web source."]},
+  {"n": "02", "hu": ["Első összeállítás – és a tanulság", "Egy éjszaka alatt 223 komponens, de lengő alkatrészekkel, ütközésekkel, mozgás nélkül. Innen jött a módszerváltás: előbb Python, aztán CAD."], "en": ["First assembly – and the lesson", "223 components in one night, but with floating parts, clashes and no motion. That triggered the change of method: Python first, CAD second."]},
+  {"n": "03", "hu": ["Részegységek mozgó kényszerekkel", "Váltó, első futómű, hátsó híd és váz a Python-modell pozícióin. Rugózás, kormányzás, csuklás és fokozatváltás motion studyval kipróbálva."], "en": ["Subassemblies with moving mates", "Gearbox, front suspension, rear axle and frame at the Python model positions. Suspension, steering, articulation and gear changes tried in motion studies."]},
+  {"n": "04", "hu": ["Teljes autó STEP-ben", "485 elem, 9 részegység, AP214. A visszaolvasott fájlban 10 véletlen elem helye legfeljebb 0,00002 mm-re tér el a modelltől."], "en": ["Full car as STEP", "485 parts, 9 subassemblies, AP214. In the re-read file, 10 random parts deviate from the model by at most 0.00002 mm."]}
+ ],
+ "gallery": [
+  ["cad/SA_elso_futomu_kormany_max_izometrikus", "Első futómű és kormány teljes kormányzásnál: a léc ±4,25 mm-t mozdul, mindkét kerék fordul", "Front suspension and steering at full lock: the rack moves ±4.25 mm and both wheels turn"],
+  ["cad/SA_elso_futomu_rugozas_B_plus8_izometrikus", "Bal első kerék +8 mm-re berugózva. Egyszerre csak egy hajtó kényszer aktív, a többi követi", "Left front wheel at +8 mm bump. Only one driving mate is active at a time, the rest follows"],
+  ["cad/SA_hatso_futomu_csuklas_11fok_hatulnezet", "Hátsó merev híd 11°-os csuklásban, 4-link gömbcsuklókkal", "Rear solid axle at 11° articulation, 4-link with ball joints"],
+  ["cad/SA_hatso_futomu_statikus_kardannal_izometrikus", "Hátsó híd csúszóvillás kardánnal: a pinion 60°-ot fordul, a kerék 25,7°-ot (12:28)", "Rear axle with slip-yoke drive shaft: pinion turns 60°, wheel 25.7° (12:28)"],
+  ["cad/SA_valto_C1b_izometrikus", "Váltó: 40 komponens a Python-modell pozícióin, 0,0 mm eltéréssel", "Gearbox: 40 components at the Python model positions, 0.0 mm deviation"],
+  ["cad/C5_F1", "Fokozat-konfigurációk: a bemenet 60°-ot fordul, a főtengely 59,8° / 36° / 20°-ot (1. / 2. / 3.), N-ben áll", "Gear configurations: input turns 60°, crankshaft 59.8° / 36° / 20° (1st / 2nd / 3rd), standing still in N"],
+  ["cad/SA_vaz_izometrikus", "Váz és középső hajtáslánc: 16 rögzített és 7 mozgó csoport", "Frame and centre driveline: 16 fixed and 7 moving groups"],
+  ["cad/SA_vaz_felul", "Váz felülnézetből", "Frame, top view"],
+  ["cad/TT_teljes_step", "A teljes autó STEP-je: 485 elem, 340 × 196 × 176 mm", "The full car STEP: 485 parts, 340 × 196 × 176 mm"]
+ ]
+}

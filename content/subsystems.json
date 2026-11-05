@@ -1,0 +1,61 @@
+{
+ "source": "pyA A1–A7 jelentések (2026-11-04/05): csak a jelentésekben igazolt számok",
+ "items": [
+  {
+   "id": "elso_futomu", "tag": "A1",
+   "hu": {"t": "Első futómű", "d": "Kettős keresztlengőkar paralelogramma-elrendezésben: alul gerendás kar (31794 + 2× 32523), felül 57515 A-kar. A 65766 kerékhordozó két 6628 gömbcsapon fordul, kerekenként két 76537 rugóstag dolgozik. A kormányzás egy 6630 fogasléc és egy gyári 32005 nyomtávrúd.", "note": "Őszintén: a belső kormányszög 17,7°, az Ackermann 132 %. A modell kimutatta, hogy gyári linkkel ennél jobb nem érhető el, ezért ez tudatosan elfogadott eltérés."},
+   "en": {"t": "Front suspension", "d": "Parallelogram double wishbones: a beam lower arm (31794 + 2× 32523) and a 57515 A-arm on top. The 65766 knuckle turns on two 6628 ball pins, with two 76537 shocks per wheel. Steering runs through a 6630 rack and a stock 32005 tie rod.", "note": "To be fair: the inner steering angle is 17.7° and Ackermann is 132 %. The model proved that no stock link does better, so this is a deliberate, accepted trade-off."},
+   "kpi": [["±16", "mm", "Rugóút", "Wheel travel"], ["159,5", "mm", "Nyomtáv", "Track width"], ["0,02", "°", "Bump steer egyenesben", "Bump steer, straight"], ["39,1", "°", "Max. CV-szög (határ 39,5°)", "Max CV angle (limit 39.5°)"]],
+   "figs": [["sub/A1_01", "Elölnézet: statikus, teljes be- és kirugózás (A1b-állapot, a +4 mm-es D2-eltolás előtt)", "Front view: static, full bump and droop (A1b state, before the +4 mm D2 offset)"], ["sub/A1_05", "Ellenőrző diagramok: kerékdőlés, nyomtáv, bump steer, CV-térkép, Ackermann", "Check plots: camber, track, bump steer, CV map, Ackermann"]]
+  },
+  {
+   "id": "elso_osztomu", "tag": "A1c",
+   "hu": {"t": "Első osztómű", "d": "A 62821-es differenciál pontosan a belső kardánok vonalában ül, a 12 fogú 6589 pinion mögötte. A diff csapágyának eredetileg 0 mm hely maradt; a megoldás: az egész sarok 4 mm-rel kifelé, és egy 6632 vékony gerenda lett a csapágy.", "note": "A kúpkerék-kapcsolódást fogsáv-metszéssel ellenőriztük; a rácsra tett pinion ütközne, ezért egy 15535-ös kerek csempe a nyomó-alátét."},
+   "en": {"t": "Front axle drive", "d": "The 62821 differential sits exactly on the line of the inner U-joints, with the 12-tooth 6589 pinion behind it. Initially there was 0 mm left for the diff bearing; the fix moved the whole corner 4 mm outward and turned a thin 6632 beam into the bearing.", "note": "Bevel mesh was checked by intersecting the tooth bands; a pinion placed on the grid would clash, so a 15535 round tile serves as a thrust washer."},
+   "kpi": [["2,333", "", "Áttétel (28:12)", "Ratio (28:12)"], ["1,85", "mm", "Fogbehatolás", "Tooth engagement"], ["14,6", "°", "Bemenő kardánszög", "Input U-joint angle"], ["0,80", "mm", "Legkisebb hézag", "Smallest clearance"]],
+   "figs": [["sub/A1c_04", "Az első osztómű a futóművel (LDraw-hálók)", "Front axle drive with the suspension (LDraw meshes)"], ["sub/A1c_05", "Kúpkerék-kapcsolódás: fogsávok, behatolás az axiális helyzet függvényében", "Bevel mesh: tooth bands and engagement vs. axial position"]]
+  },
+  {
+   "id": "kozepso", "tag": "A3",
+   "hu": {"t": "Középső hajtáslánc", "d": "Három differenciál, összkerékhajtás. A középdiff a vázon ül, két csapággyal; az első kimenet egyenes tengellyel, a hátsó kardánnal megy tovább. Egy függőleges csonk két 12 fogú kúpkerékkel viszi fel a hajtást a váltó bemenő tengelyére.", "note": "A középdiff helye kényszer: az egyetlen 4 mm-es rácspont, ahol elöl és hátul is minden elfér."},
+   "en": {"t": "Centre driveline", "d": "Three differentials, all-wheel drive. The centre diff sits on the frame in two bearings; the front output runs straight, the rear one through a U-joint shaft. A vertical stub with two 12-tooth bevels lifts the drive up to the gearbox input shaft.", "note": "The centre diff position is forced: it is the only 4 mm grid point where everything fits front and rear."},
+   "kpi": [["5,444", "", "Kerék → váltó [(28/12)²]", "Wheel → gearbox [(28/12)²]"], ["3", "", "Differenciál", "Differentials"], ["30,6", "°", "Max. hátsó kardánszög", "Max rear U-joint angle"], ["2,56", "mm", "Kardáncsúszás (ablak 4,0)", "Shaft plunge (window 4.0)"]],
+   "figs": [["sub/A3_04", "Középső hajtáslánc a létrakereten", "Centre driveline on the ladder frame"], ["sub/A3_03", "Középdiff metszet és a felfelé vezető csonk", "Centre diff section and the vertical stub"]]
+  },
+  {
+   "id": "hatso_hid", "tag": "A2",
+   "hu": {"t": "Hátsó merev híd", "d": "4-link gömbcsuklókkal (2× 32293 alul, 2× 32005 felül), a hídház két 64179 keret. Kerekenként két 9L rugóstag, a kardán csúszóvillával veszi fel a hosszváltozást. Pinion, áttétel és forgásirány az első híd tükörképe.", "note": "Az eredeti ötlet (egyetlen 64179 hídház) a 12 fogú pinionnal nem volt megépíthető – ezt a Python-modell mutatta ki, még a CAD előtt."},
+   "en": {"t": "Rear solid axle", "d": "A 4-link with ball joints (2× 32293 lower, 2× 32005 upper); the axle housing is two 64179 frames. Two 9L shocks per wheel, and a slip yoke takes up the length change in the drive shaft. Pinion, ratio and direction mirror the front axle.", "note": "The original idea (a single 64179 housing) could not be built with the 12-tooth pinion – the Python model showed this before any CAD work."},
+   "kpi": [["±8", "mm", "Rugóút", "Wheel travel"], ["±13", "°", "Csuklás (kerékút ±17,9 mm)", "Articulation (±17.9 mm wheel)"], ["160,0", "mm", "Nyomtáv", "Track width"], ["2,333", "", "Áttétel (= első)", "Ratio (= front)"]],
+   "figs": [["sub/A2_04", "Hátsó híd 4-linkkel és rugóstagokkal", "Rear axle with 4-link and shocks"], ["sub/A2_01", "Hátulnézet: statikus és csuklás", "Rear view: static and articulated"]]
+  },
+  {
+   "id": "valto", "tag": "A4",
+   "hu": {"t": "3+N szekvenciális váltó", "d": "Saját konstrukció gyári Technic-elemekből: négy párhuzamos tengely (V bemenet, U, W, és a főtengely), két 35188 választó és kapcsológyűrűk. A tetőn lévő gombot 90°-kal fordítva lép egy fokozatot: 1 → 2 → 3 → N.", "note": "24 fogú kuplungos kerék nem létezik – ez borította az első elrendezést. Az új, három mellékhajtásos megoldás a 35188 peremének sorrendjéből adódott."},
+   "en": {"t": "3+N sequential gearbox", "d": "An original design from stock Technic parts: four parallel shafts (V input, U, W and the crankshaft), two 35188 changeover catches and driving rings. Turning the roof knob by 90° steps one gear: 1 → 2 → 3 → N.", "note": "A 24-tooth clutch gear does not exist – that sank the first layout. The new three-countershaft solution follows from the order of the 35188 cam."},
+   "kpi": [["5,444", "", "1. fokozat (főtengely / kerék)", "1st gear (crank / wheel)"], ["3,267", "", "2. fokozat", "2nd gear"], ["1,815", "", "3. fokozat", "3rd gear"], ["90", "°", "Tetőgomb / fokozat", "Roof knob per gear"]],
+   "figs": [["sub/A4_04", "Fekvő váltó, V8 és tetőkormány", "Flat gearbox, V8 and roof steering"], ["sub/A4_03", "Erőfolyam fokozatonként (1., 2., 3., N)", "Power flow per gear (1st, 2nd, 3rd, N)"]]
+  },
+  {
+   "id": "v8", "tag": "A4",
+   "hu": {"t": "Dugattyús V8", "d": "Motor nincs: a kerekek hajtják a V8-at a váltón át, ezért tolás közben járnak a dugattyúk. Nyolc 2851 dugattyú, 2852 hajtórudak, keresztsíkú főtengely (0/90/270/180°), 90°-os hengerszög.", "note": "A könyökosztás 24 mm: így a 2853 csonkja pontosan a következő pofánál ér véget, 0,00 mm túlnyúlással."},
+   "en": {"t": "Piston V8", "d": "There is no motor: the wheels drive the V8 through the gearbox, so the pistons run while the truck is pushed. Eight 2851 pistons, 2852 conrods, a cross-plane crank (0/90/270/180°) and a 90° bank angle.", "note": "The crank throw pitch is 24 mm, so each 2853 stub ends exactly at the next web, with 0.00 mm overhang."},
+   "kpi": [["8", "", "Dugattyú", "Pistons"], ["90", "°", "Hengerszög", "Bank angle"], ["24", "mm", "Könyökosztás", "Throw pitch"], ["49 / 15", "", "Főtengely / kerék ford., 2. fok.", "Crank / wheel turns, 2nd gear"]],
+   "figs": [["sub/A4_06", "V8: főtengely, hajtórudak, dugattyúlöket", "V8: crankshaft, conrods, piston stroke"]]
+  },
+  {
+   "id": "vaz", "tag": "A3 · A6",
+   "hu": {"t": "Váz", "d": "Létrakeret kereszttartókkal, első rugóstag-tornyok, hátsó link-konzolok, padlóbordák, valamint váltóház és motortartó. Minden forgó tengely kerek furatú csapágyban fut.", "note": "Az A6c találta meg: a csapágynak szánt lapok egy része keresztfuratos volt, abban a tengely nem forogna. A lapok helye maradt, a típusuk cserélődött."},
+   "en": {"t": "Frame", "d": "A ladder frame with cross members, front shock towers, rear link brackets, floor ribs, plus the gearbox housing and engine mount. Every rotating shaft runs in a round-hole bearing.", "note": "A6c caught it: some of the bearing plates had axle (cross) holes, in which a shaft cannot turn. The plates stayed in place, only their type changed."},
+   "kpi": [["234", "", "Váz-elem", "Frame parts"], ["192", "mm", "Tengelytáv", "Wheelbase"], ["340 × 196", "mm", "Hossz × szélesség", "Length × width"], ["176", "mm", "Magasság", "Height"]],
+   "figs": [["sub/A6d_1", "A6d: a teljes jármű az összes részlettel, 1. fokozatban gurulva", "A6d: the full vehicle with all details, rolling in 1st gear"], ["sub/A6c_01", "Váltóház és motortartó (A6c)", "Gearbox housing and engine mount (A6c)"]]
+  },
+  {
+   "id": "burkolat", "tag": "A7",
+   "hu": {"t": "Burkolat", "d": "Klasszikus Trophy truck piros-fehérben: sárvédők, oldalpanelek, motorháztető és nyitott plató, a pótkerék állítva a plató végén. Három változatból a V2 lett a végleges.", "note": "A panelek a rugózó kerék teljes mozgásterét kikerülik, és a tetőkormány meg a tetőgomb szabadon elérhető marad."},
+   "en": {"t": "Body", "d": "A classic Trophy truck in red and white: fenders, side panels, bonnet and an open bed, with the spare wheel standing upright at the back. Of three variants, V2 became final.", "note": "The panels clear the full motion envelope of the wheels, and the roof steering and roof knob stay free to reach."},
+   "kpi": [["42", "", "Elem (17 panel + 25 tartó)", "Parts (17 panels + 25 mounts)"], ["1,85", "mm", "Legkisebb hézag a kerékhez", "Smallest wheel clearance"], ["3", "", "Változat (V1–V3)", "Variants (V1–V3)"], ["7", "", "Új cikkszám", "New part numbers"]],
+   "figs": [["sub/A7_V2", "V2 – klasszikus Trophy truck", "V2 – classic Trophy truck"], ["sub/A7_cmp", "A három burkolat-változat összehasonlítása", "The three body variants compared"]]
+  }
+ ]
+}

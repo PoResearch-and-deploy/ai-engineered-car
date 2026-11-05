@@ -4,7 +4,7 @@ import { setLang, initialLang, t, lang, onLang } from './i18n.js';
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const getJSON = u => fetch(u).then(r => { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); });
-const fmt = (x, d = 0) => x == null ? '' : Number(x).toLocaleString(lang() === 'hu' ? 'hu-HU' : 'en-GB', { maximumFractionDigits: d });
+const num = s => lang() === 'en' ? String(s).replace(/(\d),(\d)/g, '$1.$2') : s;   // „159,5” → „159.5”
 
 // --- nyelv ---
 document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
@@ -26,51 +26,71 @@ const rev = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersectin
 const watchReveal = root => root.querySelectorAll('.reveal:not(.in)').forEach(el => reduce ? el.classList.add('in') : rev.observe(el));
 watchReveal(document);
 
-// --- média-jegyzék: assets/video/media.json ({"hero": bool, "film": bool}) – így nincs 404 a hiányzó fájlokra ---
-const media = await getJSON('assets/video/media.json').catch(() => ({}));
+const sizes = await getJSON('assets/fig/sizes.json').catch(() => ({}));
+const img = (k, alt, cls = '') => { const [w, h] = sizes[k] || [1600, 1000]; return `<img src="assets/fig/${esc(k)}.webp" alt="${esc(alt)}" loading="lazy" decoding="async" width="${w}" height="${h}"${cls ? ` class="${cls}"` : ''}>`; };
 
-// --- hero-videó, ha létezik ---
-(async () => {
-  const hm = $('#heroMedia'); const src = hm.dataset.video;
-  if (reduce || !src || !media.hero) return;
-  try {
-    const v = Object.assign(document.createElement('video'), { src, muted: true, loop: true, autoplay: true, playsInline: true });
-    v.setAttribute('aria-hidden', 'true'); v.poster = hm.querySelector('img').src;
-    hm.querySelector('img').replaceWith(v);
-  } catch (e) {}
-})();
+// --- lightbox: minden [data-lb] figure ---
+const lb = $('#lightbox');
+const openLb = f => { const im = f.querySelector('img'); lb.querySelector('img').src = im.src; lb.querySelector('img').alt = im.alt; lb.querySelector('.lightbox__cap').textContent = f.querySelector('figcaption')?.textContent || im.alt; lb.hidden = false; lb.querySelector('button').focus(); };
+document.addEventListener('click', e => { const f = e.target.closest('figure[data-lb]'); if (f) openLb(f); });
+document.addEventListener('keydown', e => { const f = e.target.closest?.('figure[data-lb]'); if (f && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openLb(f); } });
+lb.addEventListener('click', e => { if (e.target === lb || e.target.closest('button')) lb.hidden = true; });
+addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
 
-// --- film: helyőrző, ha nincs film.mp4 ---
+// --- részegységek ---
 (async () => {
-  const box = $('#filmBox'); const v = box.querySelector('video');
-  if (media.film) { v.src = box.dataset.src; } else { box.querySelector('.film__soon').hidden = false; v.removeAttribute('controls'); v.querySelectorAll('track').forEach(tr => tr.remove()); }
-})();
-
-// --- számítás ---
-(async () => {
-  let d; try { d = await getJSON('content/calc.json'); } catch (e) { return; }
+  let d; try { d = await getJSON('content/subsystems.json'); } catch (e) { return; }
   const draw = () => {
     const L = lang();
-    $('#kpis').innerHTML = d.cards.map((c, i) => `<div class="kpi reveal${i === 0 ? ' kpi--hot' : ''}"><p>${esc(c[L])}</p><b class="${c.v.length > 9 ? 'long' : ''}">${esc(L === 'en' ? c.v.replace(/,/g, '.') : c.v)}<small>${esc(c.u)}</small></b><span>${esc(L === 'hu' ? c.shu : c.sen)}</span></div>`).join('');
-    $('#figs').innerHTML = d.figs.map(f => `<figure class="reveal" tabindex="0" data-src="${esc(f.src)}"><div class="imgbox"><img src="${esc(f.src)}" alt="${esc(f[L])}" loading="lazy" decoding="async" width="${f.w}" height="${f.h}"></div><figcaption>${esc(f[L])}</figcaption></figure>`).join('');
-    watchReveal($('#calc'));
+    $('#subsGrid').innerHTML = d.items.map(it => {
+      const x = it[L];
+      const figs = it.figs.map((f, i) => `<figure data-lb tabindex="0" class="${i ? 'sub__f2' : 'sub__f1'}"><div class="imgbox">${img(f[0], L === 'hu' ? f[1] : f[2])}</div><figcaption>${esc(L === 'hu' ? f[1] : f[2])}</figcaption></figure>`).join('');
+      const kpi = it.kpi.map((k, i) => `<div${i === 0 ? ' class="hot"' : ''}><b>${esc(num(k[0]))}${k[1] ? `<small>${esc(k[1])}</small>` : ''}</b><span>${esc(L === 'hu' ? k[2] : k[3])}</span></div>`).join('');
+      return `<article class="sub reveal" id="sub-${esc(it.id)}"><div class="sub__figs${it.figs.length > 1 ? ' two' : ''}">${figs}</div>
+        <div class="sub__body"><p class="sub__tag">${esc(it.tag)}</p><h3>${esc(x.t)}</h3><p>${esc(x.d)}</p><div class="minikpi">${kpi}</div><p class="sub__note">${esc(x.note)}</p></div></article>`;
+    }).join('');
+    watchReveal($('#subs'));
   };
   draw(); onLang(draw);
 })();
 
-// --- lightbox ---
-const lb = $('#lightbox');
-const openLb = f => { lb.querySelector('img').src = f.dataset.src; lb.querySelector('img').alt = f.querySelector('img').alt; lb.querySelector('.lightbox__cap').textContent = f.querySelector('figcaption').textContent; lb.hidden = false; lb.querySelector('button').focus(); };
-$('#figs').addEventListener('click', e => { const f = e.target.closest('figure'); if (f) openLb(f); });
-$('#figs').addEventListener('keydown', e => { const f = e.target.closest('figure'); if (f && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openLb(f); } });
-lb.addEventListener('click', e => { if (e.target === lb || e.target.closest('button')) lb.hidden = true; });
-addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
+// --- CAD-folyamat ---
+(async () => {
+  let d; try { d = await getJSON('content/cad.json'); } catch (e) { return; }
+  const draw = () => {
+    const L = lang();
+    $('#cadSteps').innerHTML = d.steps.map(s => `<li class="reveal"><i>${esc(s.n)}</i><b>${esc(s[L][0])}</b><span>${esc(s[L][1])}</span></li>`).join('');
+    $('#cadFigs').innerHTML = d.gallery.map(g => `<figure class="reveal" data-lb tabindex="0"><div class="imgbox">${img(g[0], L === 'hu' ? g[1] : g[2])}</div><figcaption>${esc(L === 'hu' ? g[1] : g[2])}</figcaption></figure>`).join('');
+    watchReveal($('#cad'));
+  };
+  draw(); onLang(draw);
+})();
+
+// --- videók: munkaverziók + helyőrző a végleges filmnek ---
+(() => {
+  const box = $('#filmBox'), v = box.querySelector('video'), soon = box.querySelector('.film__soon'), badge = $('#vidBadge'), tabs = [...document.querySelectorAll('#vidTabs .tab')];
+  const V = { previs: { src: () => 'assets/video/previs_v3.mp4', poster: 'assets/video/previs_v3.webp', d: 'film.d1' },
+              s1: { src: () => `assets/video/S1_vem_${lang()}.mp4`, poster: 'assets/video/S1_vem.webp', d: 'film.d2' },
+              s2: { src: () => `assets/video/S2_hajtaslanc_${lang()}.mp4`, poster: 'assets/video/S2_hajtaslanc.webp', d: 'film.d3' },
+              final: { d: 'film.d4' } };
+  let cur = 'previs';
+  const show = (k, force) => {
+    if (k === cur && !force) return; cur = k; const c = V[k];
+    tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.v === k)));
+    v.pause();
+    if (c.src) { v.hidden = false; soon.hidden = true; badge.hidden = false; v.poster = c.poster; v.src = c.src(); v.controls = true; }
+    else { v.removeAttribute('src'); v.load(); v.hidden = true; soon.hidden = false; badge.hidden = true; }
+    $('#vidDesc').textContent = t(c.d);
+  };
+  tabs.forEach(b => b.addEventListener('click', () => show(b.dataset.v)));
+  show('previs', true);
+  onLang(() => { const was = !v.paused; show(cur, true); if (was) v.play().catch(() => {}); });
+})();
 
 // --- könyvtár ---
 (async () => {
   let d; try { d = await getJSON('assets/lib/library.json'); } catch (e) { return; }
-  $('#nLib').textContent = d.items.length;
-  let grp = '', all = false; const LIMIT = 24;
+  let grp = '', all = false; const LIMIT = 12;
   const more = Object.assign(document.createElement('button'), { type: 'button', className: 'btn btn--more' });
   $('#libGrid').after(more); more.onclick = () => { all = !all; draw(); };
   const q = $('#libQ'), chips = $('#libChips');
@@ -93,25 +113,32 @@ addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
 // --- BOM ---
 (async () => {
   let d; try { d = await getJSON('content/bom.json'); } catch (e) { return; }
-  const q = $('#bomQ');
+  const q = $('#bomQ'), chips = $('#bomChips'); let grp = '';
   const draw = () => {
+    const L = lang(), gi = L === 'hu' ? 0 : 1;
+    chips.innerHTML = [['', t('bom.all')], ...d.groups.map(g => [g[0], g[gi]])].map(([v, l]) => `<button type="button" class="chip" data-g="${esc(v)}" aria-pressed="${v === grp}">${esc(l)}</button>`).join('');
     const s = q.value.trim().toLowerCase();
-    const rows = d.rows.filter(r => !s || [r.group, r.name, r.partno, r.color, r.note].join(' ').toLowerCase().includes(s));
-    $('#bomBody').innerHTML = rows.map(r => `<tr><td>${esc(r.pos)}</td><td>${esc(r.group)}</td><td>${esc(r.name)}</td><td>${esc(r.partno)}</td><td class="num">${esc(r.qty)}</td><td class="num">${fmt(r.mass_g, 1)}</td><td>${esc(r.color)}</td></tr>`).join('');
-    $('#bomSum').textContent = t('bom.sum', { rows: rows.length, qty: rows.reduce((a, r) => a + (r.qty || 0), 0), mass: fmt(rows.reduce((a, r) => a + (r.mass_g || 0), 0)) });
+    const rows = d.rows.filter(r => (!grp || r.groups.includes(grp)) && (!s || [r.partno, r.name, r.where_hu, r.where_en].join(' ').toLowerCase().includes(s)));
+    const qty = r => grp ? Number((r.where_hu.split(' · ').find(x => x.startsWith(grp + ' ')) || '0').split(' ').pop()) : r.qty;
+    $('#bomBody').innerHTML = rows.map(r => `<tr><td>${esc(r.partno)}</td><td>${esc(r.name)}</td><td class="num">${qty(r)}</td><td>${esc(L === 'hu' ? r.where_hu : r.where_en)}</td></tr>`).join('');
+    $('#bomSum').textContent = t('bom.sum', { rows: rows.length, qty: rows.reduce((a, r) => a + qty(r), 0) });
   };
+  chips.addEventListener('click', e => { const b = e.target.closest('[data-g]'); if (!b) return; grp = b.dataset.g; draw(); });
   q.addEventListener('input', draw); onLang(draw); draw();
 })();
 
 // --- napló ---
 (async () => {
-  let d; try { d = await getJSON('content/naplo.hu.json'); } catch (e) { return; }
-  $('#logTools').innerHTML = d.tools.map(x => `<div><b>${x.tool}</b><span>${x.use}</span></div>`).join('');
-  $('#logTimeline').innerHTML = d.days.map(day => `<div class="day"><div class="day__d reveal"><b>${esc(day.date.slice(5).replace('-', '. '))}.</b><span>${esc(day.weekday)} · ${day.title}</span></div><div>${
-    day.entries.map(en => `<div class="entry entry--${en.who.split('+')[0]} reveal"><h3>${en.title}</h3><ul>${en.items.map(i => `<li class="k-${i.kind}">${i.html}</li>`).join('')}</ul></div>`).join('')}</div></div>`).join('');
-  watchReveal($('#log'));
-  const en = () => { const p = $('#logEn'); p.hidden = lang() !== 'en'; p.textContent = d.en_summary + ' ' + t('log.hu_only'); };
-  en(); onLang(en);
+  let d; try { d = await getJSON('content/log.json'); } catch (e) { return; }
+  const draw = () => {
+    const L = lang(), hu = L === 'hu';
+    $('#logTools').innerHTML = d.tools.map(x => `<div class="reveal"><b>${esc(x[0])}</b><span>${esc(hu ? x[1] : x[2])}</span></div>`).join('');
+    $('#logPrompts').innerHTML = d.prompts.map(p => `<figure class="prompt reveal"><blockquote>„${esc(hu ? p.hu : p.en)}”</blockquote><figcaption>${esc(hu ? p.ctx_hu : p.ctx_en)}</figcaption></figure>`).join('');
+    $('#logIssues').innerHTML = d.issues.map((x, i) => { const [ti, pr, fx] = x[L]; return `<article class="issue reveal"><span class="issue__n">${String(i + 1).padStart(2, '0')}</span><div><h4>${esc(ti)}</h4><p><em>${esc(t('log.problem'))}:</em> ${esc(pr)}</p><p><em class="ok">${esc(t('log.fix'))}:</em> ${esc(fx)}</p></div></article>`; }).join('');
+    $('#logLessons').innerHTML = d.lessons.map(x => `<li class="reveal">${esc(x[L])}</li>`).join('');
+    watchReveal($('#log'));
+  };
+  draw(); onLang(draw);
 })();
 
 // --- 3D és VEM: lusta betöltés, amikor a szekció közel ér ---

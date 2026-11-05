@@ -24,58 +24,85 @@
  "units": "MPa",
  "cases": [
   {
-   "id": "lengokar",
-   "file": "assets/fem/lengokar.glb",
+   "id": "feltengely_3708",
+   "file": "assets/fem/feltengely_3708.glb",
    "demo": false,
    "title": {
-    "hu": "Első alsó lengőkar – földet érés (5 g)",
-    "en": "Front lower control arm – landing (5 g)"
+    "hu": "Hátsó féltengely (3708, 12L) – a kerék megakad",
+    "en": "Rear half-shaft (3708, 12L) – wheel stuck"
    },
    "desc": {
-    "hu": "32316 (1×5) gerenda. Ugrás utáni földet érés: kerékerő 5 × 1,29 N = 6,43 N; a rugóstag a belső csuklótól 8 mm-re fog meg (áttétel 1:4), ezért 25,7 N-nal nyomja a kart. Csapok: felfekvő nyomás a lyukfalon. ABS, E = 2,1 GPa (feltevés). CalculiX, másodfokú tetraéderek (174 e. csomópont).",
-    "en": "32316 (1×5) beam. Landing after a jump: wheel force 5 × 1.29 N = 6.43 N; the shock is mounted 8 mm from the inner pivot (ratio 1:4), so it pushes the arm with 25.7 N. Pins modelled as bearing pressure on the hole walls. ABS, E = 2.1 GPa (assumed). CalculiX, quadratic tetrahedra (174k nodes)."
-   },
-   "load": {
-    "hu": "6,43 N kerékerő + 25,7 N rugóstag-erő",
-    "en": "6.43 N wheel + 25.7 N shock force"
-   },
-   "vmin": 0.0,
-   "vmax": 6.0,
-   "umax_mm": 0.175,
-   "hand": 3.7,
-   "deviation_pct": 61.1,
-   "note": {
-    "hu": "Kézi: névleges feszültség a rugócsap lyukánál (nettó szelvény). A VEM-csúcs ennél ~1,6× nagyobb (feszültséggyűjtés a lyuk szélén). A metszeti erők a VEM-ben 0,6%-on belül egyeznek a kézi értékkel. Biztonsági tényező 40 MPa folyáshatárra: 6,7 (3 g-nél 11).",
-    "en": "Hand calc: nominal stress at the shock-pin hole (net section). The FEM peak is ~1.6× higher (stress concentration at the hole edge). FEM section forces match the hand values within 0.6%. Safety factor vs 40 MPa yield: 6.7 (11 at 3 g)."
-   },
-   "def_scale": 25
-  },
-  {
-   "id": "feltengely",
-   "file": "assets/fem/feltengely.glb",
-   "demo": false,
-   "title": {
-    "hu": "Féltengely – a kerék megakad egy kőben",
-    "en": "Half-shaft – wheel stuck on a rock"
-   },
-   "desc": {
-    "hu": "4519 (3L) kereszttengely csavarása. A legnagyobb nyomaték, amit a gumi át tud adni: μ·N·r = 0,8 × 1,64 N × 34,4 mm = 45,1 N·mm (hátsó kerék, statikus terhelés). Háló: a CAD-szelvény kihúzva, másodfokú ékelemek, 3 háló (23–152 e. csomópont).",
-    "en": "Torsion of a 4519 (3L) cross axle. The largest torque the tyre can transmit: μ·N·r = 0.8 × 1.64 N × 34.4 mm = 45.1 N·mm (rear wheel, static load). Mesh: CAD section extruded, quadratic wedges, 3 meshes (23k–152k nodes)."
+    "hu": "A mostani hátsó merev híd 12L-es féltengelye (a filmben az S1-snitt). A tapadási határnyomaték 0,8 × 1,64 N × 34,4 mm = 45,1 N·mm csavarja. A 4519 STEP-szelvénye 95,8 mm-re kihúzva, 99 529 csomópont, másodfokú ékelemek, két merev végtest.",
+    "en": "The 12L half-shaft of the current rigid rear axle (shot S1 in the film). The grip-limited torque 0.8 × 1.64 N × 34.4 mm = 45.1 N·mm twists it. 4519 STEP section extruded to 95.8 mm, 99,529 nodes, quadratic wedges, two rigid end bodies."
    },
    "load": {
     "hu": "45,1 N·mm csavarás",
     "en": "45.1 N·mm torque"
    },
    "vmin": 0.0,
-   "vmax": 22.1,
-   "umax_mm": 0.183,
+   "vmax": 21.6,
+   "umax_mm": 0.63,
    "hand": 21.8,
-   "deviation_pct": 1.7,
+   "deviation_pct": -0.7,
    "note": {
-    "hu": "Kézi: 2D Prandtl-megoldás (W_t = 3,59 mm³) → τ = 12,6 MPa, von Mises √3·τ. A VEM szerint az első folyás 82 N·mm-nél kezdődik (Prandtl: 83 N·mm, eltérés 1,4%), a csavarási merevség J = 17,32 mm⁴ (Prandtl: 17,37). Biztonsági tényező 1,8 – 3 g-s terhelés közben már helyi folyás a sarkokban.",
-    "en": "Hand calc: 2D Prandtl solution (W_t = 3.59 mm³) → τ = 12.6 MPa, von Mises √3·τ. FEM first yield at 82 N·mm (Prandtl: 83 N·mm, 1.4% apart), torsion constant J = 17.32 mm⁴ (Prandtl: 17.37). Safety factor 1.8 – under a 3 g load the corners already yield locally."
+    "hu": "Kézi: 2D Prandtl-megoldás (W_t = 3,59 mm³), von Mises √3·τ = 21,8 MPa. A feszültség a nyomatéktól függ, a hossztól nem (3L-es tanulmány: 22,1 MPa); a 12L tengely viszont 3,4×-esen jobban elcsavarodik: 15,1° a kerék felőli végen. Biztonsági tényező első folyásra ≈ 1,8.",
+    "en": "Hand calc: 2D Prandtl solution (W_t = 3.59 mm³), von Mises √3·τ = 21.8 MPa. The stress depends on the torque, not the length (3L study: 22.1 MPa); the 12L shaft, however, twists 3.4× more: 15.1° at the wheel end. Safety factor to first yield ≈ 1.8."
    },
    "def_scale": 8
+  },
+  {
+   "id": "letrakeret_a6d_3g",
+   "file": "assets/fem/letrakeret_a6d_3g.glb",
+   "demo": false,
+   "title": {
+    "hu": "Létrakeret (A6d) – földet érés 3 g",
+    "en": "Ladder frame (A6d) – landing at 3 g"
+   },
+   "desc": {
+    "hu": "A mostani váz (A6d: létrakeret, első segédkeret, bukócső, hátsó konzolok + váltóház/motortartó) 3D gerendamodellje: 647 Timoshenko-elem, a csomópontok a valós lyukközéppontok, 218 tengely/csap-kötés automatikusan felismerve. Súlyerő 3 × 5,85 N a vázon (44/56 % tengelyterhelés), ellentartás a rugóstag- és lengőkar-bekötéseken a futómű statikájából. ABS, E = 2,1 GPa (feltevés).",
+    "en": "Beam model of the current frame (A6d: ladder, front sub-frame, roll bar, rear brackets + gearbox housing/engine mount): 647 Timoshenko elements, nodes at the real hole centres, 218 axle/pin joints detected automatically. Weight 3 × 5.85 N on the frame (44/56 % axle split), reacted at the shock and control-arm mounts from the suspension statics. ABS, E = 2.1 GPa (assumed)."
+   },
+   "load": {
+    "hu": "3 × 5,85 N súlyerő (földet érés)",
+    "en": "3 × 5.85 N weight (landing)"
+   },
+   "vmin": 0.0,
+   "vmax": 69.2,
+   "umax_mm": 18.34,
+   "hand": 37.0,
+   "deviation_pct": null,
+   "note": {
+    "hu": "Kézi ellenőrzés a statikailag határozott első rugóstag-felső tengelyen (44294): M = 94,5 N·mm (1 g), a modellben 93,9 N·mm (−0,6 %); a „Kézi” érték ennek a tagnak a névleges hajlítófeszültsége, nem a VEM-maximumé. Biztonsági tényező 40 MPa-ra: 0,58 – 3 g-nél a névleges feszültség a folyáshatár fölött van. Legkritikusabb: a bukócső alsó 4L tengelye (x = 56, csavarás – a merev kötés feltevése felülbecsüli) és az első 9L hossztengelyek (60485, hajlítás, 64 MPa). Javaslat: a 9L tengelyek helyett 9L gerenda (40490). Az 1 g-s statikus terhelés: max 23,1 MPa, SF 1,7.",
+    "en": "Hand check on the statically determinate front shock-top axle (44294): M = 94.5 N·mm (1 g), model 93.9 N·mm (−0.6 %); the hand value is the nominal bending stress of this member, not of the FEM maximum. Safety factor vs 40 MPa: 0.58 – at 3 g the nominal stress exceeds yield. Most critical: the lower 4L roll-bar axle (x = 56, torsion – overestimated by the rigid-joint assumption) and the front 9L longitudinal axles (60485, bending, 64 MPa). Suggestion: replace the 9L axles with a 9L beam (40490). Static 1 g: max 23.1 MPa, SF 1.7."
+   },
+   "def_scale": 1
+  },
+  {
+   "id": "letrakeret_a6d_csavaras",
+   "file": "assets/fem/letrakeret_a6d_csavaras.glb",
+   "demo": false,
+   "title": {
+    "hu": "Létrakeret (A6d) – csavarás, átlós kerékemelés",
+    "en": "Ladder frame (A6d) – torsion, diagonal wheel lift"
+   },
+   "desc": {
+    "hu": "Ugyanaz a gerendamodell. Az egyik első kerék teljes terhelése (1,29 N) átkerül a másikra (átlós kerékemelés legrosszabb esete): 206 N·mm csavarás, a futómű statikáján át a lengőkar- és rugóstag-bekötéseken; hátul a négy rugóstag-szem rögzítve.",
+    "en": "Same beam model. The full load of one front wheel (1.29 N) shifts to the other (worst case of a diagonal wheel lift): 206 N·mm torque, introduced through the suspension statics at the control-arm and shock mounts; the four rear shock eyes fixed."
+   },
+   "load": {
+    "hu": "206 N·mm csavarás",
+    "en": "206 N·mm torque"
+   },
+   "vmin": 0.0,
+   "vmax": 32.5,
+   "umax_mm": 24.42,
+   "hand": 12.3,
+   "deviation_pct": null,
+   "note": {
+    "hu": "Csavarómerevség 14,3 N·mm/fok, elcsavarodás 14,4° – merev kötésekkel (felső korlát). Ha a kerek lyukas csap/tengely-kötések csak súrlódással tartanak: 1000 N·mm/rad-nál 8,6, 100-nál 3,0 N·mm/fok; szabad csuklókkal a keret mechanizmus. Max 32,5 MPa (K120 2L rögzítő tengely, csavarás), SF 1,23. Kézi: rugóstag-felső tengely nyomatéka 94,5 vs 94,5 N·mm.",
+    "en": "Torsional stiffness 14.3 N·mm/deg, twist 14.4° – with rigid joints (upper bound). If the round-hole pin/axle joints hold only by friction: 8.6 N·mm/deg at 1000 N·mm/rad, 3.0 at 100; with free pivots the frame is a mechanism. Max 32.5 MPa (K120 2L locking axle, torsion), SF 1.23. Hand: shock-top axle moment 94.5 vs 94.5 N·mm."
+   },
+   "def_scale": 1
   },
   {
    "id": "fogto",
@@ -103,59 +130,6 @@
     "en": "Colour: max principal (tensile) stress. Hand calc: Lewis formula, Y = 0.100 from the CAD profile (undercut 8T). The root peak is mesh-dependent (20.2 → 23.8 MPa on refinement, due to the polygonal profile), the nominal (linearised) root stress is mesh-independent: 11.3 MPa. Safety factor ≈ 1.7–2.0 – the weakest point of the gearbox."
    },
    "def_scale": 60
-  },
-  {
-   "id": "letrakeret",
-   "file": "assets/fem/letrakeret.glb",
-   "demo": false,
-   "title": {
-    "hu": "Létrakeret – csavarómerevség",
-    "en": "Ladder frame – torsional stiffness"
-   },
-   "desc": {
-    "hu": "Gerendamodell (CalculiX B32, 258 elem): hossztartók, kick-up, kereszttartók, első segédkeret. A szelvények a 15L gerenda 3D-VEM-jére kalibrálva (I_eff = 72%). Hátul a rugóstag-bekötések rögzítve, elöl a rugóstag-tartókon ±1,29 N (= 82 N·mm: egy első kerék terhelése átkerül a másikra).",
-    "en": "Beam model (CalculiX B32, 258 elements): side rails, kick-up, cross members, front sub-frame. Sections calibrated against the 3D FEM of the 15L beam (I_eff = 72%). Rear shock mounts fixed, ±1.29 N on the front shock mounts (= 82 N·mm: one front wheel's load shifted to the other)."
-   },
-   "load": {
-    "hu": "82 N·mm csavarás",
-    "en": "82 N·mm torque"
-   },
-   "vmin": 0.0,
-   "vmax": 7.6,
-   "umax_mm": 4.427,
-   "hand": 8.6,
-   "deviation_pct": -12.2,
-   "note": {
-    "hu": "Csavarómerevség 14,3 N·mm/fok (0,0143 N·m/fok), elcsavarodás 5,8°. A lágyság ~90%-a a konzolos első felső tengelyben (44294) van – maga a létrakeret ~134 N·mm/fok. Kézi: a konzolos tengely hajlítása + csavarása a befogásnál.",
-    "en": "Torsional stiffness 14.3 N·mm/deg (0.0143 N·m/deg), twist 5.8°. ~90% of the compliance is in the cantilevered upper front axle (44294) – the ladder itself is ~134 N·mm/deg. Hand calc: bending + torsion of the cantilevered axle at its root."
-   },
-   "def_scale": 4
-  },
-  {
-   "id": "beam15",
-   "file": "assets/fem/beam15.glb",
-   "demo": false,
-   "title": {
-    "hu": "15L gerenda – konzol",
-    "en": "15L beam – cantilever"
-   },
-   "desc": {
-    "hu": "Egyik végén befogott 32278-as gerenda, a szabad végén 10 N lefelé. Anyag: ABS (E ≈ 2,3 GPa, feltevés). CalculiX, másodfokú tetraéderek.",
-    "en": "A 32278 beam clamped at one end, 10 N downward at the free end. Material: ABS (E ≈ 2.3 GPa, assumed). CalculiX, quadratic tetrahedra."
-   },
-   "load": {
-    "hu": "10 N a gerenda végén",
-    "en": "10 N at the tip"
-   },
-   "vmin": 0.0,
-   "vmax": 37.4,
-   "umax_mm": 12.54,
-   "hand": 25.6,
-   "deviation_pct": 46.2,
-   "note": {
-    "hu": "Kézi: névleges feszültség a befogásnál a lyukas (nettó) szelvényen: 25,6 MPa; a VEM-csúcs a lyuk szélén ~1,5×-ös feszültséggyűjtéssel nagyobb. A lehajlásból kalibrált hajlítómerevség (I_eff = 72%) a létrakeret-modell alapja.",
-    "en": "Hand calc: nominal stress at the clamp on the holed (net) section: 25.6 MPa; the FEM peak at the hole edge is higher by a ~1.5× stress concentration. The bending stiffness calibrated from the deflection (I_eff = 72%) feeds the ladder-frame model."
-   }
   }
  ]
 }

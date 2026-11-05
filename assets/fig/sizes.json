@@ -1,0 +1,102 @@
+{
+"sub/A1_01": [
+1600,
+960
+],
+"sub/A1_05": [
+1600,
+907
+],
+"sub/A1c_04": [
+1600,
+1108
+],
+"sub/A1c_05": [
+1600,
+661
+],
+"sub/A2_04": [
+1600,
+1067
+],
+"sub/A2_01": [
+1600,
+660
+],
+"sub/A3_04": [
+1600,
+1013
+],
+"sub/A3_03": [
+1600,
+800
+],
+"sub/A4_04": [
+1600,
+960
+],
+"sub/A4_03": [
+1600,
+904
+],
+"sub/A4_06": [
+1600,
+847
+],
+"sub/A6d_1": [
+1280,
+720
+],
+"sub/A6c_01": [
+1132,
+677
+],
+"sub/A3_07": [
+1600,
+1100
+],
+"sub/A7_V2": [
+1540,
+990
+],
+"sub/A7_cmp": [
+1600,
+1387
+],
+"cad/SA_elso_futomu_kormany_max_izometrikus": [
+1000,
+700
+],
+"cad/SA_elso_futomu_rugozas_B_plus8_izometrikus": [
+1000,
+700
+],
+"cad/SA_hatso_futomu_csuklas_11fok_hatulnezet": [
+1000,
+700
+],
+"cad/SA_hatso_futomu_statikus_kardannal_izometrikus": [
+1000,
+700
+],
+"cad/SA_valto_C1b_izometrikus": [
+1000,
+700
+],
+"cad/C5_F1": [
+900,
+600
+],
+"cad/SA_vaz_izometrikus": [
+1000,
+700
+],
+"cad/SA_vaz_felul": [
+1000,
+700
+],
+"cad/TT_teljes_step": [
+1400,
+875
+]
+}
