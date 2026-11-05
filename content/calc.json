@@ -1,0 +1,121 @@
+{
+ "source": "layout_v2.json (digitális makett v2.1)",
+ "cards": [
+  {
+   "k": "wheelbase",
+   "v": "192",
+   "u": "mm",
+   "hu": "Tengelytáv",
+   "en": "Wheelbase",
+   "shu": "24 modul",
+   "sen": "24 studs"
+  },
+  {
+   "k": "track",
+   "v": "150,4 / 144",
+   "u": "mm",
+   "hu": "Nyomtáv elöl / hátul",
+   "en": "Track front / rear",
+   "shu": "kormánycsap a rácson",
+   "sen": "kingpin on the grid"
+  },
+  {
+   "k": "mass",
+   "v": "596",
+   "u": "g",
+   "hu": "Becsült tömeg",
+   "en": "Estimated mass",
+   "shu": "súlypont z = 56 mm",
+   "sen": "CoG z = 56 mm"
+  },
+  {
+   "k": "travel",
+   "v": "±16",
+   "u": "mm",
+   "hu": "Első rugóút",
+   "en": "Front wheel travel",
+   "shu": "hosszú lengőkarok",
+   "sen": "long-travel A-arms"
+  },
+  {
+   "k": "artic",
+   "v": "±9,1",
+   "u": "°",
+   "hu": "Hátsó híd csuklása",
+   "en": "Rear axle articulation",
+   "shu": "4-link, merev híd",
+   "sen": "4-link solid axle"
+  },
+  {
+   "k": "ground",
+   "v": "17,2",
+   "u": "mm",
+   "hu": "Hasmagasság",
+   "en": "Ground clearance",
+   "shu": "Ø68,8 terepgumi",
+   "sen": "Ø68.8 mm off-road tyres"
+  },
+  {
+   "k": "ackermann",
+   "v": "0,4",
+   "u": "°",
+   "hu": "Ackermann-hiba",
+   "en": "Ackermann error",
+   "shu": "belső kerék ≤ 30°",
+   "sen": "inner wheel ≤ 30°"
+  },
+  {
+   "k": "gears",
+   "v": "5,44 · 3,27 · 1,81",
+   "u": "",
+   "hu": "Váltó: főtengely / kerék",
+   "en": "Gearbox: crank / wheel",
+   "shu": "szekvenciális, 3 fokozat",
+   "sen": "sequential, 3 speeds"
+  }
+ ],
+ "figs": [
+  {
+   "src": "assets/fig/makett_nezetek.webp",
+   "w": 1430,
+   "h": 1820,
+   "hu": "Digitális makett – nézetek",
+   "en": "Digital mock-up – views"
+  },
+  {
+   "src": "assets/fig/futomu_szelso.webp",
+   "w": 1600,
+   "h": 571,
+   "hu": "Futómű szélső helyzetekben",
+   "en": "Suspension at its limits"
+  },
+  {
+   "src": "assets/fig/valto_fokozatok.webp",
+   "w": 1600,
+   "h": 594,
+   "hu": "Szekvenciális váltó fokozatai",
+   "en": "Sequential gearbox ratios"
+  },
+  {
+   "src": "assets/fig/hajtaslanc.webp",
+   "w": 1600,
+   "h": 566,
+   "hu": "Hajtáslánc: kerekek → V8",
+   "en": "Driveline: wheels → V8"
+  },
+  {
+   "src": "assets/fig/tengely_csavaras.webp",
+   "w": 1600,
+   "h": 698,
+   "hu": "Mikor csavarodik el a tengely?",
+   "en": "When does the axle twist off?"
+  },
+  {
+   "src": "assets/fig/fem_gerenda.webp",
+   "w": 1600,
+   "h": 900,
+   "hu": "VEM-teszt: 15L gerenda",
+   "en": "FEM test: 15L beam"
+  }
+ ]
+}

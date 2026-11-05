@@ -1,0 +1,289 @@
+{
+ "lang": "hu",
+ "tools": [
+  {
+   "tool": "Claude (Cowork) – „karmester\" chat",
+   "use": "Tervezés, vezénylés, ágensek indítása, MCP-vezérlés"
+  },
+  {
+   "tool": "Claude projekt-dokumentumok",
+   "use": "Közös memória a chatek/ágensek között"
+  },
+  {
+   "tool": "0xFFD/solidworks-mcp v0.2.0",
+   "use": "Az AI ezen keresztül vezérli a SolidWorkst"
+  },
+  {
+   "tool": "SOLIDWORKS 2023",
+   "use": "CAD"
+  },
+  {
+   "tool": "Claude al-ágensek és háttér-munkafolyamat (workflow)",
+   "use": "Párhuzamos munka: számítás, forgatókönyv, CAD-könyvtár"
+  },
+  {
+   "tool": "Python (matplotlib, saját SVG-vetítés), Piper TTS, Playwright",
+   "use": "Számítások, látványterv, narráció, ellenőrző képek"
+  }
+ ],
+ "days": [
+  {
+   "date": "2026-11-03",
+   "weekday": "kedd",
+   "title": "Indítás és tervezés",
+   "entries": [
+    {
+     "who": "ai",
+     "title": "Témajavaslatok és eszközválasztás",
+     "items": [
+      {
+       "kind": "note",
+       "html": "Prompt (ember): <em>„Leírtam pontosan a projekt lényegét… Szeretnék valami tuti cuccot csinálni, mivel mérnök vagyok, ilyen minőségben is.\"</em>"
+      },
+      {
+       "kind": "note",
+       "html": "Az AI témákat javasolt (bolygómű, PU-s alkatrész, hobbi), és rákérdezett a 3D-s tapasztalatra."
+      },
+      {
+       "kind": "human",
+       "html": "🧑 Döntés: a 3D modellt <strong>az AI-nak kell elkészítenie MCP-n keresztül</strong>, SolidWorksben."
+      }
+     ]
+    },
+    {
+     "who": "ai",
+     "title": "Munkamódszer: karmester + ágensek",
+     "items": [
+      {
+       "kind": "note",
+       "html": "Prompt (ember): <em>„Tudsz-e chateket nyitni egy projekten belül, majd utasításokat kiadni ezeknek a chateknek? Fel kéne építeni egy stratégiát… Fontos, hogy a task célja, hogy mindent az AI csináljon.\"</em>"
+      },
+      {
+       "kind": "stuck",
+       "html": "⚠️ Korlát: az AI nem tud új chatet nyitni és azoknak üzenni."
+      },
+      {
+       "kind": "fix",
+       "html": "✅ Megoldás: a karmester chat al-ágenseket indít; a projekt-dokumentumok (00–09 briefek) közös memóriaként működnek."
+      },
+      {
+       "kind": "ai",
+       "html": "🤖 Elkészült: <code>00_strategia.md</code> (fázisok, ütemterv, kockázati mátrix)."
+      }
+     ]
+    },
+    {
+     "who": "human+ai",
+     "title": "Témaválasztás – vita az AI-jal",
+     "items": [
+      {
+       "kind": "human",
+       "html": "🧑 Három ötlet: (1) LEGO Technic autó, (2) alkatrész-fejlesztés egy E39 BMW-hez, (3) teljes váltótervezés."
+      },
+      {
+       "kind": "ai",
+       "html": "🤖 Az AI pontozta őket (MCP-vel modellezhető, mérnöki mélység, látványosság, időkeret, hitelesség), és a 2-est javasolta."
+      },
+      {
+       "kind": "human",
+       "html": "🧑 Ellenvetés: <em>„a laikus zsűri nem értené a mélységét\"</em>. Az AI elfogadta, és LEGO + váltó hibridet javasolt."
+      },
+      {
+       "kind": "human",
+       "html": "🧑 Ellenvetés: <em>„6 fogaskerék LEGO-ban nem izgalmas… egy LEGO autóhoz az embereknek kötődésük van\"</em>."
+      },
+      {
+       "kind": "fix",
+       "html": "✅ <strong>Döntés: LEGO® Technic-kompatibilis autó</strong> független felfüggesztéssel, kormányzással, hajtáslánccal, igazi mérnöki tervezési folyamaton végigvezetve. Személyes szál: gyerekkori LEGO-építés, a 8 éves fiam."
+      },
+      {
+       "kind": "lesson",
+       "html": "💡 Tanulság: az AI javaslata jó kiindulópont volt, de a célközönség ismerete az emberi oldalon volt."
+      },
+      {
+       "kind": "ai",
+       "html": "🤖 Elkészült: <code>01_specifikacio.md</code>."
+      }
+     ]
+    },
+    {
+     "who": "ai",
+     "title": "SolidWorks MCP kiválasztása és biztonsági átnézése",
+     "items": [
+      {
+       "kind": "ai",
+       "html": "🤖 Az AI 6 közösségi SolidWorks MCP szervert hasonlított össze."
+      },
+      {
+       "kind": "stuck",
+       "html": "⚠️ Az elsőként kinézett (Slacker-LLC) repó közben eltűnt a GitHubról."
+      },
+      {
+       "kind": "fix",
+       "html": "✅ Választás: <strong>0xFFD/solidworks-mcp</strong> (114 eszköz, fogaskerék- és fogasléc-kényszer, motion study, robbantott nézet)."
+      },
+      {
+       "kind": "ai",
+       "html": "🤖 Az AI a céges gép miatt átnézte a forráskódot: nincs hálózati hívás, és a szerver csak a munkamappába ír. Egy konkrét, átnézett commitot rögzítettünk."
+      },
+      {
+       "kind": "ai",
+       "html": "🤖 Elkészült: <code>02_mcp_telepites.md</code>."
+      }
+     ]
+    },
+    {
+     "who": "human",
+     "title": "Telepítés – a „három konfigurációs fájl\" kalandja",
+     "items": [
+      {
+       "kind": "human",
+       "html": "🧑 Telepítés PowerShellben (venv + pip), a <code>solidworks-mcp install</code> beírta a konfigurációt."
+      },
+      {
+       "kind": "stuck",
+       "html": "⚠️ 1. elakadás: az AI által adott JSON-t PowerShellbe illesztettem → szintaxishiba. ✅ Az AI kész PowerShell-szkriptet adott, ami biztonsági mentéssel, a meglévő beállítások megtartásával írja a fájlt."
+      },
+      {
+       "kind": "stuck",
+       "html": "⚠️ 2. elakadás: az app továbbra sem látta a szervert. Diagnózis: <strong>Microsoft Store-os Claude</strong> → virtualizált AppData. ✅ Oda is beírtuk – de még mindig semmi."
+      },
+      {
+       "kind": "stuck",
+       "html": "⚠️ 3. elakadás: MCP-napló sehol → az app meg sem próbálta indítani. Képernyőkép a Settings → Developer oldalról: „No servers added\"."
+      },
+      {
+       "kind": "fix",
+       "html": "✅ Megoldás: az <strong>Edit config</strong> gomb megmutatta a valódi helyet: <code>AppData\\Local\\Claude-Data\\…</code>. Az AI összefésülő szkriptet írt, ami ellenőrzi, hogy az app ki van-e lépve (különben felülírná a fájlt)."
+      },
+      {
+       "kind": "lesson",
+       "html": "💡 Tanulság: az AI nem lát rá a gépre – a diagnózis az ember „szemén\" (kimenetek, képernyőképek) keresztül ment. A kérdezés sorrendje (konfig → Store → napló → UI) módszeres hibakeresés volt."
+      }
+     ]
+    },
+    {
+     "who": "ai",
+     "title": "Füstteszt – az AI először modellez SolidWorksben",
+     "items": [
+      {
+       "kind": "note",
+       "html": "Kapcsolat: SOLIDWORKS 2023, MCP 0.2.0, munkamappa <code>AI challange\\cad</code>."
+      },
+      {
+       "kind": "ai",
+       "html": "🤖 5 lyukú Technic gerenda: hornyos (slot) vázlat Ø4,8 lyukrácssal, 7,2 mm szimmetrikus kihúzás. Ellenőrzés kézi számítással: várt térfogat ≈ 1300,4 mm³, SolidWorks: 1300,6 mm³ ✓"
+      },
+      {
+       "kind": "stuck",
+       "html": "⚠️ STEP-export hiba: a szerver a SW 2026 API-jára íródott, a 2023-ban nincs <code>GetMBDSTEP242Data</code>. ✅ STEP AP214-re váltva működik."
+      },
+      {
+       "kind": "ai",
+       "html": "🤖 Mini összeállítás: 2 gerenda + csap. Kényszerek: síkillesztés, 2× koncentrikus, távolság, szöghatároló (csukló 0–120°). Ütközésvizsgálat: 0 ✓"
+      },
+      {
+       "kind": "stuck",
+       "html": "⚠️ A távolság-kényszer először rossz irányba tolta a csapot (z = 5,0 a várt 3,6 helyett). ✅ Az AI a komponens-pozíciók lekérdezésével észrevette, törölte és fordított iránnyal újra felvette."
+      },
+      {
+       "kind": "lesson",
+       "html": "💡 Tanulság: az AI „vakon\" dolgozik a CAD-ben – minden lépés után számmal (térfogat, pozíció, ütközés) és képernyőképpel ellenőriz."
+      },
+      {
+       "kind": "note",
+       "html": "Fájlok: <code>cad\\smoke\\</code> (beam5, pin2, hinge_test + PNG-k)"
+      }
+     ]
+    },
+    {
+     "who": "human",
+     "title": "GitHub-fiók",
+     "items": [
+      {
+       "kind": "human",
+       "html": "🧑 Fióknév-ötletelés az AI-jal (R&amp;D-szójátékok) → <code>PoResearch-and-deploy</code>. A repót (<code>ai-engineered-car</code>) én hozom létre – nyilvános repót az AI biztonsági okból nem hozhat létre helyettem."
+      }
+     ]
+    },
+    {
+     "who": "ai",
+     "title": "Párhuzamos ágensek: számítás és videó-forgatókönyv",
+     "items": [
+      {
+       "kind": "ai",
+       "html": "🤖 Számítási ágens (~17 perc, ~230k token): Technic-méretek forrásokkal, 114 tételes BOM valós cikkszámokkal, elrendezés, kormánygeometria (Ackermann-trapézzal 9,3° → 0,9° hiba), hajtáslánc, rugózás, és a „mikor csavarodik el a tengely?\" (2D Prandtl-megoldás: a kereszt-szelvény a teli kör csavarási merevségének 16,5%-a; PF XL motornál biztonsági tényező ≈ 1,0)."
+      },
+      {
+       "kind": "ai",
+       "html": "🤖 Videó-ágens (~6 perc): 2:28-as forgatókönyv 11 jelenettel, magyar gépi narráció (Piper TTS) – ⚠️ a Hugging Face a proxyn tiltva → ✅ a hangmodellek egy GitHub-kiadásból."
+      },
+      {
+       "kind": "stuck",
+       "html": "⚠️ Az ágenseket „előtérben\" indítottam, így 17 percig nem tudtunk beszélni. ✅ Megoldás: háttérben futó munkafolyamat (workflow)."
+      }
+     ]
+    },
+    {
+     "who": "human",
+     "title": "Fontos fordulat: „előbb beszéljük át, aztán indíts\"",
+     "items": [
+      {
+       "kind": "stuck",
+       "html": "⚠️ Az AI rákérdezés nélkül indított egy 10 ágenses éjszakai munkafolyamatot (CAD-könyvtár + web + render + VEM)."
+      },
+      {
+       "kind": "human",
+       "html": "🧑 <em>„Fontos lenne a jövőre nézve, hogy mielőtt folyamatot indítasz, szólj… Több 10 ezer alkatrész van, lehet, hogy elfogy a keretem.\"</em>"
+      },
+      {
+       "kind": "fix",
+       "html": "✅ A felhős ágenseket leállítottuk (a célt még nem tisztáztuk – újra kellett volna csinálni), csak a CAD-lánc fut tovább, szűkítve a BOM elemeire. Új szabály: minden indítás előtt terv + jóváhagyás."
+      },
+      {
+       "kind": "lesson",
+       "html": "💡 Tanulság: az AI hajlamos „előremenekülni\"; a költség és a cél kontrollja emberi feladat."
+      }
+     ]
+    },
+    {
+     "who": "human+ai",
+     "title": "Alkatrészkönyvtár – 2. kör tervezése",
+     "items": [
+      {
+       "kind": "human",
+       "html": "🧑 Prioritás: mechanika (fogaskerekek mind, differenciál, csuklók), sok kötőelem és vázelem, kevés kerék, mértékkel burkolat."
+      },
+      {
+       "kind": "ai",
+       "html": "🤖 Az AI ~80 alkatrészes listát állított össze csoportokra bontva; minden cikkszámot az ágens webes forrással ellenőriz."
+      }
+     ]
+    },
+    {
+     "who": "human+ai",
+     "title": "Látványterv – két kör",
+     "items": [
+      {
+       "kind": "ai",
+       "html": "🤖 v0.1: terepes buggy (vektoros koncepció kódból: Python → SVG, 3D primitívek saját vetítéssel)."
+      },
+      {
+       "kind": "human",
+       "html": "🧑 <em>„Egészen más kéne. Menjünk a nagy truckok irányába… nagy rugóút, magas hasmagasság, összkerékhajtás.\"</em> → az AI három versenyautó-típust ajánlott (Monster truck / Trophy truck / Ultra4)."
+      },
+      {
+       "kind": "fix",
+       "html": "✅ Döntés: <strong>Trophy truck</strong> (Baja-típus). v0.2: hosszú motorháztető, nyitott plató pótkerékkel, elöl független hosszú lengőkarok, hátul merev híd, kerekenként 2 lengéscsillapító, összkerékhajtás, Ø≈62 mm terepgumi, tengelytáv 24 modul."
+      },
+      {
+       "kind": "stuck",
+       "html": "⚠️ Mellékhatás: a korábbi elrendezés és a kerékméret (30–40 mm) elavult → a 2. CAD-kör kerékcsoportját Ø55–70 mm-re írtuk át, a merev híd elemeit felvettük."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "en_summary": "The full project log is kept in Hungarian. In short: an orchestrator chat plans and launches parallel AI agents; the shared project documents act as their memory; the AI drives SOLIDWORKS through an MCP server and checks every step with numbers (volume, position, interference). The human decides, approves, installs – and catches the AI when it races ahead."
+}

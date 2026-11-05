@@ -1,0 +1,2433 @@
+{
+ "version": 2,
+ "units": "mm (gyökér-scale 0.001)",
+ "axes": "+X előre, +Y fel, +Z jobbra",
+ "placeholder": false,
+ "source": "makett-alapú autó (layout_v2.2 + CAD-könyvtár STL-ek, K5/K6 javított változatokkal) – anim/export_web.py; a végleges SolidWorks-összeállítás után ugyanígy újraexportálandó",
+ "animations": [
+  {
+   "name": "drive",
+   "loop_s": 2.0,
+   "desc_hu": "kerekek, hajtáslánc, váltó (3. fokozat), V8 főtengely + dugattyúk, rugózás",
+   "desc_en": "wheels, driveline, gearbox (3rd), V8 crank + pistons, suspension"
+  }
+ ],
+ "explode_note": "extras.explode = alkatrészenkénti robbantási vektor mm-ben, glTF-tengelyekben (a filmes A10 snittel azonos)",
+ "groups": [
+  {
+   "id": "vaz",
+   "hu": "Váz",
+   "en": "Frame",
+   "color": "#1c1d20"
+  },
+  {
+   "id": "elso_futomu",
+   "hu": "Első futómű",
+   "en": "Front suspension",
+   "color": "#2a2c31"
+  },
+  {
+   "id": "hatso_hid",
+   "hu": "Hátsó híd",
+   "en": "Rear axle",
+   "color": "#2a2c31"
+  },
+  {
+   "id": "hajtaslanc",
+   "hu": "Hajtás / váltó",
+   "en": "Driveline / gearbox",
+   "color": "#9aa0a8"
+  },
+  {
+   "id": "V8",
+   "hu": "V8",
+   "en": "V8",
+   "color": "#c9ccd2"
+  },
+  {
+   "id": "karosszeria",
+   "hu": "Karosszéria",
+   "en": "Body",
+   "color": "#F28C28"
+  },
+  {
+   "id": "kerekek",
+   "hu": "Kerekek",
+   "en": "Wheels",
+   "color": "#1b1c1f"
+  }
+ ],
+ "subassemblies": {
+  "TT_100_vaz": [
+   "vaz"
+  ],
+  "TT_200_elso_futomu": [
+   "elso_futomu_bal",
+   "elso_futomu_jobb",
+   "elso_diff"
+  ],
+  "TT_300_kormany": [
+   "kormany"
+  ],
+  "TT_400_hatso_hid": [
+   "hatso_hid"
+  ],
+  "TT_500_hajtaslanc": [
+   "hajtaslanc"
+  ],
+  "TT_600_valto": [
+   "valto"
+  ],
+  "TT_700_V8": [
+   "V8"
+  ],
+  "TT_800_karosszeria": [
+   "karosszeria"
+  ],
+  "TT_900_kerekek": [
+   "kerekek"
+  ]
+ },
+ "parts": {
+  "P_44771_01": {
+   "group": "kerekek",
+   "sub": "kerekek",
+   "partno": "44771",
+   "design_id": "44771",
+   "name": "Gumi 68.8 x 36 ZR (terepmintás)",
+   "explode": [
+    -131.4,
+    18.0,
+    -199.8
+   ]
+  },
+  "P_15038_01": {
+   "group": "kerekek",
+   "sub": "kerekek",
+   "partno": "15038",
+   "design_id": "15038",
+   "name": "Felni Ø56 x 34 Technic Racing Medium, 6 csaplyuk",
+   "explode": [
+    -131.4,
+    18.0,
+    -239.8
+   ]
+  },
+  "P_44771_02": {
+   "group": "kerekek",
+   "sub": "kerekek",
+   "partno": "44771",
+   "design_id": "44771",
+   "name": "Gumi 68.8 x 36 ZR (terepmintás)",
+   "explode": [
+    -131.4,
+    18.0,
+    199.8
+   ]
+  },
+  "P_15038_02": {
+   "group": "kerekek",
+   "sub": "kerekek",
+   "partno": "15038",
+   "design_id": "15038",
+   "name": "Felni Ø56 x 34 Technic Racing Medium, 6 csaplyuk",
+   "explode": [
+    -131.4,
+    18.0,
+    239.8
+   ]
+  },
+  "P_44771_03": {
+   "group": "kerekek",
+   "sub": "kerekek",
+   "partno": "44771",
+   "design_id": "44771",
+   "name": "Gumi 68.8 x 36 ZR (terepmintás)",
+   "explode": [
+    131.4,
+    18.0,
+    -202.7
+   ]
+  },
+  "P_15038_03": {
+   "group": "kerekek",
+   "sub": "kerekek",
+   "partno": "15038",
+   "design_id": "15038",
+   "name": "Felni Ø56 x 34 Technic Racing Medium, 6 csaplyuk",
+   "explode": [
+    131.4,
+    18.0,
+    -242.7
+   ]
+  },
+  "P_44771_04": {
+   "group": "kerekek",
+   "sub": "kerekek",
+   "partno": "44771",
+   "design_id": "44771",
+   "name": "Gumi 68.8 x 36 ZR (terepmintás)",
+   "explode": [
+    131.4,
+    18.0,
+    202.7
+   ]
+  },
+  "P_15038_04": {
+   "group": "kerekek",
+   "sub": "kerekek",
+   "partno": "15038",
+   "design_id": "15038",
+   "name": "Felni Ø56 x 34 Technic Racing Medium, 6 csaplyuk",
+   "explode": [
+    131.4,
+    18.0,
+    242.7
+   ]
+  },
+  "P_44771_05": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "44771",
+   "design_id": "44771",
+   "name": "Gumi 68.8 x 36 ZR (terepmintás)",
+   "explode": [
+    -115.8,
+    132.0,
+    -0.0
+   ]
+  },
+  "P_15038_05": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "15038",
+   "design_id": "15038",
+   "name": "Felni Ø56 x 34 Technic Racing Medium, 6 csaplyuk",
+   "explode": [
+    -115.8,
+    146.0,
+    -0.0
+   ]
+  },
+  "P_65766_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "65766",
+   "design_id": "65766",
+   "name": "Kormányzott kerékagy-tartó (bal, elöl)",
+   "explode": [
+    42.1,
+    -20.2,
+    -108.3
+   ]
+  },
+  "P_92909_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "92909",
+   "design_id": "92909",
+   "name": "Kerékagy (agytárcsa)",
+   "explode": [
+    42.1,
+    -6.2,
+    -108.3
+   ]
+  },
+  "P_32494_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "32494",
+   "design_id": "32494",
+   "name": "CV-csukló gömb (Technic Steering CV Joint ball, LDraw: Wheel Spindle Axle Driver)",
+   "explode": [
+    42.1,
+    -8.1,
+    -115.3
+   ]
+  },
+  "P_92906_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "92906",
+   "design_id": "92906",
+   "name": "CV-csukló kehely 2L tengelycsonkkal (CV Joint Socket)",
+   "explode": [
+    42.1,
+    -8.1,
+    -101.3
+   ]
+  },
+  "P_32316_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "32316",
+   "design_id": "32316",
+   "name": "Vastag egyenes gerenda 1x5",
+   "explode": [
+    34.9,
+    -20.4,
+    -79.5
+   ]
+  },
+  "P_32316_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "32316",
+   "design_id": "32316",
+   "name": "Vastag egyenes gerenda 1x5",
+   "explode": [
+    34.9,
+    15.6,
+    -79.5
+   ]
+  },
+  "P_32316_03": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "32316",
+   "design_id": "32316",
+   "name": "Vastag egyenes gerenda 1x5",
+   "explode": [
+    49.3,
+    -20.4,
+    -79.5
+   ]
+  },
+  "P_32316_04": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "32316",
+   "design_id": "32316",
+   "name": "Vastag egyenes gerenda 1x5",
+   "explode": [
+    49.3,
+    15.6,
+    -79.5
+   ]
+  },
+  "P_87082_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "87082",
+   "design_id": "87082",
+   "name": "Technic hosszú csap 3L középső csaplyukkal (Pin 3L with Friction Ridges and Center Pin Hole, alt. 44874)",
+   "explode": [
+    42.1,
+    -27.4,
+    -108.3
+   ]
+  },
+  "P_3705_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "3705",
+   "design_id": "3705",
+   "name": "Tengely 4L",
+   "explode": [
+    49.1,
+    -20.4,
+    -108.3
+   ]
+  },
+  "P_87082_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "87082",
+   "design_id": "87082",
+   "name": "Technic hosszú csap 3L középső csaplyukkal (Pin 3L with Friction Ridges and Center Pin Hole, alt. 44874)",
+   "explode": [
+    42.1,
+    8.6,
+    -108.3
+   ]
+  },
+  "P_3705_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "3705",
+   "design_id": "3705",
+   "name": "Tengely 4L",
+   "explode": [
+    49.1,
+    15.6,
+    -108.3
+   ]
+  },
+  "P_3737_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "3737",
+   "design_id": "3737",
+   "name": "Tengely 10L",
+   "explode": [
+    42.1,
+    -20.4,
+    -79.5
+   ]
+  },
+  "P_44294_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "44294",
+   "design_id": "44294",
+   "name": "Tengely 7L",
+   "explode": [
+    42.1,
+    15.6,
+    -79.5
+   ]
+  },
+  "P_76537_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    67.3,
+    -20.4,
+    -86.7
+   ]
+  },
+  "P_76537_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    67.3,
+    -24.0,
+    -86.7
+   ]
+  },
+  "P_76537_03": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    67.3,
+    -16.8,
+    -86.7
+   ]
+  },
+  "P_76537_04": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    56.5,
+    -20.4,
+    -86.7
+   ]
+  },
+  "P_76537_05": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    56.5,
+    -24.0,
+    -86.7
+   ]
+  },
+  "P_76537_06": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    56.5,
+    -16.8,
+    -86.7
+   ]
+  },
+  "P_61903_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    42.1,
+    -9.6,
+    -65.5
+   ]
+  },
+  "P_61903_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    42.1,
+    -9.6,
+    -79.5
+   ]
+  },
+  "P_61903_03": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    42.1,
+    -9.6,
+    -93.5
+   ]
+  },
+  "P_4519_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "4519",
+   "design_id": "4519",
+   "name": "Tengely 3L",
+   "explode": [
+    42.1,
+    -8.8,
+    -93.9
+   ]
+  },
+  "P_32316_05": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "32316",
+   "design_id": "32316",
+   "name": "Vastag egyenes gerenda 1x5",
+   "explode": [
+    20.5,
+    -2.4,
+    -72.3
+   ]
+  },
+  "P_43093_01": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_bal",
+   "partno": "43093",
+   "design_id": "43093",
+   "name": "Tengelyes csap",
+   "explode": [
+    20.5,
+    -5.6,
+    -72.3
+   ]
+  },
+  "P_65766_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "65766",
+   "design_id": "65766",
+   "name": "Kormányzott kerékagy-tartó (bal, elöl)",
+   "explode": [
+    42.1,
+    -20.2,
+    108.3
+   ]
+  },
+  "P_92909_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "92909",
+   "design_id": "92909",
+   "name": "Kerékagy (agytárcsa)",
+   "explode": [
+    42.1,
+    -6.2,
+    108.3
+   ]
+  },
+  "P_32494_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "32494",
+   "design_id": "32494",
+   "name": "CV-csukló gömb (Technic Steering CV Joint ball, LDraw: Wheel Spindle Axle Driver)",
+   "explode": [
+    42.1,
+    -8.1,
+    115.3
+   ]
+  },
+  "P_92906_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "92906",
+   "design_id": "92906",
+   "name": "CV-csukló kehely 2L tengelycsonkkal (CV Joint Socket)",
+   "explode": [
+    42.1,
+    -8.1,
+    101.3
+   ]
+  },
+  "P_32316_06": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "32316",
+   "design_id": "32316",
+   "name": "Vastag egyenes gerenda 1x5",
+   "explode": [
+    34.9,
+    -20.4,
+    79.5
+   ]
+  },
+  "P_32316_07": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "32316",
+   "design_id": "32316",
+   "name": "Vastag egyenes gerenda 1x5",
+   "explode": [
+    34.9,
+    15.6,
+    79.5
+   ]
+  },
+  "P_32316_08": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "32316",
+   "design_id": "32316",
+   "name": "Vastag egyenes gerenda 1x5",
+   "explode": [
+    49.3,
+    -20.4,
+    79.5
+   ]
+  },
+  "P_32316_09": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "32316",
+   "design_id": "32316",
+   "name": "Vastag egyenes gerenda 1x5",
+   "explode": [
+    49.3,
+    15.6,
+    79.5
+   ]
+  },
+  "P_87082_03": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "87082",
+   "design_id": "87082",
+   "name": "Technic hosszú csap 3L középső csaplyukkal (Pin 3L with Friction Ridges and Center Pin Hole, alt. 44874)",
+   "explode": [
+    42.1,
+    -27.4,
+    108.3
+   ]
+  },
+  "P_3705_03": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "3705",
+   "design_id": "3705",
+   "name": "Tengely 4L",
+   "explode": [
+    49.1,
+    -20.4,
+    108.3
+   ]
+  },
+  "P_87082_04": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "87082",
+   "design_id": "87082",
+   "name": "Technic hosszú csap 3L középső csaplyukkal (Pin 3L with Friction Ridges and Center Pin Hole, alt. 44874)",
+   "explode": [
+    42.1,
+    8.6,
+    108.3
+   ]
+  },
+  "P_3705_04": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "3705",
+   "design_id": "3705",
+   "name": "Tengely 4L",
+   "explode": [
+    49.1,
+    15.6,
+    108.3
+   ]
+  },
+  "P_3737_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "3737",
+   "design_id": "3737",
+   "name": "Tengely 10L",
+   "explode": [
+    42.1,
+    -20.4,
+    79.5
+   ]
+  },
+  "P_44294_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "44294",
+   "design_id": "44294",
+   "name": "Tengely 7L",
+   "explode": [
+    42.1,
+    15.6,
+    79.5
+   ]
+  },
+  "P_76537_07": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    67.3,
+    -20.4,
+    86.7
+   ]
+  },
+  "P_76537_08": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    67.3,
+    -24.0,
+    86.7
+   ]
+  },
+  "P_76537_09": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    67.3,
+    -16.8,
+    86.7
+   ]
+  },
+  "P_76537_10": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    56.5,
+    -20.4,
+    86.7
+   ]
+  },
+  "P_76537_11": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    56.5,
+    -24.0,
+    86.7
+   ]
+  },
+  "P_76537_12": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "76537",
+   "design_id": "76537",
+   "name": "Rugóstag 6.5L (henger + rúd + rugó)",
+   "explode": [
+    56.5,
+    -16.8,
+    86.7
+   ]
+  },
+  "P_61903_04": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    42.1,
+    -9.6,
+    65.5
+   ]
+  },
+  "P_61903_05": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    42.1,
+    -9.6,
+    79.5
+   ]
+  },
+  "P_61903_06": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    42.1,
+    -9.6,
+    93.5
+   ]
+  },
+  "P_4519_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "4519",
+   "design_id": "4519",
+   "name": "Tengely 3L",
+   "explode": [
+    42.1,
+    -8.8,
+    93.9
+   ]
+  },
+  "P_32316_10": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "32316",
+   "design_id": "32316",
+   "name": "Vastag egyenes gerenda 1x5",
+   "explode": [
+    20.5,
+    -2.4,
+    72.3
+   ]
+  },
+  "P_43093_02": {
+   "group": "elso_futomu",
+   "sub": "elso_futomu_jobb",
+   "partno": "43093",
+   "design_id": "43093",
+   "name": "Tengelyes csap",
+   "explode": [
+    20.5,
+    -5.6,
+    72.3
+   ]
+  },
+  "P_62821_01": {
+   "group": "elso_futomu",
+   "sub": "elso_diff",
+   "partno": "62821",
+   "design_id": "62821",
+   "name": "Differenciálmű-ház 28 fogú kúpos koszorúval",
+   "explode": [
+    57.1,
+    -36.0,
+    -0.9
+   ]
+  },
+  "P_6589_01": {
+   "group": "elso_futomu",
+   "sub": "elso_diff",
+   "partno": "6589",
+   "design_id": "6589",
+   "name": "Kúpkerék 12 fogú",
+   "explode": [
+    44.5,
+    -36.0,
+    2.7
+   ]
+  },
+  "P_32062_01": {
+   "group": "elso_futomu",
+   "sub": "elso_diff",
+   "partno": "32062",
+   "design_id": "32062",
+   "name": "Tengely 2L",
+   "explode": [
+    57.1,
+    -36.0,
+    -15.3
+   ]
+  },
+  "P_32062_02": {
+   "group": "elso_futomu",
+   "sub": "elso_diff",
+   "partno": "32062",
+   "design_id": "32062",
+   "name": "Tengely 2L",
+   "explode": [
+    57.1,
+    -36.0,
+    13.5
+   ]
+  },
+  "P_87761_01": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "87761",
+   "design_id": "87761",
+   "name": "Fogasléc 1x7",
+   "explode": [
+    66.8,
+    57.6,
+    -16.1
+   ]
+  },
+  "P_10928_01": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "10928",
+   "design_id": "10928",
+   "name": "Fogaskerék 8 fogú (homlok)",
+   "explode": [
+    66.8,
+    64.8,
+    -44.9
+   ]
+  },
+  "P_3705_05": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "3705",
+   "design_id": "3705",
+   "name": "Tengely 4L",
+   "explode": [
+    50.5,
+    64.8,
+    -44.9
+   ]
+  },
+  "P_61903_07": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    48.4,
+    64.8,
+    -44.9
+   ]
+  },
+  "P_61903_08": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    34.4,
+    64.8,
+    -44.9
+   ]
+  },
+  "P_61903_09": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    20.4,
+    64.8,
+    -44.9
+   ]
+  },
+  "P_60485_01": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "60485",
+   "design_id": "60485",
+   "name": "Tengely 9L",
+   "explode": [
+    9.2,
+    90.0,
+    -57.5
+   ]
+  },
+  "P_61903_10": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    -6.7,
+    105.9,
+    -65.4
+   ]
+  },
+  "P_61903_11": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    -16.1,
+    115.2,
+    -70.0
+   ]
+  },
+  "P_61903_12": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    -25.4,
+    124.5,
+    -74.7
+   ]
+  },
+  "P_4519_03": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "4519",
+   "design_id": "4519",
+   "name": "Tengely 3L",
+   "explode": [
+    -16.1,
+    126.0,
+    -70.0
+   ]
+  },
+  "P_32072_01": {
+   "group": "elso_futomu",
+   "sub": "kormany",
+   "partno": "32072",
+   "design_id": "32072",
+   "name": "Recés kerék (knob wheel) – ékezet nélküli újramentés",
+   "explode": [
+    -16.1,
+    136.8,
+    -70.0
+   ]
+  },
+  "P_62821_02": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "62821",
+   "design_id": "62821",
+   "name": "Differenciálmű-ház 28 fogú kúpos koszorúval",
+   "explode": [
+    -101.8,
+    -15.1,
+    0.1
+   ]
+  },
+  "P_6589_02": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "6589",
+   "design_id": "6589",
+   "name": "Kúpkerék 12 fogú",
+   "explode": [
+    -89.2,
+    -15.1,
+    -3.5
+   ]
+  },
+  "P_64179_01": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "64179",
+   "design_id": "64179",
+   "name": "Vastag keret 5x7 nyitott középpel (Technic Liftarm Modified Frame Thick 5 x 7 Open Center)",
+   "explode": [
+    -101.8,
+    -22.2,
+    0.1
+   ]
+  },
+  "P_64179_02": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "64179",
+   "design_id": "64179",
+   "name": "Vastag keret 5x7 nyitott középpel (Technic Liftarm Modified Frame Thick 5 x 7 Open Center)",
+   "explode": [
+    -101.8,
+    -7.8,
+    0.1
+   ]
+  },
+  "P_32523_01": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "32523",
+   "design_id": "32523",
+   "name": "Vastag egyenes gerenda 1x3",
+   "explode": [
+    -101.8,
+    -15.1,
+    -14.2
+   ]
+  },
+  "P_3708_01": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "3708",
+   "design_id": "3708",
+   "name": "Tengely 12L",
+   "explode": [
+    -101.8,
+    -15.1,
+    -39.5
+   ]
+  },
+  "P_41239_01": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "41239",
+   "design_id": "41239",
+   "name": "Vastag egyenes gerenda 1x13",
+   "explode": [
+    -15.4,
+    -20.1,
+    -35.9
+   ]
+  },
+  "P_32524_01": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "32524",
+   "design_id": "32524",
+   "name": "Vastag egyenes gerenda 1x7",
+   "explode": [
+    -52.6,
+    1.4,
+    -21.1
+   ]
+  },
+  "P_109_01": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "109",
+   "design_id": "109",
+   "name": "Lengéscsillapító 9.5L – dugattyúrúd alsó szemmel",
+   "explode": [
+    -94.6,
+    -22.2,
+    -43.0
+   ]
+  },
+  "P_2909_01": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "2909",
+   "design_id": "2909",
+   "name": "Lengéscsillapító 9.5L – henger felső szemmel",
+   "explode": [
+    -99.1,
+    -26.6,
+    -43.0
+   ]
+  },
+  "P_110a_01": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "110a",
+   "design_id": "110a",
+   "name": "Rugó 9.5L lengéscsillapítóhoz (puha)",
+   "explode": [
+    -92.0,
+    -19.8,
+    -43.0
+   ]
+  },
+  "P_109_02": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "109",
+   "design_id": "109",
+   "name": "Lengéscsillapító 9.5L – dugattyúrúd alsó szemmel",
+   "explode": [
+    -109.0,
+    -22.2,
+    -43.0
+   ]
+  },
+  "P_2909_02": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "2909",
+   "design_id": "2909",
+   "name": "Lengéscsillapító 9.5L – henger felső szemmel",
+   "explode": [
+    -104.6,
+    -26.6,
+    -43.0
+   ]
+  },
+  "P_110a_02": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "110a",
+   "design_id": "110a",
+   "name": "Rugó 9.5L lengéscsillapítóhoz (puha)",
+   "explode": [
+    -111.6,
+    -19.8,
+    -43.0
+   ]
+  },
+  "P_32523_02": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "32523",
+   "design_id": "32523",
+   "name": "Vastag egyenes gerenda 1x3",
+   "explode": [
+    -101.8,
+    -15.1,
+    14.6
+   ]
+  },
+  "P_3708_02": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "3708",
+   "design_id": "3708",
+   "name": "Tengely 12L",
+   "explode": [
+    -101.8,
+    -15.1,
+    39.8
+   ]
+  },
+  "P_41239_02": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "41239",
+   "design_id": "41239",
+   "name": "Vastag egyenes gerenda 1x13",
+   "explode": [
+    -15.4,
+    -20.1,
+    36.1
+   ]
+  },
+  "P_32524_02": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "32524",
+   "design_id": "32524",
+   "name": "Vastag egyenes gerenda 1x7",
+   "explode": [
+    -52.6,
+    1.4,
+    21.4
+   ]
+  },
+  "P_109_03": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "109",
+   "design_id": "109",
+   "name": "Lengéscsillapító 9.5L – dugattyúrúd alsó szemmel",
+   "explode": [
+    -94.6,
+    -22.2,
+    43.4
+   ]
+  },
+  "P_2909_03": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "2909",
+   "design_id": "2909",
+   "name": "Lengéscsillapító 9.5L – henger felső szemmel",
+   "explode": [
+    -99.1,
+    -26.6,
+    43.4
+   ]
+  },
+  "P_110a_03": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "110a",
+   "design_id": "110a",
+   "name": "Rugó 9.5L lengéscsillapítóhoz (puha)",
+   "explode": [
+    -92.0,
+    -19.8,
+    43.4
+   ]
+  },
+  "P_109_04": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "109",
+   "design_id": "109",
+   "name": "Lengéscsillapító 9.5L – dugattyúrúd alsó szemmel",
+   "explode": [
+    -109.0,
+    -22.2,
+    43.4
+   ]
+  },
+  "P_2909_04": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "2909",
+   "design_id": "2909",
+   "name": "Lengéscsillapító 9.5L – henger felső szemmel",
+   "explode": [
+    -104.6,
+    -26.6,
+    43.4
+   ]
+  },
+  "P_110a_04": {
+   "group": "hatso_hid",
+   "sub": "hatso_hid",
+   "partno": "110a",
+   "design_id": "110a",
+   "name": "Rugó 9.5L lengéscsillapítóhoz (puha)",
+   "explode": [
+    -111.6,
+    -19.8,
+    43.4
+   ]
+  },
+  "P_62821_03": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "62821",
+   "design_id": "62821",
+   "name": "Differenciálmű-ház 28 fogú kúpos koszorúval",
+   "explode": [
+    -11.2,
+    -55.1,
+    -0.1
+   ]
+  },
+  "P_6589_03": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "6589",
+   "design_id": "6589",
+   "name": "Kúpkerék 12 fogú",
+   "explode": [
+    -7.6,
+    -42.5,
+    -0.1
+   ]
+  },
+  "P_61903_13": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    -46.8,
+    -55.1,
+    -0.1
+   ]
+  },
+  "P_61903_14": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    -32.8,
+    -55.1,
+    -0.1
+   ]
+  },
+  "P_61903_15": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    -18.8,
+    -55.1,
+    -0.1
+   ]
+  },
+  "P_61903_16": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    -3.6,
+    -55.1,
+    -0.1
+   ]
+  },
+  "P_61903_17": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    10.4,
+    -55.1,
+    -0.1
+   ]
+  },
+  "P_61903_18": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    24.4,
+    -55.1,
+    -0.1
+   ]
+  },
+  "P_61903_19": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    55.8,
+    -55.1,
+    3.5
+   ]
+  },
+  "P_61903_20": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    69.8,
+    -55.1,
+    3.5
+   ]
+  },
+  "P_61903_21": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    83.8,
+    -55.1,
+    3.5
+   ]
+  },
+  "P_61903_22": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    -68.4,
+    -53.7,
+    -3.7
+   ]
+  },
+  "P_61903_23": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    -54.4,
+    -53.7,
+    -3.7
+   ]
+  },
+  "P_61903_24": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "61903",
+   "design_id": "61903",
+   "name": "Kardáncsukló 3L – villa A",
+   "explode": [
+    -40.4,
+    -53.7,
+    -3.7
+   ]
+  },
+  "P_60485_02": {
+   "group": "hajtaslanc",
+   "sub": "hajtaslanc",
+   "partno": "60485",
+   "design_id": "60485",
+   "name": "Tengely 9L",
+   "explode": [
+    40.1,
+    -55.1,
+    1.7
+   ]
+  },
+  "P_32198_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "32198",
+   "design_id": "32198",
+   "name": "Kúpkerék 20 fogú",
+   "explode": [
+    -15.6,
+    91.0,
+    0.8
+   ]
+  },
+  "P_32198_02": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "32198",
+   "design_id": "32198",
+   "name": "Kúpkerék 20 fogú",
+   "explode": [
+    -6.6,
+    82.0,
+    0.8
+   ]
+  },
+  "P_94925_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "94925",
+   "design_id": "94925",
+   "name": "Fogaskerék 16 fogú, megerősített (homlok)",
+   "explode": [
+    -30.0,
+    114.5,
+    0.8
+   ]
+  },
+  "P_6542b_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "6542b",
+   "design_id": "6542b",
+   "name": "16 fogú fogaskerék kuplungos aggyal, sima (Technic Gear 16 Tooth with Clutch Smooth)",
+   "explode": [
+    -15.6,
+    114.5,
+    0.8
+   ]
+  },
+  "P_32270_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "32270",
+   "design_id": "32270",
+   "name": "Fogaskerék 12 fogú dupla kúpos",
+   "explode": [
+    -30.0,
+    119.8,
+    0.8
+   ]
+  },
+  "P_35185_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "35185",
+   "design_id": "35185",
+   "name": "20 fogú dupla kúpos fogaskerék kétoldali kuplunggal (2. fokozat) – ÚJ",
+   "explode": [
+    -15.6,
+    119.8,
+    0.8
+   ]
+  },
+  "P_10928_02": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "10928",
+   "design_id": "10928",
+   "name": "Fogaskerék 8 fogú (homlok)",
+   "explode": [
+    -30.0,
+    98.2,
+    0.8
+   ]
+  },
+  "P_60c01_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "60c01",
+   "design_id": "60c01",
+   "name": "24 fogú kuplungos fogaskerék (helyettesítő, CAD-modell még nincs)",
+   "explode": [
+    -15.6,
+    98.2,
+    0.8
+   ]
+  },
+  "P_6539_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "6539",
+   "design_id": "6539",
+   "name": "Kapcsológyűrű 2L, 4 bordás (Technic Transmission Driving Ring)",
+   "explode": [
+    -15.6,
+    92.3,
+    0.8
+   ]
+  },
+  "P_6538b_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "6538b",
+   "design_id": "6538b",
+   "name": "Tengelytoldó 2L, bordás (régi, 6538)",
+   "explode": [
+    -15.6,
+    106.3,
+    0.8
+   ]
+  },
+  "P_18947_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "18947",
+   "design_id": "18947",
+   "name": "Kapcsológyűrű 3L (Technic Transmission Driving Ring 3L)",
+   "explode": [
+    -15.6,
+    127.0,
+    0.8
+   ]
+  },
+  "P_35188_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "35188",
+   "design_id": "35188",
+   "name": "Forgó váltóvezérlő / hullámválasztó (Technic Changeover Rotary Catch)",
+   "explode": [
+    -1.2,
+    106.5,
+    -10.0
+   ]
+  },
+  "P_3705_06": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "3705",
+   "design_id": "3705",
+   "name": "Tengely 4L",
+   "explode": [
+    -30.0,
+    117.3,
+    0.8
+   ]
+  },
+  "P_3707_01": {
+   "group": "hajtaslanc",
+   "sub": "valto",
+   "partno": "3707",
+   "design_id": "3707",
+   "name": "Tengely 8L",
+   "explode": [
+    -15.6,
+    124.1,
+    0.8
+   ]
+  },
+  "P_2853_01": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2853",
+   "design_id": "2853",
+   "name": "Forgattyú / főtengely-elem (Technic Engine Crankshaft)",
+   "explode": [
+    18.0,
+    122.0,
+    -0.0
+   ]
+  },
+  "P_2850_01": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2850",
+   "design_id": "2850",
+   "name": "Motorhenger oldalrések nélkül (Technic Engine Cylinder without Slots in Side; LDraw 2850b)",
+   "explode": [
+    27.0,
+    127.9,
+    -5.8
+   ]
+  },
+  "P_2851_01": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2851",
+   "design_id": "2851",
+   "name": "Dugattyú, kerek (Technic Engine Piston Round)",
+   "explode": [
+    27.0,
+    133.8,
+    -11.8
+   ]
+  },
+  "P_2852_01": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2852",
+   "design_id": "2852",
+   "name": "Hajtórúd (Technic Engine Connecting Rod)",
+   "explode": [
+    20.0,
+    122.0,
+    -3.6
+   ]
+  },
+  "P_2850_02": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2850",
+   "design_id": "2850",
+   "name": "Motorhenger oldalrések nélkül (Technic Engine Cylinder without Slots in Side; LDraw 2850b)",
+   "explode": [
+    19.8,
+    127.9,
+    5.8
+   ]
+  },
+  "P_2851_02": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2851",
+   "design_id": "2851",
+   "name": "Dugattyú, kerek (Technic Engine Piston Round)",
+   "explode": [
+    19.8,
+    130.2,
+    8.2
+   ]
+  },
+  "P_2852_02": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2852",
+   "design_id": "2852",
+   "name": "Hajtórúd (Technic Engine Connecting Rod)",
+   "explode": [
+    19.8,
+    122.0,
+    -3.6
+   ]
+  },
+  "P_2853_02": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2853",
+   "design_id": "2853",
+   "name": "Forgattyú / főtengely-elem (Technic Engine Crankshaft)",
+   "explode": [
+    32.4,
+    122.0,
+    -0.0
+   ]
+  },
+  "P_2850_03": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2850",
+   "design_id": "2850",
+   "name": "Motorhenger oldalrések nélkül (Technic Engine Cylinder without Slots in Side; LDraw 2850b)",
+   "explode": [
+    41.4,
+    127.9,
+    -5.8
+   ]
+  },
+  "P_2851_03": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2851",
+   "design_id": "2851",
+   "name": "Dugattyú, kerek (Technic Engine Piston Round)",
+   "explode": [
+    41.4,
+    133.8,
+    -11.8
+   ]
+  },
+  "P_2852_03": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2852",
+   "design_id": "2852",
+   "name": "Hajtórúd (Technic Engine Connecting Rod)",
+   "explode": [
+    34.4,
+    125.6,
+    -0.0
+   ]
+  },
+  "P_2850_04": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2850",
+   "design_id": "2850",
+   "name": "Motorhenger oldalrések nélkül (Technic Engine Cylinder without Slots in Side; LDraw 2850b)",
+   "explode": [
+    34.2,
+    127.9,
+    5.8
+   ]
+  },
+  "P_2851_04": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2851",
+   "design_id": "2851",
+   "name": "Dugattyú, kerek (Technic Engine Piston Round)",
+   "explode": [
+    34.2,
+    133.8,
+    11.8
+   ]
+  },
+  "P_2852_04": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2852",
+   "design_id": "2852",
+   "name": "Hajtórúd (Technic Engine Connecting Rod)",
+   "explode": [
+    34.2,
+    125.6,
+    -0.0
+   ]
+  },
+  "P_2853_03": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2853",
+   "design_id": "2853",
+   "name": "Forgattyú / főtengely-elem (Technic Engine Crankshaft)",
+   "explode": [
+    46.8,
+    122.0,
+    -0.0
+   ]
+  },
+  "P_2850_05": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2850",
+   "design_id": "2850",
+   "name": "Motorhenger oldalrések nélkül (Technic Engine Cylinder without Slots in Side; LDraw 2850b)",
+   "explode": [
+    55.8,
+    127.9,
+    -5.8
+   ]
+  },
+  "P_2851_05": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2851",
+   "design_id": "2851",
+   "name": "Dugattyú, kerek (Technic Engine Piston Round)",
+   "explode": [
+    55.8,
+    130.2,
+    -8.2
+   ]
+  },
+  "P_2852_05": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2852",
+   "design_id": "2852",
+   "name": "Hajtórúd (Technic Engine Connecting Rod)",
+   "explode": [
+    48.8,
+    118.4,
+    0.0
+   ]
+  },
+  "P_2850_06": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2850",
+   "design_id": "2850",
+   "name": "Motorhenger oldalrések nélkül (Technic Engine Cylinder without Slots in Side; LDraw 2850b)",
+   "explode": [
+    48.6,
+    127.9,
+    5.8
+   ]
+  },
+  "P_2851_06": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2851",
+   "design_id": "2851",
+   "name": "Dugattyú, kerek (Technic Engine Piston Round)",
+   "explode": [
+    48.6,
+    130.2,
+    8.2
+   ]
+  },
+  "P_2852_06": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2852",
+   "design_id": "2852",
+   "name": "Hajtórúd (Technic Engine Connecting Rod)",
+   "explode": [
+    48.6,
+    118.4,
+    0.0
+   ]
+  },
+  "P_2853_04": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2853",
+   "design_id": "2853",
+   "name": "Forgattyú / főtengely-elem (Technic Engine Crankshaft)",
+   "explode": [
+    61.2,
+    122.0,
+    -0.0
+   ]
+  },
+  "P_2850_07": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2850",
+   "design_id": "2850",
+   "name": "Motorhenger oldalrések nélkül (Technic Engine Cylinder without Slots in Side; LDraw 2850b)",
+   "explode": [
+    70.2,
+    127.9,
+    -5.8
+   ]
+  },
+  "P_2851_07": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2851",
+   "design_id": "2851",
+   "name": "Dugattyú, kerek (Technic Engine Piston Round)",
+   "explode": [
+    70.2,
+    130.2,
+    -8.2
+   ]
+  },
+  "P_2852_07": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2852",
+   "design_id": "2852",
+   "name": "Hajtórúd (Technic Engine Connecting Rod)",
+   "explode": [
+    70.2,
+    122.0,
+    3.6
+   ]
+  },
+  "P_2850_08": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2850",
+   "design_id": "2850",
+   "name": "Motorhenger oldalrések nélkül (Technic Engine Cylinder without Slots in Side; LDraw 2850b)",
+   "explode": [
+    63.0,
+    127.9,
+    5.8
+   ]
+  },
+  "P_2851_08": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2851",
+   "design_id": "2851",
+   "name": "Dugattyú, kerek (Technic Engine Piston Round)",
+   "explode": [
+    63.0,
+    133.8,
+    11.8
+   ]
+  },
+  "P_2852_08": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2852",
+   "design_id": "2852",
+   "name": "Hajtórúd (Technic Engine Connecting Rod)",
+   "explode": [
+    63.0,
+    122.0,
+    3.6
+   ]
+  },
+  "P_32278_01": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32278",
+   "design_id": "32278",
+   "name": "Vastag egyenes gerenda 1x15",
+   "explode": [
+    -45.4,
+    -4.7,
+    -21.8
+   ]
+  },
+  "P_41239_03": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "41239",
+   "design_id": "41239",
+   "name": "Vastag egyenes gerenda 1x13",
+   "explode": [
+    -74.2,
+    16.9,
+    -28.8
+   ]
+  },
+  "P_32063_01": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32063",
+   "design_id": "32063",
+   "name": "Vékony gerenda 1x6, 6 csaplyuk (Technic Liftarm Thin 1 x 6)",
+   "explode": [
+    -45.4,
+    -4.7,
+    -35.8
+   ]
+  },
+  "P_32063_02": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32063",
+   "design_id": "32063",
+   "name": "Vékony gerenda 1x6, 6 csaplyuk (Technic Liftarm Thin 1 x 6)",
+   "explode": [
+    -45.4,
+    -4.7,
+    -21.6
+   ]
+  },
+  "P_32524_03": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32524",
+   "design_id": "32524",
+   "name": "Vastag egyenes gerenda 1x7",
+   "explode": [
+    55.4,
+    -19.1,
+    -21.6
+   ]
+  },
+  "P_32524_04": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32524",
+   "design_id": "32524",
+   "name": "Vastag egyenes gerenda 1x7",
+   "explode": [
+    113.0,
+    -19.1,
+    -21.6
+   ]
+  },
+  "P_32524_05": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32524",
+   "design_id": "32524",
+   "name": "Vastag egyenes gerenda 1x7",
+   "explode": [
+    55.4,
+    16.9,
+    -21.6
+   ]
+  },
+  "P_32524_06": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32524",
+   "design_id": "32524",
+   "name": "Vastag egyenes gerenda 1x7",
+   "explode": [
+    105.8,
+    16.9,
+    -14.4
+   ]
+  },
+  "P_60483_01": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "60483",
+   "design_id": "60483",
+   "name": "Vastag gerenda 1x2 csaplyukkal és tengelylyukkal (Technic Liftarm Thick 1 x 2)",
+   "explode": [
+    -2.2,
+    -8.3,
+    -36.0
+   ]
+  },
+  "P_32278_02": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32278",
+   "design_id": "32278",
+   "name": "Vastag egyenes gerenda 1x15",
+   "explode": [
+    -45.4,
+    -4.7,
+    21.8
+   ]
+  },
+  "P_41239_04": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "41239",
+   "design_id": "41239",
+   "name": "Vastag egyenes gerenda 1x13",
+   "explode": [
+    -74.2,
+    16.9,
+    28.8
+   ]
+  },
+  "P_32063_03": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32063",
+   "design_id": "32063",
+   "name": "Vékony gerenda 1x6, 6 csaplyuk (Technic Liftarm Thin 1 x 6)",
+   "explode": [
+    -45.4,
+    -4.7,
+    35.8
+   ]
+  },
+  "P_32063_04": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32063",
+   "design_id": "32063",
+   "name": "Vékony gerenda 1x6, 6 csaplyuk (Technic Liftarm Thin 1 x 6)",
+   "explode": [
+    -45.4,
+    -4.7,
+    21.6
+   ]
+  },
+  "P_32524_07": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32524",
+   "design_id": "32524",
+   "name": "Vastag egyenes gerenda 1x7",
+   "explode": [
+    55.4,
+    -19.1,
+    21.6
+   ]
+  },
+  "P_32524_08": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32524",
+   "design_id": "32524",
+   "name": "Vastag egyenes gerenda 1x7",
+   "explode": [
+    113.0,
+    -19.1,
+    21.6
+   ]
+  },
+  "P_32524_09": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32524",
+   "design_id": "32524",
+   "name": "Vastag egyenes gerenda 1x7",
+   "explode": [
+    55.4,
+    16.9,
+    21.6
+   ]
+  },
+  "P_32524_10": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32524",
+   "design_id": "32524",
+   "name": "Vastag egyenes gerenda 1x7",
+   "explode": [
+    105.8,
+    16.9,
+    14.4
+   ]
+  },
+  "P_60483_02": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "60483",
+   "design_id": "60483",
+   "name": "Vastag gerenda 1x2 csaplyukkal és tengelylyukkal (Technic Liftarm Thick 1 x 2)",
+   "explode": [
+    -2.2,
+    -8.3,
+    36.0
+   ]
+  },
+  "P_32525_01": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32525",
+   "design_id": "32525",
+   "name": "Vastag egyenes gerenda 1x11",
+   "explode": [
+    -160.6,
+    16.9,
+    -0.0
+   ]
+  },
+  "P_32525_02": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32525",
+   "design_id": "32525",
+   "name": "Vastag egyenes gerenda 1x11",
+   "explode": [
+    -81.4,
+    16.9,
+    -0.0
+   ]
+  },
+  "P_64178_01": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "64178",
+   "design_id": "64178",
+   "name": "Vastag keret 5x11, nyitott közép 3x5 (Technic Liftarm Modified Frame Thick 5 x 11 Open Center)",
+   "explode": [
+    -45.4,
+    -4.7,
+    -0.0
+   ]
+  },
+  "P_64178_02": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "64178",
+   "design_id": "64178",
+   "name": "Vastag keret 5x11, nyitott közép 3x5 (Technic Liftarm Modified Frame Thick 5 x 11 Open Center)",
+   "explode": [
+    5.0,
+    -4.7,
+    -0.0
+   ]
+  },
+  "P_32525_03": {
+   "group": "vaz",
+   "sub": "vaz",
+   "partno": "32525",
+   "design_id": "32525",
+   "name": "Vastag egyenes gerenda 1x11",
+   "explode": [
+    48.2,
+    -4.7,
+    -0.0
+   ]
+  },
+  "P_6629_01": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "6629",
+   "design_id": "6629",
+   "name": "Hajlított vastag gerenda 1x9 (6-4), 53.13° (Technic Liftarm Modified Bent Thick 1 x 9 (6 - 4))",
+   "explode": [
+    -65.5,
+    123.2,
+    -39.6
+   ]
+  },
+  "P_32009_01": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "32009",
+   "design_id": "32009",
+   "name": "Duplán hajlított vastag gerenda 1x11.5 (3-4-7), 2x45° – v2 javítás (Liftarm 1 x 11.5 Thick Bent 3-4-7)",
+   "explode": [
+    -4.2,
+    151.9,
+    -39.6
+   ]
+  },
+  "P_87080_01": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "87080",
+   "design_id": "87080",
+   "name": "Technic panel-idom #1, kicsi, sima, rövid, A oldal (Technic, Panel Fairing # 1 Small Smooth Short, Side A)",
+   "explode": [
+    121.8,
+    141.2,
+    -39.6
+   ]
+  },
+  "P_15458_01": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "15458",
+   "design_id": "15458",
+   "name": "Panel-lap 3x11x1 (Technic Panel Plate 3 x 11 x 1)",
+   "explode": [
+    82.2,
+    147.6,
+    -36.0
+   ]
+  },
+  "P_6629_02": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "6629",
+   "design_id": "6629",
+   "name": "Hajlított vastag gerenda 1x9 (6-4), 53.13° (Technic Liftarm Modified Bent Thick 1 x 9 (6 - 4))",
+   "explode": [
+    -65.5,
+    123.2,
+    39.6
+   ]
+  },
+  "P_32009_02": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "32009",
+   "design_id": "32009",
+   "name": "Duplán hajlított vastag gerenda 1x11.5 (3-4-7), 2x45° – v2 javítás (Liftarm 1 x 11.5 Thick Bent 3-4-7)",
+   "explode": [
+    -4.2,
+    151.9,
+    39.6
+   ]
+  },
+  "P_87086_01": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "87086",
+   "design_id": "87086",
+   "name": "Technic panel-idom #2, kicsi, sima, rövid, B oldal (Technic, Panel Fairing # 2 Small Smooth Short, Side B)",
+   "explode": [
+    121.8,
+    141.2,
+    39.6
+   ]
+  },
+  "P_15458_02": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "15458",
+   "design_id": "15458",
+   "name": "Panel-lap 3x11x1 (Technic Panel Plate 3 x 11 x 1)",
+   "explode": [
+    82.2,
+    147.6,
+    36.0
+   ]
+  },
+  "P_64782_01": {
+   "group": "karosszeria",
+   "sub": "karosszeria",
+   "partno": "64782",
+   "design_id": "64782",
+   "name": "Burkolólap 5x11",
+   "explode": [
+    -36.6,
+    178.2,
+    -0.0
+   ]
+  },
+  "P_2853_05": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2853",
+   "design_id": "2853",
+   "name": "Forgattyú / főtengely-elem (Technic Engine Crankshaft)",
+   "explode": [
+    35.8,
+    122.0,
+    -3.6
+   ]
+  },
+  "P_2853_06": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2853",
+   "design_id": "2853",
+   "name": "Forgattyú / főtengely-elem (Technic Engine Crankshaft)",
+   "explode": [
+    50.2,
+    125.6,
+    -0.0
+   ]
+  },
+  "P_2853_07": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2853",
+   "design_id": "2853",
+   "name": "Forgattyú / főtengely-elem (Technic Engine Crankshaft)",
+   "explode": [
+    64.6,
+    118.4,
+    0.0
+   ]
+  },
+  "P_2853_08": {
+   "group": "V8",
+   "sub": "V8",
+   "partno": "2853",
+   "design_id": "2853",
+   "name": "Forgattyú / főtengely-elem (Technic Engine Crankshaft)",
+   "explode": [
+    72.0,
+    122.0,
+    3.6
+   ]
+  }
+ }
+}

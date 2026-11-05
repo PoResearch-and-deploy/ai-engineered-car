@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ugyanaz a játék, mérnöki szemmel</title>
+<meta name="description" content="Technic-kompatibilis Trophy truck, ahogy egy járműgépész tervezné – a 3D modellt az AI építi SolidWorksben, MCP-n keresztül.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Ugyanaz a játék, mérnöki szemmel">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/fig/hero.webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111'/%3E%3Ccircle cx='16' cy='16' r='8.5' fill='none' stroke='%23F28C28' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23F28C28'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "./assets/vendor/three/three.module.min.js",
+  "three/addons/": "./assets/vendor/three/addons/"
+} }
+</script>
+</head>
+<body>
+<a class="skip" href="#story" data-i18n="skip">Ugrás a tartalomra</a>
+
+<header class="top" id="top">
+  <div class="top__in">
+    <a class="brand" href="#hero" aria-label="Ugyanaz a játék, mérnöki szemmel">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="16" cy="16" r="2.6" fill="var(--accent)"/></svg>
+      <span>ai-engineered-car</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Fő navigáció">
+      <a href="#story" data-i18n="nav.story">Sztori</a>
+      <a href="#ai" data-i18n="nav.ai">AI</a>
+      <a href="#model" data-i18n="nav.model">3D</a>
+      <a href="#film" data-i18n="nav.film">Film</a>
+      <a href="#fem" data-i18n="nav.fem">VEM</a>
+      <a href="#calc" data-i18n="nav.calc">Számítás</a>
+      <a href="#lib" data-i18n="nav.lib">Könyvtár</a>
+      <a href="#bom" data-i18n="nav.bom">BOM</a>
+      <a href="#log" data-i18n="nav.log">Napló</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Nyelv / Language">
+      <button type="button" data-lang="hu" aria-pressed="true">HU</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="nav"><span></span><span></span><b class="sr" data-i18n="nav.menu">Menü</b></button>
+  </div>
+</header>
+
+<main>
+<!-- 1 HERO -->
+<section class="hero" id="hero">
+  <div class="hero__media" id="heroMedia" data-video="assets/video/hero.mp4">
+    <img src="assets/fig/hero.webp" alt="" width="1400" height="787" fetchpriority="high">
+  </div>
+  <div class="hero__text">
+    <p class="eyebrow" data-i18n="hero.eyebrow">AI-kihívás · 2026. november</p>
+    <h1 data-i18n-html="hero.title">Ugyanaz a játék,<br><span class="hl">mérnöki szemmel.</span></h1>
+    <p class="hero__sub" data-i18n="hero.sub"></p>
+    <div class="ctas">
+      <a class="btn btn--accent" href="#model" data-i18n="hero.cta1">3D modell</a>
+      <a class="btn btn--ghost" href="#film"><span data-i18n="hero.cta2">Film</span> <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l7 5-7 5z" fill="currentColor"/></svg></a>
+    </div>
+    <p class="hero__ph" data-i18n="hero.placeholder"></p>
+  </div>
+</section>
+
+<!-- 2 SZTORI -->
+<section class="sec" id="story">
+  <div class="wrap">
+    <p class="kicker reveal" data-i18n="story.kicker"></p>
+    <h2 class="reveal" data-i18n="story.title"></h2>
+    <div class="story reveal">
+      <div class="story__text">
+        <p class="lead" data-i18n-html="story.p1"></p>
+        <p data-i18n-html="story.p2"></p>
+        <p data-i18n-html="story.p3"></p>
+      </div>
+      <ol class="steps">
+        <li><b data-i18n="story.s1"></b><span data-i18n="story.s1d"></span></li>
+        <li><b data-i18n="story.s2"></b><span data-i18n="story.s2d"></span></li>
+        <li><b data-i18n="story.s3"></b><span data-i18n="story.s3d"></span></li>
+        <li><b data-i18n="story.s4"></b><span data-i18n="story.s4d"></span></li>
+        <li><b data-i18n="story.s5"></b><span data-i18n="story.s5d"></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 3 AI -->
+<section class="sec sec--alt" id="ai">
+  <div class="wrap">
+    <p class="kicker reveal" data-i18n="ai.kicker"></p>
+    <h2 class="reveal" data-i18n="ai.title"></h2>
+    <p class="intro reveal" data-i18n="ai.intro"></p>
+    <figure class="flow reveal">
+      <svg viewBox="0 0 960 300" role="img" aria-labelledby="flowT">
+        <title id="flowT">Ember → karmester → ágensek, projekt-dokumentumok, SolidWorks MCP</title>
+        <defs><marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#6e6e73"/></marker></defs>
+        <g class="fl-lines" fill="none" stroke="#3a3a3c" stroke-width="1.5" marker-end="url(#ah)">
+          <path d="M190 150H300"/><path d="M500 135C560 135 570 60 640 60"/><path d="M500 150H640"/><path d="M500 165C560 165 570 240 640 240"/>
+        </g>
+        <path d="M400 110C400 90 400 80 400 76" stroke="#3a3a3c" stroke-width="1.5" fill="none" stroke-dasharray="3 4"/>
+        <g class="fl-node">
+          <rect x="20" y="110" width="170" height="80" rx="18"/>
+          <text x="105" y="145" class="t1" data-i18n="ai.human">Ember</text><text x="105" y="168" class="t2" data-i18n="ai.humanD"></text>
+        </g>
+        <g class="fl-node fl-node--main">
+          <rect x="300" y="110" width="200" height="80" rx="18"/>
+          <text x="400" y="145" class="t1" data-i18n="ai.conductor">Karmester</text><text x="400" y="168" class="t2" data-i18n="ai.conductorD"></text>
+        </g>
+        <g class="fl-node fl-node--soft">
+          <rect x="310" y="16" width="180" height="58" rx="14"/>
+          <text x="400" y="41" class="t1" data-i18n="ai.docs"></text><text x="400" y="61" class="t2" data-i18n="ai.docsD"></text>
+        </g>
+        <g class="fl-node"><rect x="640" y="24" width="300" height="72" rx="18"/>
+          <text x="790" y="54" class="t1" data-i18n="ai.agents">Ágensek</text><text x="790" y="76" class="t2 t2--s" data-i18n="ai.agentsD"></text></g>
+        <g class="fl-node fl-node--accent"><rect x="640" y="114" width="300" height="72" rx="18"/>
+          <text x="790" y="144" class="t1" data-i18n="ai.mcp">SolidWorks MCP</text><text x="790" y="166" class="t2" data-i18n="ai.mcpD"></text></g>
+        <g class="fl-node"><rect x="640" y="204" width="300" height="72" rx="18"/>
+          <text x="790" y="234" class="t1">Blender · CalculiX · Piper</text><text x="790" y="256" class="t2">render · VEM · TTS</text></g>
+      </svg>
+    </figure>
+    <div class="nums reveal">
+      <div><b id="nLib">119</b><span data-i18n="ai.n1"></span></div>
+      <div><b>184</b><span data-i18n="ai.n2"></span></div>
+      <div><b>~230k</b><span data-i18n="ai.n3"></span></div>
+      <div><b>114</b><span data-i18n="ai.n4"></span></div>
+    </div>
+    <div class="cards3">
+      <article class="card reveal"><h3 data-i18n="ai.c1t"></h3><p data-i18n="ai.c1"></p></article>
+      <article class="card reveal"><h3 data-i18n="ai.c2t"></h3><p data-i18n="ai.c2"></p></article>
+      <article class="card reveal"><h3 data-i18n="ai.c3t"></h3><p data-i18n="ai.c3"></p></article>
+    </div>
+  </div>
+</section>
+
+<!-- 4 3D -->
+<section class="sec" id="model">
+  <div class="wrap">
+    <p class="kicker reveal" data-i18n="model.kicker"></p>
+    <h2 class="reveal" data-i18n="model.title"></h2>
+    <p class="intro reveal" data-i18n="model.intro"></p>
+  </div>
+  <div class="wrap wrap--wide">
+    <div class="stage reveal" id="truckStage" data-src="assets/model/truck.glb" data-parts="assets/model/parts.json">
+      <canvas class="stage__cv" aria-label="3D"></canvas>
+      <div class="stage__msg" data-role="msg"><span class="spin" aria-hidden="true"></span><span data-i18n="model.loading">Betöltés…</span></div>
+      <p class="stage__hint" data-i18n="model.hint"></p>
+      <button class="iconbtn stage__reset" type="button" data-role="reset" data-i18n-title="model.reset" aria-label="Reset"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <aside class="info" data-role="info" hidden>
+        <button class="iconbtn info__x" type="button" data-role="infoClose" data-i18n-title="model.close" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <p class="info__grp" data-role="infoGroup"></p>
+        <h3 data-role="infoName"></h3>
+        <p class="info__id"><span data-i18n="model.partno"></span> <b data-role="infoId"></b></p>
+      </aside>
+    </div>
+    <div class="controls reveal">
+      <div class="ctl">
+        <label for="explode" class="ctl__lbl" data-i18n="model.explode"></label>
+        <input type="range" id="explode" min="0" max="1" step="0.01" value="0">
+      </div>
+      <div class="ctl ctl--groups">
+        <span class="ctl__lbl" data-i18n="model.groups"></span>
+        <div class="chips" id="groupChips"></div>
+      </div>
+      <div class="ctl ctl--anim">
+        <span class="ctl__lbl" data-i18n="model.anim"></span>
+        <div class="player">
+          <button class="iconbtn iconbtn--accent" type="button" id="animPlay" aria-label="Play"><svg viewBox="0 0 24 24" class="i-play"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg><svg viewBox="0 0 24 24" class="i-pause"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg></button>
+          <input type="range" id="animTime" min="0" max="1" step="0.001" value="0" aria-label="Timeline">
+          <select id="animClip" aria-label="Clip"></select>
+        </div>
+      </div>
+    </div>
+    <p class="ph-note" data-i18n="model.placeholder"></p>
+  </div>
+</section>
+
+<!-- 5 FILM -->
+<section class="sec sec--alt" id="film">
+  <div class="wrap">
+    <p class="kicker reveal" data-i18n="film.kicker"></p>
+    <h2 class="reveal" data-i18n="film.title"></h2>
+    <p class="intro reveal" data-i18n="film.intro"></p>
+    <div class="film reveal" id="filmBox" data-src="assets/video/film.mp4" data-poster="assets/fig/hero.webp">
+      <video controls playsinline preload="none" poster="assets/fig/hero.webp" crossorigin="anonymous">
+        <track kind="subtitles" srclang="hu" label="Magyar" src="assets/video/film.hu.vtt" default>
+        <track kind="subtitles" srclang="en" label="English" src="assets/video/film.en.vtt">
+      </video>
+      <div class="film__soon" hidden><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M19 15l14 9-14 9z" fill="currentColor"/></svg><span data-i18n="film.soon"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 VEM -->
+<section class="sec" id="fem">
+  <div class="wrap">
+    <p class="kicker reveal" data-i18n="fem.kicker"></p>
+    <h2 class="reveal" data-i18n="fem.title"></h2>
+    <p class="intro reveal" data-i18n="fem.intro"></p>
+    <div class="tabs reveal" id="femTabs" role="tablist"></div>
+  </div>
+  <div class="wrap wrap--wide">
+    <div class="femgrid reveal">
+      <div class="stage stage--fem" id="femStage" data-cases="assets/fem/cases.json">
+        <canvas class="stage__cv" aria-label="FEM 3D"></canvas>
+        <div class="stage__msg" data-role="msg"><span class="spin" aria-hidden="true"></span><span data-i18n="model.loading"></span></div>
+        <span class="badge" data-role="demo" hidden data-i18n="fem.demo">DEMÓ</span>
+        <div class="legend" aria-hidden="true">
+          <span data-role="vmax"></span>
+          <i class="legend__bar"></i>
+          <span data-role="vmin"></span>
+          <em>MPa</em>
+        </div>
+      </div>
+      <div class="femside">
+        <h3 data-role="femTitle" id="femTitle"></h3>
+        <p data-role="femDesc" id="femDesc"></p>
+        <dl class="kv" id="femKv"></dl>
+        <div class="ctl">
+          <label for="femScale" class="ctl__lbl"><span data-i18n="fem.scale"></span> <b id="femScaleV">1×</b></label>
+          <input type="range" id="femScale" min="0" max="5" step="0.05" value="1">
+        </div>
+        <p class="small muted" id="femNote"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 SZÁMÍTÁS -->
+<section class="sec sec--alt" id="calc">
+  <div class="wrap">
+    <p class="kicker reveal" data-i18n="calc.kicker"></p>
+    <h2 class="reveal" data-i18n="calc.title"></h2>
+    <p class="intro reveal" data-i18n="calc.intro"></p>
+    <div class="kpis" id="kpis"></div>
+    <div class="figs" id="figs"></div>
+  </div>
+</section>
+
+<!-- 8 KÖNYVTÁR -->
+<section class="sec" id="lib">
+  <div class="wrap">
+    <p class="kicker reveal" data-i18n="lib.kicker"></p>
+    <h2 class="reveal" data-i18n="lib.title"></h2>
+    <p class="intro reveal" data-i18n="lib.intro"></p>
+    <div class="filters reveal">
+      <input type="search" id="libQ" class="search" data-i18n-ph="lib.search" autocomplete="off">
+      <div class="chips" id="libChips"></div>
+      <span class="muted small" id="libCount" aria-live="polite"></span>
+    </div>
+    <div class="libgrid" id="libGrid"></div>
+  </div>
+</section>
+
+<!-- 9 BOM -->
+<section class="sec sec--alt" id="bom">
+  <div class="wrap">
+    <p class="kicker reveal" data-i18n="bom.kicker"></p>
+    <h2 class="reveal" data-i18n="bom.title"></h2>
+    <p class="intro reveal" data-i18n="bom.intro"></p>
+    <div class="filters reveal">
+      <input type="search" id="bomQ" class="search" data-i18n-ph="bom.search" autocomplete="off">
+      <span class="muted small" id="bomSum" aria-live="polite"></span>
+    </div>
+    <div class="tablewrap reveal" tabindex="0" role="region" aria-label="BOM">
+      <table class="bomt">
+        <thead><tr>
+          <th data-i18n="bom.pos"></th><th data-i18n="bom.group"></th><th data-i18n="bom.name"></th><th data-i18n="bom.partno"></th>
+          <th class="num" data-i18n="bom.qty"></th><th class="num" data-i18n="bom.mass"></th><th data-i18n="bom.color"></th>
+        </tr></thead>
+        <tbody id="bomBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 10 NAPLÓ -->
+<section class="sec" id="log">
+  <div class="wrap">
+    <p class="kicker reveal" data-i18n="log.kicker"></p>
+    <h2 class="reveal" data-i18n="log.title"></h2>
+    <p class="intro reveal" data-i18n="log.intro"></p>
+    <p class="en-only small" id="logEn" hidden></p>
+    <p class="muted small reveal" data-i18n="log.legend"></p>
+    <div id="logTools" class="tools reveal"></div>
+    <div id="logTimeline" class="timeline"></div>
+  </div>
+</section>
+</main>
+
+<!-- 11 LÁBLÉC -->
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>
+      <p class="foot__title" data-i18n="meta.title">Ugyanaz a játék, mérnöki szemmel</p>
+      <p class="muted" data-i18n="foot.made">Készült a Polinvent belső AI-kihívására.</p>
+    </div>
+    <a class="gh" href="https://github.com/PoResearch-and-deploy/ai-engineered-car" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.6 0 0 3.6 0 8c0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4v-1.4c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.4.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.6 3.9.3.3.5.8.5 1.5v2.2c0 .2.1.5.6.4C13.7 14.5 16 11.5 16 8c0-4.4-3.6-8-8-8z"/></svg><span data-i18n="foot.github">GitHub</span></a>
+    <p class="legal" data-i18n="foot.legal">A LEGO® a LEGO Group védjegye; ez a projekt nem kapcsolódik hozzá és nem általa támogatott. A SOLIDWORKS® a Dassault Systèmes védjegye.</p>
+    <a class="small muted" href="#top" data-i18n="foot.top">Vissza a tetejére</a>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true">
+  <button class="iconbtn lightbox__x" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  <img alt="">
+  <p class="lightbox__cap"></p>
+</div>
+
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
