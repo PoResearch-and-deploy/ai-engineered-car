@@ -159,11 +159,21 @@ export async function initViewer(el) {
   const marks = parts.gear_marks || [];
   const gearName = g => g === 0 ? 'N' : g + '.';
   const updGear = () => {
-    if (!action || clips[cur].name !== 'valtas' || !marks.length) { gearEl.hidden = true; return; }
+    if (!action || clips[cur].name !== 'valtas' || !marks.length) { gearEl.hidden = true; if (rpmEl) rpmEl.hidden = true; return; }
     const tt = action.time % action.getClip().duration; let g = marks[0].gear;
     marks.forEach(m => { if (tt >= m.t) g = m.gear; });
     gearEl.hidden = false; gearEl.textContent = gearName(g);
+    updRpm(tt);
   };
+  // fordulatszám-kijelzők a váltás klipben (parts.valtas_rpm: kockánkénti főtengely- és kerék-fordulat, 1/min)
+  const rpmEl = document.getElementById('animRpm'), rpmC = document.getElementById('rpmCrank'), rpmW = document.getElementById('rpmWheel');
+  const RPM = parts.valtas_rpm || null;
+  function updRpm(tt) {
+    if (!rpmEl) return;
+    if (!RPM || !action || clips[cur].name !== 'valtas') { rpmEl.hidden = true; return; }
+    const f = Math.min(RPM.wheel_rpm.length - 1, Math.max(0, Math.round(tt * RPM.fps)));
+    rpmEl.hidden = false; rpmC.textContent = Math.round(RPM.crank_rpm[f]); rpmW.textContent = Math.round(RPM.wheel_rpm[f]);
+  }
   function useClip(i) {
     mixer.stopAllAction(); restore(); exK = 0; ex.value = 0; ex.style.setProperty('--p', '0%');
     cur = i; action = clips[i] ? mixer.clipAction(clips[i]) : null;

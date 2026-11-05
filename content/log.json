@@ -1,42 +1,250 @@
 {
- "source": "claude/naplo.md, claude/09_dontesek.md, pyA A1–A7, cadlib naplo_C1–C5 (tömörítve)",
+ "source": "claude/naplo.md, claude/09_dontesek.md, pyA A1–A7, cadlib naplo_C1–C5 (tömörítve), pyA/R_rogzites",
  "tools": [
-  ["Claude (Cowork)", "„karmester” chat: terv, döntés-előkészítés, ágensek vezénylése", "the “conductor” chat: planning, decision prep, running agents"],
-  ["Claude-ágensek, workflow", "párhuzamos kutatás, Python-modellek, CAD-körök", "parallel research, Python models, CAD rounds"],
-  ["Projekt-dokumentumok", "közös memória: döntések, állapot, jelentések", "shared memory: decisions, status, reports"],
-  ["solidworks-mcp 0.2.0", "az AI ezen át vezérli a SolidWorksöt (114 eszköz)", "how the AI drives SolidWorks (114 tools)"],
-  ["SOLIDWORKS 2023", "részegységek, mozgó kényszerek, motion study", "subassemblies, moving mates, motion studies"],
-  ["Python + LDraw", "kinematika, ütközés, rács, STEP- és glTF-író", "kinematics, clashes, grid, STEP and glTF writer"],
-  ["CalculiX · gmsh · PyVista", "végeselem-számítás és ábrák", "finite elements and plots"],
-  ["Blender 4.5 (Eevee)", "previs és mérnöki snittek", "previs and engineering shots"],
-  ["Piper TTS", "gépi narráció", "machine narration"],
-  ["three.js · gltfpack · Playwright", "mozgó 3D a weben, tömörítés, automatikus ellenőrzés", "moving 3D on the web, compression, automated checks"],
-  ["GitHub Pages + Desktop", "nyilvános oldal és forráskód", "public site and source code"]
+  [
+   "Claude (Cowork)",
+   "„karmester” chat: terv, döntés-előkészítés, ágensek vezénylése",
+   "the “conductor” chat: planning, decision prep, running agents"
+  ],
+  [
+   "Claude-ágensek, workflow",
+   "párhuzamos kutatás, Python-modellek, CAD-körök",
+   "parallel research, Python models, CAD rounds"
+  ],
+  [
+   "Projekt-dokumentumok",
+   "közös memória: döntések, állapot, jelentések",
+   "shared memory: decisions, status, reports"
+  ],
+  [
+   "solidworks-mcp 0.2.0",
+   "az AI ezen át vezérli a SolidWorksöt (114 eszköz)",
+   "how the AI drives SolidWorks (114 tools)"
+  ],
+  [
+   "SOLIDWORKS 2023",
+   "részegységek, mozgó kényszerek, motion study",
+   "subassemblies, moving mates, motion studies"
+  ],
+  [
+   "Python + LDraw",
+   "kinematika, ütközés, rács, STEP- és glTF-író",
+   "kinematics, clashes, grid, STEP and glTF writer"
+  ],
+  [
+   "CalculiX · gmsh · PyVista",
+   "végeselem-számítás és ábrák",
+   "finite elements and plots"
+  ],
+  [
+   "Blender 4.5 (Eevee)",
+   "previs és mérnöki snittek",
+   "previs and engineering shots"
+  ],
+  [
+   "Piper TTS",
+   "gépi narráció",
+   "machine narration"
+  ],
+  [
+   "three.js · gltfpack · Playwright",
+   "mozgó 3D a weben, tömörítés, automatikus ellenőrzés",
+   "moving 3D on the web, compression, automated checks"
+  ],
+  [
+   "GitHub Pages + Desktop",
+   "nyilvános oldal és forráskód",
+   "public site and source code"
+  ]
  ],
  "prompts": [
-  {"hu": "Szeretnék valami tuti cuccot csinálni, mivel mérnök vagyok, ilyen minőségben is.", "en": "I want to make something really good – I'm an engineer, so in that quality too.", "ctx_hu": "Indítás – a minőségi léc", "ctx_en": "Kick-off – setting the bar"},
-  {"hu": "A laikus zsűri nem értené a mélységét.", "en": "A lay jury wouldn't grasp the depth.", "ctx_hu": "Témaválasztás – az AI egy BMW-alkatrészt javasolt", "ctx_en": "Choosing the topic – the AI had proposed a BMW part"},
-  {"hu": "Menjünk a nagy truckok irányába… nagy rugóút, magas hasmagasság, összkerékhajtás.", "en": "Let's go towards the big trucks… long travel, high ground clearance, all-wheel drive.", "ctx_hu": "Járműtípus – így lett Trophy truck", "ctx_en": "Vehicle type – how it became a Trophy truck"},
-  {"hu": "Nem éri meg saját váltót tervezni?", "en": "Isn't it worth designing our own gearbox?", "ctx_hu": "Váltó – benchmark után saját 3+N konstrukció", "ctx_en": "Gearbox – own 3+N design after a benchmark"},
-  {"hu": "A renderhez menjünk biztosra, részleteket is beszéljük át.", "en": "Let's play it safe with the render and go through the details first.", "ctx_hu": "Költség és kockázat – render csak egyeztetés után", "ctx_en": "Cost and risk – render only after review"},
-  {"hu": "A python modell mehet, fontos, ha kész átnézem stepből, hogy mi hiányzik, mi néz ki rosszul.", "en": "Go ahead with the Python model – once it's done I'll review it from the STEP for anything missing or wrong.", "ctx_hu": "Ellenőrzés – emberi átnézés a STEP-ből", "ctx_en": "Verification – human review from the STEP"}
+  {
+   "hu": "Szeretnék valami tuti cuccot csinálni, mivel mérnök vagyok, ilyen minőségben is.",
+   "en": "I want to make something really good – I'm an engineer, so in that quality too.",
+   "ctx_hu": "Indítás – a minőségi léc",
+   "ctx_en": "Kick-off – setting the bar"
+  },
+  {
+   "hu": "A laikus zsűri nem értené a mélységét.",
+   "en": "A lay jury wouldn't grasp the depth.",
+   "ctx_hu": "Témaválasztás – az AI egy BMW-alkatrészt javasolt",
+   "ctx_en": "Choosing the topic – the AI had proposed a BMW part"
+  },
+  {
+   "hu": "Menjünk a nagy truckok irányába… nagy rugóút, magas hasmagasság, összkerékhajtás.",
+   "en": "Let's go towards the big trucks… long travel, high ground clearance, all-wheel drive.",
+   "ctx_hu": "Járműtípus – így lett Trophy truck",
+   "ctx_en": "Vehicle type – how it became a Trophy truck"
+  },
+  {
+   "hu": "Nem éri meg saját váltót tervezni?",
+   "en": "Isn't it worth designing our own gearbox?",
+   "ctx_hu": "Váltó – benchmark után saját 3+N konstrukció",
+   "ctx_en": "Gearbox – own 3+N design after a benchmark"
+  },
+  {
+   "hu": "A renderhez menjünk biztosra, részleteket is beszéljük át.",
+   "en": "Let's play it safe with the render and go through the details first.",
+   "ctx_hu": "Költség és kockázat – render csak egyeztetés után",
+   "ctx_en": "Cost and risk – render only after review"
+  },
+  {
+   "hu": "A python modell mehet, fontos, ha kész átnézem stepből, hogy mi hiányzik, mi néz ki rosszul.",
+   "en": "Go ahead with the Python model – once it's done I'll review it from the STEP for anything missing or wrong.",
+   "ctx_hu": "Ellenőrzés – emberi átnézés a STEP-ből",
+   "ctx_en": "Verification – human review from the STEP"
+  }
  ],
  "issues": [
-  {"hu": ["Az MCP-szerver nem indult", "A Microsoft Store-os Claude-app virtualizált AppData-t használ, a konfiguráció máshol volt, mint vártuk.", "Az app „Edit config” gombja megmutatta a valódi helyet; az AI összefésülő szkriptet írt, ami megőrzi a meglévő beállításokat."], "en": ["The MCP server would not start", "The Microsoft Store Claude app uses a virtualised AppData, so the config lived somewhere else than expected.", "The app's “Edit config” button revealed the real path; the AI wrote a merge script that keeps existing settings."]},
-  {"hu": ["STEP-export hiba SolidWorks 2023-ban", "A szerver a 2026-os API-ra készült.", "Átállás STEP AP214-re."], "en": ["STEP export failed in SolidWorks 2023", "The server targeted the 2026 API.", "Switched to STEP AP214."]},
-  {"hu": ["A kuplung nem kapcsolt – három kör", "A kapcsológyűrű modellje rossz elven működött.", "Az LDraw-geometria elemzése megmutatta: a hüvely külső fülei kapcsolnak, nem a belső bordák. Újramodellezés után 1,7 mm kapcsolódás, 0 ütközés."], "en": ["The clutch did not engage – three rounds", "The driving-ring model worked on the wrong principle.", "Analysing the LDraw geometry showed that the outer lugs engage, not the inner ridges. After remodelling: 1.7 mm engagement, 0 clashes."]},
-  {"hu": ["Az éjszakai összeállítás hibás lett", "223 komponens egy éjszaka alatt, de lengő alkatrészek, ütközések, és semmi nem mozgott; a váltó 32 mm-rel átszúrta a fülketetőt.", "Módszerváltás: részegységenként kutatás → Python-modell → ellenőrzés → CAD. Kis lépések, minden lépés végén GO / NO-GO."], "en": ["The overnight assembly went wrong", "223 components in one night, but floating parts, clashes and nothing moved; the gearbox poked 32 mm through the cab roof.", "Change of method: per subassembly, research → Python model → checks → CAD. Small steps with a GO / NO-GO at each."]},
-  {"hu": ["24 fogú kuplungos kerék nem létezik", "A kutatás erre építette a váltót, de ilyen elem nincs (csak 16 és 20 fogú).", "Új elrendezés három mellékhajtással; a fokozatsorrend a 35188 választó peremének mért sorrendjéből jön."], "en": ["A 24-tooth clutch gear does not exist", "The research had based the gearbox on it, but only 16- and 20-tooth versions exist.", "New layout with three countershafts; the gear order follows the measured cam order of the 35188 catch."]},
-  {"hu": ["0 mm a differenciál csapágyának", "Az első futómű kardánja homlokkal ért a diffházhoz.", "A sarok 4 mm-rel kifelé került, a csapágy egy 6632 gerenda; a kinematika változatlan maradt."], "en": ["0 mm left for the differential bearing", "The front U-joint touched the diff housing face to face.", "The corner moved 4 mm outward and a 6632 beam became the bearing; the kinematics stayed the same."]},
-  {"hu": ["Csapágylapok keresztfurattal", "Az LDraw furattípusai szerint több forgó tengely keresztfuratban ült volna – ott nem tud forogni.", "A lapok helye maradt, a típusuk cserélődött kerek furatúra; minden forgó tengelynek lett legalább egy valódi csapágya."], "en": ["Bearing plates with cross holes", "By the LDraw hole types, several rotating shafts sat in axle holes – where they cannot turn.", "Plates kept their positions but changed to round-hole types; every rotating shaft got at least one real bearing."]},
-  {"hu": ["A SolidWorks nem forgat beszúráskor", "Az MCP-ben az insert_component nem kezel orientációt.", "Python STEP-összefésülés: a könyvtári STEP-eket a jármű koordináta-rendszerébe transzformáljuk, a SolidWorks csak importál. Tanulság: tizedespont nélküli szám a STEP-ben összeomlasztja az importot."], "en": ["SolidWorks does not rotate on insert", "The MCP insert_component has no orientation.", "Python STEP merge: library STEPs are transformed into the vehicle frame and SolidWorks only imports them. Lesson: a number without a decimal point in the STEP crashes the import."]},
-  {"hu": ["Befagyott a SolidWorks", "Egy komponens újrabeszúrása után az MCP nem válaszolt; a munkamenet mentetlen maradt.", "Döntés: a mozgó részegységek bemutatónak maradnak, a teljes autó Pythonból készül STEP-be és glTF-be – ellenőrizve, 0,00002 mm-es egyezéssel."], "en": ["SolidWorks froze", "After re-inserting a component the MCP stopped responding; the session was left unsaved.", "Decision: the moving subassemblies stay as showcases, the full car is written from Python to STEP and glTF – verified to 0.00002 mm."]},
-  {"hu": ["GitHub-feltöltés a felhőből", "A felhős környezet git-proxyja nem engedett írni a repóba.", "Az oldal a gépre kerül, és GitHub Desktop tölti fel."], "en": ["Pushing to GitHub from the cloud", "The cloud environment's git proxy refused writes.", "The site is copied to the PC and uploaded with GitHub Desktop."]}
+  {
+   "hu": [
+    "Az MCP-szerver nem indult",
+    "A Microsoft Store-os Claude-app virtualizált AppData-t használ, a konfiguráció máshol volt, mint vártuk.",
+    "Az app „Edit config” gombja megmutatta a valódi helyet; az AI összefésülő szkriptet írt, ami megőrzi a meglévő beállításokat."
+   ],
+   "en": [
+    "The MCP server would not start",
+    "The Microsoft Store Claude app uses a virtualised AppData, so the config lived somewhere else than expected.",
+    "The app's “Edit config” button revealed the real path; the AI wrote a merge script that keeps existing settings."
+   ]
+  },
+  {
+   "hu": [
+    "STEP-export hiba SolidWorks 2023-ban",
+    "A szerver a 2026-os API-ra készült.",
+    "Átállás STEP AP214-re."
+   ],
+   "en": [
+    "STEP export failed in SolidWorks 2023",
+    "The server targeted the 2026 API.",
+    "Switched to STEP AP214."
+   ]
+  },
+  {
+   "hu": [
+    "A kuplung nem kapcsolt – három kör",
+    "A kapcsológyűrű modellje rossz elven működött.",
+    "Az LDraw-geometria elemzése megmutatta: a hüvely külső fülei kapcsolnak, nem a belső bordák. Újramodellezés után 1,7 mm kapcsolódás, 0 ütközés."
+   ],
+   "en": [
+    "The clutch did not engage – three rounds",
+    "The driving-ring model worked on the wrong principle.",
+    "Analysing the LDraw geometry showed that the outer lugs engage, not the inner ridges. After remodelling: 1.7 mm engagement, 0 clashes."
+   ]
+  },
+  {
+   "hu": [
+    "Az éjszakai összeállítás hibás lett",
+    "223 komponens egy éjszaka alatt, de lengő alkatrészek, ütközések, és semmi nem mozgott; a váltó 32 mm-rel átszúrta a fülketetőt.",
+    "Módszerváltás: részegységenként kutatás → Python-modell → ellenőrzés → CAD. Kis lépések, minden lépés végén GO / NO-GO."
+   ],
+   "en": [
+    "The overnight assembly went wrong",
+    "223 components in one night, but floating parts, clashes and nothing moved; the gearbox poked 32 mm through the cab roof.",
+    "Change of method: per subassembly, research → Python model → checks → CAD. Small steps with a GO / NO-GO at each."
+   ]
+  },
+  {
+   "hu": [
+    "24 fogú kuplungos kerék nem létezik",
+    "A kutatás erre építette a váltót, de ilyen elem nincs (csak 16 és 20 fogú).",
+    "Új elrendezés három mellékhajtással; a fokozatsorrend a 35188 választó peremének mért sorrendjéből jön."
+   ],
+   "en": [
+    "A 24-tooth clutch gear does not exist",
+    "The research had based the gearbox on it, but only 16- and 20-tooth versions exist.",
+    "New layout with three countershafts; the gear order follows the measured cam order of the 35188 catch."
+   ]
+  },
+  {
+   "hu": [
+    "0 mm a differenciál csapágyának",
+    "Az első futómű kardánja homlokkal ért a diffházhoz.",
+    "A sarok 4 mm-rel kifelé került, a csapágy egy 6632 gerenda; a kinematika változatlan maradt."
+   ],
+   "en": [
+    "0 mm left for the differential bearing",
+    "The front U-joint touched the diff housing face to face.",
+    "The corner moved 4 mm outward and a 6632 beam became the bearing; the kinematics stayed the same."
+   ]
+  },
+  {
+   "hu": [
+    "Csapágylapok keresztfurattal",
+    "Az LDraw furattípusai szerint több forgó tengely keresztfuratban ült volna – ott nem tud forogni.",
+    "A lapok helye maradt, a típusuk cserélődött kerek furatúra; minden forgó tengelynek lett legalább egy valódi csapágya."
+   ],
+   "en": [
+    "Bearing plates with cross holes",
+    "By the LDraw hole types, several rotating shafts sat in axle holes – where they cannot turn.",
+    "Plates kept their positions but changed to round-hole types; every rotating shaft got at least one real bearing."
+   ]
+  },
+  {
+   "hu": [
+    "A SolidWorks nem forgat beszúráskor",
+    "Az MCP-ben az insert_component nem kezel orientációt.",
+    "Python STEP-összefésülés: a könyvtári STEP-eket a jármű koordináta-rendszerébe transzformáljuk, a SolidWorks csak importál. Tanulság: tizedespont nélküli szám a STEP-ben összeomlasztja az importot."
+   ],
+   "en": [
+    "SolidWorks does not rotate on insert",
+    "The MCP insert_component has no orientation.",
+    "Python STEP merge: library STEPs are transformed into the vehicle frame and SolidWorks only imports them. Lesson: a number without a decimal point in the STEP crashes the import."
+   ]
+  },
+  {
+   "hu": [
+    "Befagyott a SolidWorks",
+    "Egy komponens újrabeszúrása után az MCP nem válaszolt; a munkamenet mentetlen maradt.",
+    "Döntés: a mozgó részegységek bemutatónak maradnak, a teljes autó Pythonból készül STEP-be és glTF-be – ellenőrizve, 0,00002 mm-es egyezéssel."
+   ],
+   "en": [
+    "SolidWorks froze",
+    "After re-inserting a component the MCP stopped responding; the session was left unsaved.",
+    "Decision: the moving subassemblies stay as showcases, the full car is written from Python to STEP and glTF – verified to 0.00002 mm."
+   ]
+  },
+  {
+   "hu": [
+    "GitHub-feltöltés a felhőből",
+    "A felhős környezet git-proxyja nem engedett írni a repóba.",
+    "Az oldal a gépre kerül, és GitHub Desktop tölti fel."
+   ],
+   "en": [
+    "Pushing to GitHub from the cloud",
+    "The cloud environment's git proxy refused writes.",
+    "The site is copied to the PC and uploaded with GitHub Desktop."
+   ]
+  },
+  {
+   "hu": [
+    "Lebegő elemek a teljes STEP-ben",
+    "A SolidWorks-átnézés megmutatta: a sárvédő-tartók, az orr-rács és az oldallapok lebegnek, csapok, perselyek és tengelyvég-rögzítések hiányoznak.",
+    "Rögzítési gráf az egész autóra: minden csap és tengely a furatában egy-egy él, merev csak az, ami kereszt-kötéssel vagy legalább két vonalon ül. Első kör: 42 helyett 5 lebegő elem, 49 új kötőelem, a pótkerék fektetve, két tengelyen rögzítve. Második kör: 0 lebegő elem maradt. Az ajtólap tartót kapott, és 28 mm-rel feljebb került (a felhasználó kérésére feljebb, nem kijjebb). Tartót kapott a plató-oldal, a motorháztető-szárny és az orr-rács is, a hátsó pinion pedig két csapágyban fut. Ez további 61 elem, így az autó 592 elemből áll."
+   ],
+   "en": [
+    "Floating parts in the full STEP",
+    "The SolidWorks review showed that the fender brackets, the nose grille and the side panels were floating, and that pins, bushes and axle-end stops were missing.",
+    "A fixing graph for the whole car: each pin and axle in its hole is an edge, and a part only counts as rigid if it sits on a cross-axle joint or on at least two lines. First round: 5 floating parts instead of 42, 49 new fasteners, and the spare wheel laid flat and fixed on two axles. Second round: 0 floating parts left. The door panel got a bracket and moved 28 mm up (the user asked for higher, not further out). The bed sides, bonnet wings and nose grille got brackets too, and the rear pinion now runs in two bearings. That added 61 more parts, so the car now has 592."
+   ]
+  }
  ],
  "lessons": [
-  {"hu": "Az AI „vakon” dolgozik a CAD-ben – ezért minden lépés után számmal ellenőriz: térfogat, pozíció, ütközés.", "en": "The AI works “blind” in CAD – so it checks with numbers after every step: volume, position, clashes."},
-  {"hu": "A hiba Pythonban percekbe kerül, CAD-ben órákba. A modellnek előbb kell működnie, mint a CAD-nek.", "en": "A bug costs minutes in Python and hours in CAD. The model has to work before the CAD does."},
-  {"hu": "Az AI hajlamos előreszaladni; a cél, a költség és a „mehet” kimondása emberi feladat maradt.", "en": "The AI tends to run ahead; setting the goal, the budget and the “go” stayed a human job."},
-  {"hu": "Ahol a geometria nem engedi (Ackermann gyári linkkel), ott a jó válasz egy bizonyított, kimondott kompromisszum.", "en": "Where geometry won't allow it (Ackermann with stock links), the right answer is a proven, stated trade-off."}
+  {
+   "hu": "Az AI „vakon” dolgozik a CAD-ben – ezért minden lépés után számmal ellenőriz: térfogat, pozíció, ütközés.",
+   "en": "The AI works “blind” in CAD – so it checks with numbers after every step: volume, position, clashes."
+  },
+  {
+   "hu": "A hiba Pythonban percekbe kerül, CAD-ben órákba. A modellnek előbb kell működnie, mint a CAD-nek.",
+   "en": "A bug costs minutes in Python and hours in CAD. The model has to work before the CAD does."
+  },
+  {
+   "hu": "Az AI hajlamos előreszaladni; a cél, a költség és a „mehet” kimondása emberi feladat maradt.",
+   "en": "The AI tends to run ahead; setting the goal, the budget and the “go” stayed a human job."
+  },
+  {
+   "hu": "Ahol a geometria nem engedi (Ackermann gyári linkkel), ott a jó válasz egy bizonyított, kimondott kompromisszum.",
+   "en": "Where geometry won't allow it (Ackermann with stock links), the right answer is a proven, stated trade-off."
+  }
  ]
 }

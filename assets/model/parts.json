@@ -3,13 +3,13 @@
  "units": "mm (gyökér-scale 0.001)",
  "axes": "+X előre, +Y fel, +Z jobbra",
  "placeholder": false,
- "source": "A6d teljes jármű (443 elem, a6d_anim.full_scene kinematika) + A7 V2 burkolat (42 elem, pótkerék állítva) – LDraw-hálók; tools/build_anim_glb.py",
+ "source": "R rögzítés-javított teljes jármű (592 elem: A6d + A7 V2 burkolat + R tartók/csapok/perselyek, pótkerék fektetve; a6d_anim.full_scene kinematika, az új elemek a gazdájukhoz kötve – tools/r_remap.py) – LDraw-hálók; tools/build_anim_glb.py",
  "compression": "EXT_meshopt_compression + KHR_mesh_quantization (gltfpack)",
  "animations": [
   {
    "name": "gurulas",
    "loop_s": 18.0,
-   "moving": 120,
+   "moving": 122,
    "hu": "Gurulás (2. fokozat)",
    "en": "Rolling (2nd gear)",
    "desc_hu": "Kerekek, féltengelyek, diffek, kardánok, váltó és a V8 főtengely + dugattyúk, mind a saját áttételével (kerék → főtengely 1 : 3,27).",
@@ -18,7 +18,7 @@
   {
    "name": "rugozas",
    "loop_s": 6.0,
-   "moving": 103,
+   "moving": 113,
    "hu": "Rugózás",
    "en": "Suspension",
    "desc_hu": "Első független futómű ±14 mm, majd keresztbe csuklás: a hátsó merev híd ±9°-ot billen a 4-linken.",
@@ -35,17 +35,17 @@
   },
   {
    "name": "valtas",
-   "loop_s": 10.0,
-   "moving": 120,
+   "loop_s": 14.0,
+   "moving": 122,
    "hu": "Váltás 1 → 2 → 3 → N",
    "en": "Shifting 1 → 2 → 3 → N",
-   "desc_hu": "A tetőgomb 90°-onként fordítja a választókat, azok tolják a kapcsológyűrűket – a dugattyúk sebessége fokozatonként változik, N-ben állnak.",
-   "desc_en": "The roof knob turns the selector drums 90° per step, which slide the shift rings – piston speed changes with each gear and stops in N."
+   "desc_hu": "A V8 állandó fordulattal jár, a motor hajtja a kereket: a tetőgomb 90°-onként fordítja a választókat, azok tolják a kapcsológyűrűket – 1. fokozatban lassan, 2.-ban közepesen, 3.-ban gyorsan forog a kerék, N-ben hajtás nélkül kifut és megáll, a motor tovább jár.",
+   "desc_en": "The V8 runs at constant speed and drives the wheels: the roof knob turns the selector drums 90° per step, which slide the shift rings – the wheels turn slowly in 1st, faster in 2nd, fastest in 3rd; in N they coast to a stop while the engine keeps running."
   },
   {
    "name": "robbantas",
    "loop_s": 6.0,
-   "moving": 485,
+   "moving": 592,
    "hu": "Robbantás",
    "en": "Explode",
    "desc_hu": "A részegységek szétválnak, majd visszaállnak (a previs robbantási vektoraival).",
@@ -58,29 +58,710 @@
    "gear": 1
   },
   {
-   "t": 2.167,
+   "t": 3.625,
    "gear": 2
   },
   {
-   "t": 4.75,
+   "t": 7.458,
    "gear": 3
   },
   {
-   "t": 7.333,
+   "t": 11.292,
    "gear": 0
   },
   {
-   "t": 9.792,
+   "t": 13.792,
    "gear": 1
   }
  ],
+ "valtas_rpm": {
+  "fps": 24.0,
+  "crank_rpm": [
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0
+  ],
+  "wheel_rpm": [
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.0,
+   22.3,
+   22.9,
+   23.8,
+   25.0,
+   26.3,
+   27.8,
+   29.4,
+   31.0,
+   32.5,
+   33.8,
+   35.0,
+   35.9,
+   36.5,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   36.7,
+   37.2,
+   38.4,
+   40.2,
+   42.6,
+   45.3,
+   48.3,
+   51.4,
+   54.6,
+   57.6,
+   60.3,
+   62.7,
+   64.5,
+   65.7,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.1,
+   66.0,
+   65.7,
+   65.1,
+   64.3,
+   63.3,
+   62.2,
+   60.9,
+   59.4,
+   57.8,
+   56.0,
+   54.1,
+   52.1,
+   50.0,
+   47.8,
+   45.6,
+   43.3,
+   40.9,
+   38.5,
+   36.1,
+   33.6,
+   31.2,
+   28.7,
+   26.3,
+   23.9,
+   21.6,
+   19.3,
+   17.1,
+   14.9,
+   12.9,
+   11.0,
+   9.1,
+   7.4,
+   5.9,
+   4.5,
+   3.3,
+   2.2,
+   1.4,
+   0.7,
+   0.2,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.3,
+   1.2,
+   2.6,
+   4.4,
+   6.4,
+   8.7,
+   11.0,
+   13.4,
+   15.6,
+   17.7,
+   19.4,
+   20.8,
+   21.7,
+   22.0
+  ]
+ },
  "groups": [
   {
    "id": "vaz",
    "hu": "Váz és tartók",
    "en": "Frame & brackets",
    "color": "#5b6470",
-   "count": 179
+   "count": 217
   },
   {
    "id": "elso_futomu",
@@ -101,7 +782,7 @@
    "hu": "Hátsó híd, 4-link",
    "en": "Rear axle, 4-link",
    "color": "#c7a17a",
-   "count": 63
+   "count": 73
   },
   {
    "id": "hajtaslanc",
@@ -115,7 +796,7 @@
    "hu": "Váltó + váltóház",
    "en": "Gearbox + housing",
    "color": "#4fb286",
-   "count": 84
+   "count": 87
   },
   {
    "id": "V8",
@@ -136,7 +817,7 @@
    "hu": "Burkolat",
    "en": "Body",
    "color": "#c8202a",
-   "count": 42
+   "count": 98
   }
  ],
  "parts": {
@@ -255,7 +936,7 @@
   "P_32062_01": {
    "group": "hajtaslanc",
    "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "name": "Technic Axle 2 Notched",
    "element": "feltengely_2L_1",
    "sub": "08 Első osztómű (A1c)"
   },
@@ -388,7 +1069,7 @@
   "P_32062_02": {
    "group": "hajtaslanc",
    "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "name": "Technic Axle 2 Notched",
    "element": "feltengely_2L_-1",
    "sub": "08 Első osztómű (A1c)"
   },
@@ -437,14 +1118,14 @@
   "P_4519_01": {
    "group": "hajtaslanc",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "a1c_kimeno_tengely_bal_4519",
    "sub": "08 Első osztómű (A1c)"
   },
   "P_6632_01": {
    "group": "hajtaslanc",
    "partno": "6632",
-   "name": "Technic Beam  3 x  0.5 Liftarm",
+   "name": "Technic Beam 3 x 0.5 Liftarm",
    "element": "a1c_csapagy_bal_6632",
    "sub": "08 Első osztómű (A1c)"
   },
@@ -458,14 +1139,14 @@
   "P_4519_02": {
    "group": "hajtaslanc",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "a1c_kimeno_tengely_jobb_4519",
    "sub": "08 Első osztómű (A1c)"
   },
   "P_6632_02": {
    "group": "hajtaslanc",
    "partno": "6632",
-   "name": "Technic Beam  3 x  0.5 Liftarm",
+   "name": "Technic Beam 3 x 0.5 Liftarm",
    "element": "a1c_csapagy_jobb_6632",
    "sub": "08 Első osztómű (A1c)"
   },
@@ -486,7 +1167,7 @@
   "P_3706_01": {
    "group": "hajtaslanc",
    "partno": "3706",
-   "name": "Technic Axle  6",
+   "name": "Technic Axle 6",
    "element": "a1c_pinion_tengely_3706",
    "sub": "08 Első osztómű (A1c)"
   },
@@ -500,7 +1181,7 @@
   "P_32123a_01": {
    "group": "hajtaslanc",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a1c_pinion_rogzito_32123a",
    "sub": "08 Első osztómű (A1c)"
   },
@@ -514,42 +1195,42 @@
   "P_32073_01": {
    "group": "elso_futomu",
    "partno": "32073",
-   "name": "Technic Axle  5",
+   "name": "Technic Axle 5",
    "element": "also_kar_tengely_1sor_5L_32073_1",
    "sub": "06 Első futómű + első kerekek (A1)"
   },
   "P_4519_03": {
    "group": "elso_futomu",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "also_kar_tengely_2sor_3L_4519_1",
    "sub": "06 Első futómű + első kerekek (A1)"
   },
   "P_32123a_02": {
    "group": "elso_futomu",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "also_kar_kulso_persely_32123a_1",
    "sub": "06 Első futómű + első kerekek (A1)"
   },
   "P_32073_02": {
    "group": "elso_futomu",
    "partno": "32073",
-   "name": "Technic Axle  5",
+   "name": "Technic Axle 5",
    "element": "also_kar_tengely_1sor_5L_32073_-1",
    "sub": "06 Első futómű + első kerekek (A1)"
   },
   "P_4519_04": {
    "group": "elso_futomu",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "also_kar_tengely_2sor_3L_4519_-1",
    "sub": "06 Első futómű + első kerekek (A1)"
   },
   "P_32123a_03": {
    "group": "elso_futomu",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "also_kar_kulso_persely_32123a_-1",
    "sub": "06 Első futómű + első kerekek (A1)"
   },
@@ -563,7 +1244,7 @@
   "P_3707_01": {
    "group": "kormany",
    "partno": "3707",
-   "name": "Technic Axle  8",
+   "name": "Technic Axle 8",
    "element": "K_S1_tengely",
    "sub": "07 Kormány (léc, pinion, oszlop, HoG)"
   },
@@ -584,7 +1265,7 @@
   "P_32073_03": {
    "group": "kormany",
    "partno": "32073",
-   "name": "Technic Axle  5",
+   "name": "Technic Axle 5",
    "element": "K_S2_tengely",
    "sub": "07 Kormány (léc, pinion, oszlop, HoG)"
   },
@@ -598,7 +1279,7 @@
   "P_60485_01": {
    "group": "kormany",
    "partno": "60485",
-   "name": "Technic Axle  9",
+   "name": "Technic Axle 9",
    "element": "K_S3_9L_60485",
    "sub": "07 Kormány (léc, pinion, oszlop, HoG)"
   },
@@ -619,21 +1300,21 @@
   "P_3706_02": {
    "group": "vaz",
    "partno": "3706",
-   "name": "Technic Axle  6",
+   "name": "Technic Axle 6",
    "element": "also_csuklotengely_6L_3706_B",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_41677_01": {
    "group": "vaz",
    "partno": "41677",
-   "name": "Technic Beam  2 x  0.5 Liftarm",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
    "element": "ikerful_1_41677_B",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_41677_02": {
    "group": "vaz",
    "partno": "41677",
-   "name": "Technic Beam  2 x  0.5 Liftarm",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
    "element": "ikerful_2_41677_B",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
@@ -647,63 +1328,56 @@
   "P_32073_04": {
    "group": "vaz",
    "partno": "32073",
-   "name": "Technic Axle  5",
+   "name": "Technic Axle 5",
    "element": "felso_csuklotengely_5L_32073_B",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_32123a_04": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "felso_csuklo_persely_32123a_B",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_60485_02": {
    "group": "vaz",
    "partno": "60485",
-   "name": "Technic Axle  9",
+   "name": "Technic Axle 9",
    "element": "elulso_hossztengely_9L_60485_B",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_32291_01": {
    "group": "vaz",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "torony_also_32291_B",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_32291_02": {
    "group": "vaz",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "torony_felso_32291_B",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
-  "P_3706_03": {
+  "P_44294_01": {
    "group": "vaz",
-   "partno": "3706",
-   "name": "Technic Axle  6",
+   "partno": "44294",
+   "name": "Technic Axle 7",
    "element": "torony_fuggoleges_6L_x228_3706_B",
+   "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
+  },
+  "P_23948_01": {
+   "group": "vaz",
+   "partno": "23948",
+   "name": "Technic Axle 11",
+   "element": "torony_fuggoleges_6L_x236_3706_B",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_32123a_05": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "torony_persely_x228_32123a_B",
-   "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
-  },
-  "P_3706_04": {
-   "group": "vaz",
-   "partno": "3706",
-   "name": "Technic Axle  6",
-   "element": "torony_fuggoleges_6L_x236_3706_B",
-   "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
-  },
-  "P_32123a_06": {
-   "group": "vaz",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "torony_persely_x236_32123a_B",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
@@ -721,94 +1395,87 @@
    "element": "vazoszlop_belso_11478_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
-  "P_3706_05": {
+  "P_3706_03": {
    "group": "vaz",
    "partno": "3706",
-   "name": "Technic Axle  6",
+   "name": "Technic Axle 6",
    "element": "also_csuklotengely_6L_3706_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_41677_03": {
    "group": "vaz",
    "partno": "41677",
-   "name": "Technic Beam  2 x  0.5 Liftarm",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
    "element": "ikerful_1_41677_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_41677_04": {
    "group": "vaz",
    "partno": "41677",
-   "name": "Technic Beam  2 x  0.5 Liftarm",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
    "element": "ikerful_2_41677_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
-  "P_44294_01": {
+  "P_44294_02": {
    "group": "vaz",
    "partno": "44294",
-   "name": "Technic Axle  7",
+   "name": "Technic Axle 7",
    "element": "K120b_K160_hosszkotes_7L_44294_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_32073_05": {
    "group": "vaz",
    "partno": "32073",
-   "name": "Technic Axle  5",
+   "name": "Technic Axle 5",
    "element": "felso_csuklotengely_5L_32073_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
-  "P_32123a_07": {
+  "P_32123a_06": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "felso_csuklo_persely_32123a_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_60485_03": {
    "group": "vaz",
    "partno": "60485",
-   "name": "Technic Axle  9",
+   "name": "Technic Axle 9",
    "element": "elulso_hossztengely_9L_60485_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_32291_03": {
    "group": "vaz",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "torony_also_32291_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
   "P_32291_04": {
    "group": "vaz",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "torony_felso_32291_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
-  "P_3706_06": {
+  "P_44294_03": {
    "group": "vaz",
-   "partno": "3706",
-   "name": "Technic Axle  6",
+   "partno": "44294",
+   "name": "Technic Axle 7",
    "element": "torony_fuggoleges_6L_x228_3706_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
-  "P_32123a_08": {
+  "P_23948_02": {
    "group": "vaz",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "torony_persely_x228_32123a_J",
-   "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
-  },
-  "P_3706_07": {
-   "group": "vaz",
-   "partno": "3706",
-   "name": "Technic Axle  6",
+   "partno": "23948",
+   "name": "Technic Axle 11",
    "element": "torony_fuggoleges_6L_x236_3706_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
-  "P_32123a_09": {
+  "P_32123a_07": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "torony_persely_x236_32123a_J",
    "sub": "02 Váz – első részletek (A6a: oszlopok, csuklók, rugóstag-torony, léc-vezeték)"
   },
@@ -868,10 +1535,10 @@
    "element": "buko_oszlop_B_32524",
    "sub": "03 Váz – bukócső / HoG-tartó (A6a)"
   },
-  "P_3705_01": {
+  "P_3706_04": {
    "group": "vaz",
-   "partno": "3705",
-   "name": "Technic Axle  4",
+   "partno": "3706",
+   "name": "Technic Axle 6",
    "element": "A6b_mod_buko_also_4L_B_3705",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
@@ -882,10 +1549,10 @@
    "element": "buko_oszlop_J_32524",
    "sub": "03 Váz – bukócső / HoG-tartó (A6a)"
   },
-  "P_3705_02": {
+  "P_3706_05": {
    "group": "vaz",
-   "partno": "3705",
-   "name": "Technic Axle  4",
+   "partno": "3706",
+   "name": "Technic Axle 6",
    "element": "A6b_mod_buko_also_4L_J_3705",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
@@ -913,7 +1580,7 @@
   "P_6536_01": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "S3_csapagy_also_6536",
    "sub": "03 Váz – bukócső / HoG-tartó (A6a)"
   },
@@ -927,7 +1594,7 @@
   "P_6536_02": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "S3_csapagy_teto_6536",
    "sub": "03 Váz – bukócső / HoG-tartó (A6a)"
   },
@@ -962,21 +1629,21 @@
   "P_4519_05": {
    "group": "hajtaslanc",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "a3_kimeno_hatso_4519",
    "sub": "09 Középső hajtáslánc + kardánok (A3)"
   },
   "P_4519_06": {
    "group": "hajtaslanc",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "a3_kimeno_elso_4519",
    "sub": "09 Középső hajtáslánc + kardánok (A3)"
   },
   "P_6632_03": {
    "group": "vaz",
    "partno": "6632",
-   "name": "Technic Beam  3 x  0.5 Liftarm",
+   "name": "Technic Beam 3 x 0.5 Liftarm",
    "element": "a3_cd_csapagy_hatso_6632",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
@@ -1022,10 +1689,10 @@
    "element": "a3_csonk_pinion_6589",
    "sub": "09 Középső hajtáslánc + kardánok (A3)"
   },
-  "P_32123a_10": {
+  "P_32123a_08": {
    "group": "hajtaslanc",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a3_csonk_persely_32123a_alul",
    "sub": "09 Középső hajtáslánc + kardánok (A3)"
   },
@@ -1039,7 +1706,7 @@
   "P_32073_06": {
    "group": "hajtaslanc",
    "partno": "32073",
-   "name": "Technic Axle  5",
+   "name": "Technic Axle 5",
    "element": "a3_csonk_tengely_32073",
    "sub": "09 Középső hajtáslánc + kardánok (A3)"
   },
@@ -1060,63 +1727,63 @@
   "P_32062_03": {
    "group": "vaz",
    "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "name": "Technic Axle 2 Notched",
    "element": "a3_K80_6632_rogzito_32062",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_6536_03": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "a3_K80_blokk_bal_6536",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_4519_07": {
    "group": "vaz",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "a3_K80_tengely_bal_4519",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
-  "P_32123a_11": {
+  "P_32123a_09": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a3_K80_persely_bal_32123a",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_2780_01": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "a3_K80_csap_bal_2780",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_6536_04": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "a3_K80_blokk_jobb_6536",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_4519_08": {
    "group": "vaz",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "a3_K80_tengely_jobb_4519",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
-  "P_32123a_12": {
+  "P_32123a_10": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a3_K80_persely_jobb_32123a",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_2780_02": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "a3_K80_csap_jobb_2780",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
@@ -1130,63 +1797,63 @@
   "P_32062_04": {
    "group": "vaz",
    "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "name": "Technic Axle 2 Notched",
    "element": "a3_K120_6632_rogzito_32062",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_6536_05": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "a3_K120_blokk_bal_6536",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_4519_09": {
    "group": "vaz",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "a3_K120_tengely_bal_4519",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
-  "P_32123a_13": {
+  "P_32123a_11": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a3_K120_persely_bal_32123a",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_2780_03": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "a3_K120_csap_bal_2780",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_6536_06": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "a3_K120_blokk_jobb_6536",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_4519_10": {
    "group": "vaz",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "a3_K120_tengely_jobb_4519",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
-  "P_32123a_14": {
+  "P_32123a_12": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a3_K120_persely_jobb_32123a",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_2780_04": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "a3_K120_csap_jobb_2780",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
@@ -1200,7 +1867,7 @@
   "P_32062_05": {
    "group": "vaz",
    "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "name": "Technic Axle 2 Notched",
    "element": "a3_K120b_csapagy_rogzito_32062",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
@@ -1228,7 +1895,7 @@
   "P_32062_06": {
    "group": "vaz",
    "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "name": "Technic Axle 2 Notched",
    "element": "a3_K160_32449_tengely_32062",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
@@ -1242,42 +1909,42 @@
   "P_6536_07": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "a3_KH_blokk_bal_6536",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
-  "P_3705_03": {
+  "P_3705_01": {
    "group": "vaz",
    "partno": "3705",
-   "name": "Technic Axle  4",
+   "name": "Technic Axle 4",
    "element": "A6b_mod_KH_tengely_bal_4L_3705",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_2780_05": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "a3_KH_csap_bal_2780",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
   "P_6536_08": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "a3_KH_blokk_jobb_6536",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
-  "P_3705_04": {
+  "P_3705_02": {
    "group": "vaz",
    "partno": "3705",
-   "name": "Technic Axle  4",
+   "name": "Technic Axle 4",
    "element": "A6b_mod_KH_tengely_jobb_4L_3705",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_2780_06": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "a3_KH_csap_jobb_2780",
    "sub": "01 Váz – létrakeret, kereszttartók (A3)"
   },
@@ -1361,7 +2028,7 @@
   "P_6632_04": {
    "group": "hatso_hid",
    "partno": "6632",
-   "name": "Technic Beam  3 x  0.5 Liftarm",
+   "name": "Technic Beam 3 x 0.5 Liftarm",
    "element": "a2_tavtarto_csapagy_bal_6632",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1372,17 +2039,17 @@
    "element": "a2_feltengely_bal_3708",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_32123a_15": {
+  "P_32123a_13": {
    "group": "hatso_hid",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a2_persely_bal_32123a_y46",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_32123a_16": {
+  "P_32123a_14": {
    "group": "hatso_hid",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a2_persely_bal_32123a_y58",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1393,10 +2060,10 @@
    "element": "a2_persely_bal_3713_y72",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_32123a_17": {
+  "P_32123a_15": {
    "group": "hatso_hid",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a2_persely_bal_32123a_y90",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1417,28 +2084,28 @@
   "P_6558_01": {
    "group": "hatso_hid",
    "partno": "6558",
-   "name": "Technic Pin Long with Friction and Slot",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "a2_rugostag_csap_bal_b_6558",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_32123a_18": {
+  "P_32123a_16": {
    "group": "hatso_hid",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a2_rugostag_tav_bal_b_32123a",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
   "P_6558_02": {
    "group": "hatso_hid",
    "partno": "6558",
-   "name": "Technic Pin Long with Friction and Slot",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "a2_rugostag_csap_bal_k_6558",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_32123a_19": {
+  "P_32123a_17": {
    "group": "hatso_hid",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a2_rugostag_tav_bal_k_32123a",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1459,7 +2126,7 @@
   "P_41677_05": {
    "group": "hatso_hid",
    "partno": "41677",
-   "name": "Technic Beam  2 x  0.5 Liftarm",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
    "element": "a2_gomb_emelo_bal_41677",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1473,7 +2140,7 @@
   "P_6632_05": {
    "group": "hatso_hid",
    "partno": "6632",
-   "name": "Technic Beam  3 x  0.5 Liftarm",
+   "name": "Technic Beam 3 x 0.5 Liftarm",
    "element": "a2_tavtarto_csapagy_jobb_6632",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1484,17 +2151,17 @@
    "element": "a2_feltengely_jobb_3708",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_32123a_20": {
+  "P_32123a_18": {
    "group": "hatso_hid",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a2_persely_jobb_32123a_y46",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_32123a_21": {
+  "P_32123a_19": {
    "group": "hatso_hid",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a2_persely_jobb_32123a_y58",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1505,10 +2172,10 @@
    "element": "a2_persely_jobb_3713_y72",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_32123a_22": {
+  "P_32123a_20": {
    "group": "hatso_hid",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a2_persely_jobb_32123a_y90",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1529,28 +2196,28 @@
   "P_6558_03": {
    "group": "hatso_hid",
    "partno": "6558",
-   "name": "Technic Pin Long with Friction and Slot",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "a2_rugostag_csap_jobb_b_6558",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_32123a_23": {
+  "P_32123a_21": {
    "group": "hatso_hid",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a2_rugostag_tav_jobb_b_32123a",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
   "P_6558_04": {
    "group": "hatso_hid",
    "partno": "6558",
-   "name": "Technic Pin Long with Friction and Slot",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "a2_rugostag_csap_jobb_k_6558",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_32123a_24": {
+  "P_32123a_22": {
    "group": "hatso_hid",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "a2_rugostag_tav_jobb_k_32123a",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1571,7 +2238,7 @@
   "P_41677_06": {
    "group": "hatso_hid",
    "partno": "41677",
-   "name": "Technic Beam  2 x  0.5 Liftarm",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
    "element": "a2_gomb_emelo_jobb_41677",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1592,21 +2259,14 @@
   "P_6632_06": {
    "group": "hatso_hid",
    "partno": "6632",
-   "name": "Technic Beam  3 x  0.5 Liftarm",
+   "name": "Technic Beam 3 x 0.5 Liftarm",
    "element": "a2_pinion_csapagy_6632",
-   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
-  },
-  "P_32123a_25": {
-   "group": "hatso_hid",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "a2_pinion_rogzito_32123a",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
   "P_4519_11": {
    "group": "hatso_hid",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "a2_pinion_tengely_4519",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1774,7 +2434,7 @@
   "P_4519_12": {
    "group": "hatso_hid",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "a2_koztes_tengely_4519",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
@@ -1792,10 +2452,10 @@
    "element": "a2_kardan_F_kereszt",
    "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   },
-  "P_3705_05": {
+  "P_3705_03": {
    "group": "valto",
    "partno": "3705",
-   "name": "Technic Axle  4",
+   "name": "Technic Axle 4",
    "element": "a4_V_tengely_hatso_4L",
    "sub": "11 Váltó (A4)"
   },
@@ -1827,17 +2487,17 @@
    "element": "a4_V_G3_18946_3fok",
    "sub": "11 Váltó (A4)"
   },
-  "P_3705_06": {
+  "P_3705_04": {
    "group": "valto",
    "partno": "3705",
-   "name": "Technic Axle  4",
+   "name": "Technic Axle 4",
    "element": "a4_V_tengely_elso_4L",
    "sub": "11 Váltó (A4)"
   },
   "P_60485_04": {
    "group": "valto",
    "partno": "60485",
-   "name": "Technic Axle  9",
+   "name": "Technic Axle 9",
    "element": "a4_U_tengely_hatso_9L",
    "sub": "11 Váltó (A4)"
   },
@@ -1869,10 +2529,10 @@
    "element": "a4_U_B_gyuru_18947",
    "sub": "11 Váltó (A4)"
   },
-  "P_3705_07": {
+  "P_3705_05": {
    "group": "valto",
    "partno": "3705",
-   "name": "Technic Axle  4",
+   "name": "Technic Axle 4",
    "element": "a4_U_tengely_elso_4L",
    "sub": "11 Váltó (A4)"
   },
@@ -1886,7 +2546,7 @@
   "P_60485_05": {
    "group": "valto",
    "partno": "60485",
-   "name": "Technic Axle  9",
+   "name": "Technic Axle 9",
    "element": "a4_W_tengely_9L",
    "sub": "11 Váltó (A4)"
   },
@@ -1904,10 +2564,10 @@
    "element": "a4_W_W8ki_10928",
    "sub": "11 Váltó (A4)"
   },
-  "P_3706_08": {
+  "P_3706_06": {
    "group": "valto",
    "partno": "3706",
-   "name": "Technic Axle  6",
+   "name": "Technic Axle 6",
    "element": "a4_C_tengely_6L",
    "sub": "11 Váltó (A4)"
   },
@@ -1925,10 +2585,10 @@
    "element": "a4_C_C16_94925",
    "sub": "11 Váltó (A4)"
   },
-  "P_3706_09": {
+  "P_3706_07": {
    "group": "valto",
    "partno": "3706",
-   "name": "Technic Axle  6",
+   "name": "Technic Axle 6",
    "element": "a4_SA_tengely_6L",
    "sub": "11 Váltó (A4)"
   },
@@ -1953,7 +2613,7 @@
    "element": "a4_SA_kup_6589",
    "sub": "11 Váltó (A4)"
   },
-  "P_23948_01": {
+  "P_23948_03": {
    "group": "valto",
    "partno": "23948",
    "name": "Technic Axle 11",
@@ -1981,10 +2641,10 @@
    "element": "a4_K_kup_6589",
    "sub": "11 Váltó (A4)"
   },
-  "P_3706_10": {
+  "P_3706_08": {
    "group": "valto",
    "partno": "3706",
-   "name": "Technic Axle  6",
+   "name": "Technic Axle 6",
    "element": "a4_K_tengely_6L",
    "sub": "11 Váltó (A4)"
   },
@@ -2222,35 +2882,35 @@
   "P_2780_07": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6b_FK_csap_z53_2780_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_2780_08": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6b_FK_csap_z53_2780_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_2780_09": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6b_FK_csap_z61_2780_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32291_05": {
    "group": "vaz",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "A6b_FK_blokk_32291_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32291_06": {
    "group": "vaz",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "A6b_FK_blokk_32291_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
@@ -2299,28 +2959,28 @@
   "P_6536_09": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_AK_6536_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_10": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_AK_6536_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_41677_07": {
    "group": "vaz",
    "partno": "41677",
-   "name": "Technic Beam  2 x  0.5 Liftarm",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
    "element": "A6b_AK_zar_41677_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_41677_08": {
    "group": "vaz",
    "partno": "41677",
-   "name": "Technic Beam  2 x  0.5 Liftarm",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
    "element": "A6b_AK_zar_41677_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
@@ -2338,17 +2998,17 @@
    "element": "A6b_AK_zar_tengely_2L_3704_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_26": {
+  "P_32123a_23": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_AK_zar_persely_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_27": {
+  "P_32123a_24": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_AK_zar_persely_32123a_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
@@ -2366,17 +3026,17 @@
    "element": "A6b_AK_tav_3713_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_28": {
+  "P_32123a_25": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_AK_tav_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_29": {
+  "P_32123a_26": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_AK_tav_32123a_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
@@ -2397,14 +3057,14 @@
   "P_41677_09": {
    "group": "vaz",
    "partno": "41677",
-   "name": "Technic Beam  2 x  0.5 Liftarm",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
    "element": "A6b_RT_zar_41677_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_41677_10": {
    "group": "vaz",
    "partno": "41677",
-   "name": "Technic Beam  2 x  0.5 Liftarm",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
    "element": "A6b_RT_zar_41677_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
@@ -2422,73 +3082,73 @@
    "element": "A6b_RT_A_tav_3713_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_30": {
+  "P_32123a_27": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_RT_A_tav_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_31": {
+  "P_32123a_28": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_RT_A_tav_32123a_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_11": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_RT_F1_6536_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_12": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_RT_F1_6536_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_13": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_RT_F2_6536_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_14": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_RT_F2_6536_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32073_07": {
    "group": "vaz",
    "partno": "32073",
-   "name": "Technic Axle  5",
+   "name": "Technic Axle 5",
    "element": "A6b_RT_C_szemtengely_5L_32073_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32073_08": {
    "group": "vaz",
    "partno": "32073",
-   "name": "Technic Axle  5",
+   "name": "Technic Axle 5",
    "element": "A6b_RT_C_szemtengely_5L_32073_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_32": {
+  "P_32123a_29": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_RT_C_persely_x30_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_33": {
+  "P_32123a_30": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_RT_C_persely_x30_32123a_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
@@ -2506,31 +3166,31 @@
    "element": "A6b_RT_C_persely_x44_3713_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_34": {
+  "P_32123a_31": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_RT_C_persely_x50_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_35": {
+  "P_32123a_32": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_RT_C_persely_x50_32123a_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_15": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_HT_R1_6536_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_16": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_HT_R1_6536_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
@@ -2551,56 +3211,56 @@
   "P_32291_07": {
    "group": "vaz",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "A6b_HT_R1_32291_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32291_08": {
    "group": "vaz",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "A6b_HT_R1_32291_J",
+   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
+  },
+  "P_32123a_33": {
+   "group": "vaz",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6b_HT_VA_R1_persely_a_32123a_B",
+   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
+  },
+  "P_32123a_34": {
+   "group": "vaz",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6b_HT_VA_R1_persely_a_32123a_J",
+   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
+  },
+  "P_32123a_35": {
+   "group": "vaz",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6b_HT_VA_R1_persely_f_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32123a_36": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6b_HT_VA_R1_persely_a_32123a_B",
-   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
-  },
-  "P_32123a_37": {
-   "group": "vaz",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6b_HT_VA_R1_persely_a_32123a_J",
-   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
-  },
-  "P_32123a_38": {
-   "group": "vaz",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6b_HT_VA_R1_persely_f_32123a_B",
-   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
-  },
-  "P_32123a_39": {
-   "group": "vaz",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_HT_VA_R1_persely_f_32123a_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_17": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_HT_R2_6536_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_18": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_HT_R2_6536_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
@@ -2621,235 +3281,235 @@
   "P_32291_09": {
    "group": "vaz",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "A6b_HT_R2_32291_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32291_10": {
    "group": "vaz",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "A6b_HT_R2_32291_J",
+   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
+  },
+  "P_32123a_37": {
+   "group": "vaz",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6b_HT_VA_R2_persely_a_32123a_B",
+   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
+  },
+  "P_32123a_38": {
+   "group": "vaz",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6b_HT_VA_R2_persely_a_32123a_J",
+   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
+  },
+  "P_32123a_39": {
+   "group": "vaz",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6b_HT_VA_R2_persely_f_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32123a_40": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6b_HT_VA_R2_persely_a_32123a_B",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6b_HT_VA_R2_persely_f_32123a_J",
+   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
+  },
+  "P_3705_06": {
+   "group": "vaz",
+   "partno": "3705",
+   "name": "Technic Axle 4",
+   "element": "A6b_HT_C2_szemtengely_4L_3705_B",
+   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
+  },
+  "P_3705_07": {
+   "group": "vaz",
+   "partno": "3705",
+   "name": "Technic Axle 4",
+   "element": "A6b_HT_C2_szemtengely_4L_3705_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32123a_41": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6b_HT_VA_R2_persely_a_32123a_J",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6b_HT_C2_persely_x-42_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32123a_42": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6b_HT_VA_R2_persely_f_32123a_B",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6b_HT_C2_persely_x-42_32123a_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32123a_43": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6b_HT_VA_R2_persely_f_32123a_J",
-   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
-  },
-  "P_3705_08": {
-   "group": "vaz",
-   "partno": "3705",
-   "name": "Technic Axle  4",
-   "element": "A6b_HT_C2_szemtengely_4L_3705_B",
-   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
-  },
-  "P_3705_09": {
-   "group": "vaz",
-   "partno": "3705",
-   "name": "Technic Axle  4",
-   "element": "A6b_HT_C2_szemtengely_4L_3705_J",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6b_HT_C2_persely_x-30_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_32123a_44": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6b_HT_C2_persely_x-42_32123a_B",
-   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
-  },
-  "P_32123a_45": {
-   "group": "vaz",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6b_HT_C2_persely_x-42_32123a_J",
-   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
-  },
-  "P_32123a_46": {
-   "group": "vaz",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6b_HT_C2_persely_x-30_32123a_B",
-   "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
-  },
-  "P_32123a_47": {
-   "group": "vaz",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_HT_C2_persely_x-30_32123a_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_19": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_PL_PF1_6536_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_20": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_PL_PF1_6536_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_2780_10": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6b_PL_PF1_csap_2780_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_2780_11": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6b_PL_PF1_csap_2780_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_21": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_PL_PF2_6536_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_22": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_PL_PF2_6536_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_2780_12": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6b_PL_PF2_csap_2780_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_2780_13": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6b_PL_PF2_csap_2780_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_48": {
+  "P_32123a_45": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_PL_PF2_persely_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_49": {
+  "P_32123a_46": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_PL_PF2_persely_32123a_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_23": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_PL_PF3_6536_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_6536_24": {
    "group": "vaz",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6b_PL_PF3_6536_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_2780_14": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6b_PL_PF3_csap_2780_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_2780_15": {
    "group": "vaz",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6b_PL_PF3_csap_2780_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_50": {
+  "P_32123a_47": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_PL_PF3_persely_32123a_B",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32123a_51": {
+  "P_32123a_48": {
    "group": "vaz",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6b_PL_PF3_persely_32123a_J",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_23948_02": {
+  "P_50451_01": {
    "group": "vaz",
-   "partno": "23948",
-   "name": "Technic Axle 11",
+   "partno": "50451",
+   "name": "Technic Axle 16",
    "element": "A6b_X1_keresztengely_11L_23948",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
   "P_60485_06": {
    "group": "vaz",
    "partno": "60485",
-   "name": "Technic Axle  9",
+   "name": "Technic Axle 9",
    "element": "A6b_X2_keresztengely_9L_60485",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_23948_03": {
+  "P_23948_04": {
    "group": "vaz",
    "partno": "23948",
    "name": "Technic Axle 11",
    "element": "A6b_X0_keresztengely_11L_23948",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32525_03": {
+  "P_41239_01": {
    "group": "vaz",
-   "partno": "32525",
-   "name": "Technic Beam 11",
+   "partno": "41239",
+   "name": "Technic Beam 13",
    "element": "A6b_PL_PF1_borda_32525",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32525_04": {
+  "P_41239_02": {
    "group": "vaz",
-   "partno": "32525",
-   "name": "Technic Beam 11",
+   "partno": "41239",
+   "name": "Technic Beam 13",
    "element": "A6b_PL_PF2_borda_32525",
    "sub": "04 Váz – hátsó konzolok, tornyok, padló-bordák (A6b)"
   },
-  "P_32525_05": {
+  "P_32525_03": {
    "group": "vaz",
    "partno": "32525",
    "name": "Technic Beam 11",
@@ -2915,28 +3575,28 @@
   "P_6536_25": {
    "group": "valto",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6c_VH_B2_6536",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_32123a_52": {
+  "P_32123a_49": {
    "group": "valto",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6c_VH_B2_persely_32123a",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_44294_02": {
+  "P_44294_04": {
    "group": "valto",
    "partno": "44294",
-   "name": "Technic Axle  7",
+   "name": "Technic Axle 7",
    "element": "A6c_SL64_7L_44294",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_3706_11": {
+  "P_44294_05": {
    "group": "valto",
-   "partno": "3706",
-   "name": "Technic Axle  6",
+   "partno": "44294",
+   "name": "Technic Axle 7",
    "element": "A6c_SL80_6L_3706",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
@@ -2947,24 +3607,24 @@
    "element": "A6c_SR80_12L_3708",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_44294_03": {
+  "P_44294_06": {
    "group": "valto",
    "partno": "44294",
-   "name": "Technic Axle  7",
+   "name": "Technic Axle 7",
    "element": "A6c_ST88_7L_44294",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_44294_04": {
+  "P_44294_07": {
    "group": "valto",
    "partno": "44294",
-   "name": "Technic Axle  7",
+   "name": "Technic Axle 7",
    "element": "A6c_SR88_7L_44294",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_4519_13": {
    "group": "valto",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "A6c_B2T_3L_4519",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
@@ -2978,7 +3638,7 @@
   "P_6632_07": {
    "group": "valto",
    "partno": "6632",
-   "name": "Technic Beam  3 x  0.5 Liftarm",
+   "name": "Technic Beam 3 x 0.5 Liftarm",
    "element": "A6c_VLR_6632",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
@@ -3038,10 +3698,10 @@
    "element": "A6c_V8_TS88_toldo_59443",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_44294_05": {
+  "P_44294_08": {
    "group": "valto",
    "partno": "44294",
-   "name": "Technic Axle  7",
+   "name": "Technic Axle 7",
    "element": "A6c_V8_TS88b_7L_44294",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
@@ -3062,60 +3722,60 @@
   "P_4519_14": {
    "group": "valto",
    "partno": "4519",
-   "name": "Technic Axle  3",
+   "name": "Technic Axle 3",
    "element": "A6c_V8_FA_3L_4519",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_44294_06": {
+  "P_44294_09": {
    "group": "valto",
    "partno": "44294",
-   "name": "Technic Axle  7",
+   "name": "Technic Axle 7",
    "element": "A6c_V8_rugostag_felso_7L_44294_B",
+   "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
+  },
+  "P_32123a_50": {
+   "group": "valto",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6c_V8_FP_persely_x245_32123a_B",
+   "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
+  },
+  "P_32123a_51": {
+   "group": "valto",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6c_V8_FP_persely_x253_32123a_B",
+   "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
+  },
+  "P_44294_10": {
+   "group": "valto",
+   "partno": "44294",
+   "name": "Technic Axle 7",
+   "element": "A6c_V8_rugostag_felso_7L_44294_J",
+   "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
+  },
+  "P_32123a_52": {
+   "group": "valto",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "A6c_V8_FP_persely_x245_32123a_J",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_32123a_53": {
    "group": "valto",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6c_V8_FP_persely_x245_32123a_B",
-   "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
-  },
-  "P_32123a_54": {
-   "group": "valto",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6c_V8_FP_persely_x253_32123a_B",
-   "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
-  },
-  "P_44294_07": {
-   "group": "valto",
-   "partno": "44294",
-   "name": "Technic Axle  7",
-   "element": "A6c_V8_rugostag_felso_7L_44294_J",
-   "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
-  },
-  "P_32123a_55": {
-   "group": "valto",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-   "element": "A6c_V8_FP_persely_x245_32123a_J",
-   "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
-  },
-  "P_32123a_56": {
-   "group": "valto",
-   "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6c_V8_FP_persely_x253_32123a_J",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_23948_04": {
+  "P_23948_05": {
    "group": "valto",
    "partno": "23948",
    "name": "Technic Axle 11",
    "element": "A6c_V8_fultengely_kulso_B_11L_23948",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_23948_05": {
+  "P_23948_06": {
    "group": "valto",
    "partno": "23948",
    "name": "Technic Axle 11",
@@ -3125,105 +3785,105 @@
   "P_6558_05": {
    "group": "valto",
    "partno": "6558",
-   "name": "Technic Pin Long with Friction and Slot",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "A6c_RR_mod_FK_csap_z61_6558",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_2780_16": {
    "group": "valto",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6c_RR_csap_z69_2780",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_32291_11": {
    "group": "valto",
    "partno": "32291",
-   "name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
    "element": "A6c_RR_32291",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_3705_10": {
+  "P_3705_08": {
    "group": "valto",
    "partno": "3705",
-   "name": "Technic Axle  4",
+   "name": "Technic Axle 4",
    "element": "A6c_RR_VA_4L_3705",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_6536_26": {
    "group": "valto",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6c_RR_6536",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_2780_17": {
    "group": "valto",
    "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
    "element": "A6c_RL_csap_2780",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_6536_27": {
    "group": "valto",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6c_RL_6536a",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_32073_09": {
    "group": "valto",
    "partno": "32073",
-   "name": "Technic Axle  5",
+   "name": "Technic Axle 5",
    "element": "A6c_RL_VA_5L_32073",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_6536_28": {
    "group": "valto",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6c_RL_6536b",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_32123a_57": {
+  "P_32123a_54": {
    "group": "valto",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6c_RL_SL64_persely_x74_32123a",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_32123a_58": {
+  "P_32123a_55": {
    "group": "valto",
    "partno": "32123a",
-   "name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
+   "name": "Technic Bush 1/2 Smooth",
    "element": "A6c_RL_SL64_persely_x94_32123a",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_6536_29": {
    "group": "valto",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6c_K_KL_6536",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
   "P_6536_30": {
    "group": "valto",
    "partno": "6536",
-   "name": "Technic Cross Block 1 x 2 (Axle/Pin)",
+   "name": "Technic Axle and Pin Connector Perpendicular",
    "element": "A6c_K_KR_6536",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_3705_11": {
+  "P_3705_09": {
    "group": "valto",
    "partno": "3705",
-   "name": "Technic Axle  4",
+   "name": "Technic Axle 4",
    "element": "A6c_K_KT_L_4L_3705",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
-  "P_3705_12": {
+  "P_3705_10": {
    "group": "valto",
    "partno": "3705",
-   "name": "Technic Axle  4",
+   "name": "Technic Axle 4",
    "element": "A6c_K_KT_R_4L_3705",
    "sub": "05 Váltóház + motortartó (A4 lapok + A6c)"
   },
@@ -3246,294 +3906,1064 @@
    "partno": "69911",
    "name": "Technic Panel 13 x  2 x  5 Mudguard Arched with Rounded Top",
    "element": "B_P_sarvedo_E_69911_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_69911_02": {
    "group": "karosszeria",
    "partno": "69911",
    "name": "Technic Panel 13 x  2 x  5 Mudguard Arched with Rounded Top",
    "element": "B_P_sarvedo_E_69911_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_71689_01": {
    "group": "karosszeria",
    "partno": "71689",
    "name": "Technic Panel 13 x  2 x  5 Mudguard Arched Extension",
    "element": "B_P_sarvedo_toldat_E_71689_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_71689_02": {
    "group": "karosszeria",
    "partno": "71689",
    "name": "Technic Panel 13 x  2 x  5 Mudguard Arched Extension",
    "element": "B_P_sarvedo_toldat_E_71689_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32524_08": {
+  "P_32526_01": {
    "group": "karosszeria",
-   "partno": "32524",
-   "name": "Technic Beam  7",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
    "element": "B_T_sarvedo_tarto_Ee_32524_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32524_09": {
+  "P_32526_02": {
    "group": "karosszeria",
-   "partno": "32524",
-   "name": "Technic Beam  7",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
    "element": "B_T_sarvedo_tarto_Ee_32524_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_2780_18": {
+  "P_6558_06": {
    "group": "karosszeria",
-   "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "B_C_csap_sarvedo_Ee_2780_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_2780_19": {
+  "P_6558_07": {
    "group": "karosszeria",
-   "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "B_C_csap_sarvedo_Ee_2780_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32062_07": {
+  "P_4519_15": {
    "group": "karosszeria",
-   "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "partno": "4519",
+   "name": "Technic Axle 3",
    "element": "B_C_tengely_toldat_Ee_2L_32062_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32062_08": {
+  "P_4519_16": {
    "group": "karosszeria",
-   "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "partno": "4519",
+   "name": "Technic Axle 3",
    "element": "B_C_tengely_toldat_Ee_2L_32062_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32524_10": {
+  "P_32526_03": {
    "group": "karosszeria",
-   "partno": "32524",
-   "name": "Technic Beam  7",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
    "element": "B_T_sarvedo_tarto_Eh_32524_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32524_11": {
+  "P_32526_04": {
    "group": "karosszeria",
-   "partno": "32524",
-   "name": "Technic Beam  7",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
    "element": "B_T_sarvedo_tarto_Eh_32524_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_2780_20": {
+  "P_6558_08": {
    "group": "karosszeria",
-   "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "B_C_csap_sarvedo_Eh_2780_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_2780_21": {
+  "P_6558_09": {
    "group": "karosszeria",
-   "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "B_C_csap_sarvedo_Eh_2780_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32062_09": {
+  "P_4519_17": {
    "group": "karosszeria",
-   "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "partno": "4519",
+   "name": "Technic Axle 3",
    "element": "B_C_tengely_toldat_Eh_2L_32062_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32062_10": {
+  "P_4519_18": {
    "group": "karosszeria",
-   "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "partno": "4519",
+   "name": "Technic Axle 3",
    "element": "B_C_tengely_toldat_Eh_2L_32062_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_69911_03": {
    "group": "karosszeria",
    "partno": "69911",
    "name": "Technic Panel 13 x  2 x  5 Mudguard Arched with Rounded Top",
    "element": "B_P_sarvedo_H_69911_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_69911_04": {
    "group": "karosszeria",
    "partno": "69911",
    "name": "Technic Panel 13 x  2 x  5 Mudguard Arched with Rounded Top",
    "element": "B_P_sarvedo_H_69911_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_71689_03": {
    "group": "karosszeria",
    "partno": "71689",
    "name": "Technic Panel 13 x  2 x  5 Mudguard Arched Extension",
    "element": "B_P_sarvedo_toldat_H_71689_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_71689_04": {
    "group": "karosszeria",
    "partno": "71689",
    "name": "Technic Panel 13 x  2 x  5 Mudguard Arched Extension",
    "element": "B_P_sarvedo_toldat_H_71689_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32316_01": {
+  "P_32526_05": {
    "group": "karosszeria",
-   "partno": "32316",
-   "name": "Technic Beam  5",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
    "element": "B_T_sarvedo_tarto_He_32316_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32316_02": {
+  "P_32526_06": {
    "group": "karosszeria",
-   "partno": "32316",
-   "name": "Technic Beam  5",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
    "element": "B_T_sarvedo_tarto_He_32316_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_2780_22": {
+  "P_6558_10": {
    "group": "karosszeria",
-   "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "B_C_csap_sarvedo_He_2780_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_2780_23": {
+  "P_6558_11": {
    "group": "karosszeria",
-   "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "B_C_csap_sarvedo_He_2780_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32062_11": {
+  "P_3705_11": {
    "group": "karosszeria",
-   "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "partno": "3705",
+   "name": "Technic Axle 4",
    "element": "B_C_tengely_toldat_He_2L_32062_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32062_12": {
+  "P_3705_12": {
    "group": "karosszeria",
-   "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "partno": "3705",
+   "name": "Technic Axle 4",
    "element": "B_C_tengely_toldat_He_2L_32062_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32316_03": {
+  "P_32526_07": {
    "group": "karosszeria",
-   "partno": "32316",
-   "name": "Technic Beam  5",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
    "element": "B_T_sarvedo_tarto_Hh_32316_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32316_04": {
+  "P_32526_08": {
    "group": "karosszeria",
-   "partno": "32316",
-   "name": "Technic Beam  5",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
    "element": "B_T_sarvedo_tarto_Hh_32316_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_2780_24": {
+  "P_6558_12": {
    "group": "karosszeria",
-   "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "B_C_csap_sarvedo_Hh_2780_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_2780_25": {
+  "P_6558_13": {
    "group": "karosszeria",
-   "partno": "2780",
-   "name": "Technic Pin with Friction and Slots",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
    "element": "B_C_csap_sarvedo_Hh_2780_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32062_13": {
+  "P_3705_13": {
    "group": "karosszeria",
-   "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "partno": "3705",
+   "name": "Technic Axle 4",
    "element": "B_C_tengely_toldat_Hh_2L_32062_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_32062_14": {
+  "P_3705_14": {
    "group": "karosszeria",
-   "partno": "32062",
-   "name": "Technic Axle  2 Notched",
+   "partno": "3705",
+   "name": "Technic Axle 4",
    "element": "B_C_tengely_toldat_Hh_2L_32062_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_18944_01": {
    "group": "karosszeria",
    "partno": "18944",
    "name": "Technic Panel  3 x 13 Curved",
    "element": "B_P_motorhazteto_szarny_18944_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_18944_02": {
    "group": "karosszeria",
    "partno": "18944",
    "name": "Technic Panel  3 x 13 Curved",
    "element": "B_P_motorhazteto_szarny_18944_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_64782_01": {
    "group": "karosszeria",
    "partno": "64782",
    "name": "Technic Panel  5 x 11",
    "element": "B_P_ajto_64782_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_64782_02": {
    "group": "karosszeria",
    "partno": "64782",
    "name": "Technic Panel  5 x 11",
    "element": "B_P_ajto_64782_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_62531_01": {
    "group": "karosszeria",
    "partno": "62531",
    "name": "Technic Panel Smooth 11 x  2 x  3",
    "element": "B_P_plato_oldal_62531_B",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_62531_02": {
    "group": "karosszeria",
    "partno": "62531",
    "name": "Technic Panel Smooth 11 x  2 x  3",
    "element": "B_P_plato_oldal_62531_J",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_15458_01": {
    "group": "karosszeria",
    "partno": "15458",
    "name": "Technic Panel  3 x 11",
    "element": "B_P_orr_racs_15458",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_44771_05": {
    "group": "karosszeria",
    "partno": "44771",
    "name": "Tyre 35/ 46 x 56 ZR",
    "element": "B_P_potkerek_gumi_44771",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
   "P_15038_05": {
    "group": "karosszeria",
    "partno": "15038",
    "name": "Wheel Rim 34 x 56 with  6 Spokes and  6 Pegholes",
    "element": "B_P_potkerek_felni_15038",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
   },
-  "P_3707_02": {
+  "P_32073_10": {
    "group": "karosszeria",
-   "partno": "3707",
-   "name": "Technic Axle  8",
+   "partno": "32073",
+   "name": "Technic Axle 5",
    "element": "B_C_potkerek_tengely_8L_3707",
-   "sub": "Burkolat (A7 V2)"
+   "sub": "13 Burkolat (A7 V2)"
+  },
+  "P_2780_18": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_oszlopcsap_2780_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_19": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_oszlopcsap_2780_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6536_31": {
+   "group": "vaz",
+   "partno": "6536",
+   "name": "Technic Axle and Pin Connector Perpendicular",
+   "element": "R_Ee_6536_x236_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6536_32": {
+   "group": "vaz",
+   "partno": "6536",
+   "name": "Technic Axle and Pin Connector Perpendicular",
+   "element": "R_Ee_6536_x228_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32526_09": {
+   "group": "vaz",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
+   "element": "R_Ee_L_32526_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_20": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_Ee_csap_z1_2780_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6558_14": {
+   "group": "vaz",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "R_Ee_csap_z2_6558_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6558_15": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "R_Ee_csap_tarto_y52_2780_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6558_16": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "R_Ee_csap_tarto_y60_2780_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32526_10": {
+   "group": "vaz",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
+   "element": "R_Eh_L_32526_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6558_17": {
+   "group": "vaz",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "R_Eh_csap_6558_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_21": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_Eh_csap_tarto_y52_2780_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_22": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_Eh_csap_tarto_y60_2780_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32291_12": {
+   "group": "vaz",
+   "partno": "32291",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
+   "element": "R_He_32291_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_23": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_He_csap_y60_2780_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_4519_19": {
+   "group": "vaz",
+   "partno": "4519",
+   "name": "Technic Axle 3",
+   "element": "R_He_csap_y68_2780_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32291_13": {
+   "group": "vaz",
+   "partno": "32291",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
+   "element": "R_Hh_32291_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_24": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_Hh_csap_y52_2780_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_25": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_Hh_csap_y60_2780_B",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6558_18": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "B_R_Ee_sarvedo_felso_csap_6558_B",
+   "sub": "13 Burkolat (A7 V2)"
+  },
+  "P_6558_19": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "B_R_Eh_sarvedo_felso_csap_6558_B",
+   "sub": "13 Burkolat (A7 V2)"
+  },
+  "P_6558_20": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "B_R_He_sarvedo_felso_csap_6558_B",
+   "sub": "13 Burkolat (A7 V2)"
+  },
+  "P_6558_21": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "B_R_Hh_sarvedo_felso_csap_6558_B",
+   "sub": "13 Burkolat (A7 V2)"
+  },
+  "P_6536_33": {
+   "group": "vaz",
+   "partno": "6536",
+   "name": "Technic Axle and Pin Connector Perpendicular",
+   "element": "R_Ee_6536_x236_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6536_34": {
+   "group": "vaz",
+   "partno": "6536",
+   "name": "Technic Axle and Pin Connector Perpendicular",
+   "element": "R_Ee_6536_x228_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32526_11": {
+   "group": "vaz",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
+   "element": "R_Ee_L_32526_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_26": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_Ee_csap_z1_2780_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6558_22": {
+   "group": "vaz",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "R_Ee_csap_z2_6558_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6558_23": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "R_Ee_csap_tarto_y52_2780_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6558_24": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "R_Ee_csap_tarto_y60_2780_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32526_12": {
+   "group": "karosszeria",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
+   "element": "R_Eh_L_32526_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6558_25": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "R_Eh_csap_6558_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_27": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_Eh_csap_tarto_y52_2780_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_28": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_Eh_csap_tarto_y60_2780_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32291_14": {
+   "group": "vaz",
+   "partno": "32291",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
+   "element": "R_He_32291_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_29": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_He_csap_y60_2780_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_4519_20": {
+   "group": "karosszeria",
+   "partno": "4519",
+   "name": "Technic Axle 3",
+   "element": "R_He_csap_y68_2780_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32291_15": {
+   "group": "vaz",
+   "partno": "32291",
+   "name": "Technic Axle and Pin Connector Perpendicular Double",
+   "element": "R_Hh_32291_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_30": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_Hh_csap_y52_2780_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_2780_31": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R_Hh_csap_y60_2780_J",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_6558_26": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "B_R_Ee_sarvedo_felso_csap_6558_J",
+   "sub": "13 Burkolat (A7 V2)"
+  },
+  "P_6558_27": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "B_R_Eh_sarvedo_felso_csap_6558_J",
+   "sub": "13 Burkolat (A7 V2)"
+  },
+  "P_6558_28": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "B_R_He_sarvedo_felso_csap_6558_J",
+   "sub": "13 Burkolat (A7 V2)"
+  },
+  "P_6558_29": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "B_R_Hh_sarvedo_felso_csap_6558_J",
+   "sub": "13 Burkolat (A7 V2)"
+  },
+  "P_3706_09": {
+   "group": "karosszeria",
+   "partno": "3706",
+   "name": "Technic Axle 6",
+   "element": "B_R_potkerek_tengely2_3706",
+   "sub": "13 Burkolat (A7 V2)"
+  },
+  "P_32123a_56": {
+   "group": "valto",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "R_persely_a_A6c_VH_P0_32063",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32123a_57": {
+   "group": "vaz",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "R_persely_f_A6c_H88_32065",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32123a_58": {
+   "group": "valto",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "R_persely_f_A6c_K_K1_32065",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32123a_59": {
+   "group": "valto",
+   "partno": "32123a",
+   "name": "Technic Bush 1/2 Smooth",
+   "element": "R_persely_a_A6c_K_K1_32065",
+   "sub": "R Rögzítés (új tartók, csapok, perselyek)"
+  },
+  "P_32316_01": {
+   "group": "vaz",
+   "partno": "32316",
+   "name": "Technic Beam 5",
+   "element": "R2_ajto_tavtarto_32316_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_6558_30": {
+   "group": "vaz",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "R2_ajto_csap_z124_6558_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_32": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_ajto_csap_z108_2780_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_33": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_ajto_csap_z92_2780_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_34": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_plato_csap_x8_2780_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_35": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_plato_csap_x-8_2780_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_6536_35": {
+   "group": "vaz",
+   "partno": "6536",
+   "name": "Technic Axle and Pin Connector Perpendicular",
+   "element": "R2_mh_6536_z92_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_6536_36": {
+   "group": "vaz",
+   "partno": "6536",
+   "name": "Technic Axle and Pin Connector Perpendicular",
+   "element": "R2_mh_6536_z100_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32526_13": {
+   "group": "vaz",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
+   "element": "R2_mh_L_32526_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_36": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_6536a_2780_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_37": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_6536b_2780_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_41239_03": {
+   "group": "karosszeria",
+   "partno": "41239",
+   "name": "Technic Beam 13",
+   "element": "R2_mh_gerenda_41239_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_38": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_L_x212_2780_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_39": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_L_x220_2780_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_40": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_szarny_x148_2780_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_41": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_szarny_x244_2780_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32316_02": {
+   "group": "karosszeria",
+   "partno": "32316",
+   "name": "Technic Beam 5",
+   "element": "R2_racs_tarto_32316_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_41677_11": {
+   "group": "karosszeria",
+   "partno": "41677",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
+   "element": "R2_toldat_kar_41677_Ee_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32062_07": {
+   "group": "karosszeria",
+   "partno": "32062",
+   "name": "Technic Axle 2 Notched",
+   "element": "R2_toldat_tengely2_Ee_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_41677_12": {
+   "group": "karosszeria",
+   "partno": "41677",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
+   "element": "R2_toldat_kar_41677_Eh_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32062_08": {
+   "group": "karosszeria",
+   "partno": "32062",
+   "name": "Technic Axle 2 Notched",
+   "element": "R2_toldat_tengely2_Eh_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_41677_13": {
+   "group": "karosszeria",
+   "partno": "41677",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
+   "element": "R2_toldat_kar_41677_He_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_41677_14": {
+   "group": "karosszeria",
+   "partno": "41677",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
+   "element": "R2_toldat_kar_41677_Hh_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32062_09": {
+   "group": "karosszeria",
+   "partno": "32062",
+   "name": "Technic Axle 2 Notched",
+   "element": "R2_toldat_tengely2_Hh_B",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32316_03": {
+   "group": "karosszeria",
+   "partno": "32316",
+   "name": "Technic Beam 5",
+   "element": "R2_ajto_tavtarto_32316_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_6558_31": {
+   "group": "karosszeria",
+   "partno": "6558",
+   "name": "Technic Pin Long with Friction Ridges Lengthwise",
+   "element": "R2_ajto_csap_z124_6558_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_42": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_ajto_csap_z108_2780_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_43": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_ajto_csap_z92_2780_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_44": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_plato_csap_x8_2780_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_45": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_plato_csap_x-8_2780_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_6536_37": {
+   "group": "vaz",
+   "partno": "6536",
+   "name": "Technic Axle and Pin Connector Perpendicular",
+   "element": "R2_mh_6536_z92_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_6536_38": {
+   "group": "vaz",
+   "partno": "6536",
+   "name": "Technic Axle and Pin Connector Perpendicular",
+   "element": "R2_mh_6536_z100_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32526_14": {
+   "group": "vaz",
+   "partno": "32526",
+   "name": "Technic Beam 3 x 5 Bent 90",
+   "element": "R2_mh_L_32526_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_46": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_6536a_2780_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_47": {
+   "group": "vaz",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_6536b_2780_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_41239_04": {
+   "group": "karosszeria",
+   "partno": "41239",
+   "name": "Technic Beam 13",
+   "element": "R2_mh_gerenda_41239_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_48": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_L_x212_2780_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_49": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_L_x220_2780_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_50": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_szarny_x148_2780_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_51": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_mh_csap_szarny_x244_2780_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32316_04": {
+   "group": "karosszeria",
+   "partno": "32316",
+   "name": "Technic Beam 5",
+   "element": "R2_racs_tarto_32316_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_41677_15": {
+   "group": "karosszeria",
+   "partno": "41677",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
+   "element": "R2_toldat_kar_41677_Ee_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32062_10": {
+   "group": "karosszeria",
+   "partno": "32062",
+   "name": "Technic Axle 2 Notched",
+   "element": "R2_toldat_tengely2_Ee_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_41677_16": {
+   "group": "karosszeria",
+   "partno": "41677",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
+   "element": "R2_toldat_kar_41677_Eh_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32062_11": {
+   "group": "karosszeria",
+   "partno": "32062",
+   "name": "Technic Axle 2 Notched",
+   "element": "R2_toldat_tengely2_Eh_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_41677_17": {
+   "group": "karosszeria",
+   "partno": "41677",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
+   "element": "R2_toldat_kar_41677_He_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_41677_18": {
+   "group": "karosszeria",
+   "partno": "41677",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
+   "element": "R2_toldat_kar_41677_Hh_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_32062_12": {
+   "group": "karosszeria",
+   "partno": "32062",
+   "name": "Technic Axle 2 Notched",
+   "element": "R2_toldat_tengely2_Hh_J",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_52": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_racs_csap_y36_2780",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_2780_53": {
+   "group": "karosszeria",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_racs_csap_y-28_2780",
+   "sub": "R2 Rögzítés (burkolat-tartók, pinion-csapágy)"
+  },
+  "P_6632_08": {
+   "group": "hatso_hid",
+   "partno": "6632",
+   "name": "Technic Beam 3 x 0.5 Liftarm",
+   "element": "R2_pinion_csapagy2_6632",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
+  },
+  "P_32062_13": {
+   "group": "hatso_hid",
+   "partno": "32062",
+   "name": "Technic Axle 2 Notched",
+   "element": "R2_pinion_bak_tengely_z26_32062",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
+  },
+  "P_32062_14": {
+   "group": "hatso_hid",
+   "partno": "32062",
+   "name": "Technic Axle 2 Notched",
+   "element": "R2_pinion_bak_tengely_z42_32062",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
+  },
+  "P_6536_39": {
+   "group": "hatso_hid",
+   "partno": "6536",
+   "name": "Technic Axle and Pin Connector Perpendicular",
+   "element": "R2_pinion_6536_B",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
+  },
+  "P_2780_54": {
+   "group": "hatso_hid",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_pinion_hidhaz_csap_B_2780",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
+  },
+  "P_32062_15": {
+   "group": "hatso_hid",
+   "partno": "32062",
+   "name": "Technic Axle 2 Notched",
+   "element": "R2_pinion_kar_tengely_B_32062",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
+  },
+  "P_6536_40": {
+   "group": "hatso_hid",
+   "partno": "6536",
+   "name": "Technic Axle and Pin Connector Perpendicular",
+   "element": "R2_pinion_6536_J",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
+  },
+  "P_2780_55": {
+   "group": "hatso_hid",
+   "partno": "2780",
+   "name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+   "element": "R2_pinion_hidhaz_csap_J_2780",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
+  },
+  "P_32062_16": {
+   "group": "hatso_hid",
+   "partno": "32062",
+   "name": "Technic Axle 2 Notched",
+   "element": "R2_pinion_kar_tengely_J_32062",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
+  },
+  "P_41677_19": {
+   "group": "hatso_hid",
+   "partno": "41677",
+   "name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
+   "element": "R2_pinion_kar_B_41677",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
+  },
+  "P_6632_09": {
+   "group": "hatso_hid",
+   "partno": "6632",
+   "name": "Technic Beam 3 x 0.5 Liftarm",
+   "element": "R2_pinion_kar_J_6632",
+   "sub": "10 Hátsó híd, 4-link, rugóstagok, hátsó kerekek (A2)"
   }
  }
 }

@@ -1,30 +1,19 @@
 {
-"source": "pyA/A6d_integracio/bom_A6.csv (443) + pyA/A7_burkolat/a7_geometry_V2.json (42)",
-"total": 485,
+"source": "pyA/R_rogzites/r2_geometry.json (592 elem: A6d + A7 V2 burkolat + R/R2 rögzítés)",
+"total": 592,
 "rows": [
 {
 "partno": "32123a",
-"name": "Technic Bush  1/2 Smooth with Axle Hole Reduced",
-"qty": 58,
-"where_hu": "Váz 36 · Váltóház 7 · Első futómű 2 · Első osztómű 1 · Középső hajtáslánc 1 · Hátsó híd 11",
-"where_en": "Frame 36 · Gearbox housing 7 · Front suspension 2 · Front axle drive 1 · Centre driveline 1 · Rear axle 11",
+"name": "Technic Bush 1/2 Smooth",
+"qty": 59,
+"where_hu": "Első osztómű 1 · Első futómű 2 · Váz 34 · Középső hajtáslánc 1 · Hátsó híd 10 · Váltóház 7 · Rögzítés 4",
+"where_en": "Front axle drive 1 · Front suspension 2 · Frame 34 · Centre driveline 1 · Rear axle 10 · Gearbox housing 7 · Fastening 4",
 "groups": [
 "Első futómű",
 "Első osztómű",
 "Hátsó híd",
 "Középső hajtáslánc",
-"Váltóház",
-"Váz"
-],
-"note": ""
-},
-{
-"partno": "6536",
-"name": "Technic Cross Block 1 x 2 (Axle/Pin)",
-"qty": 30,
-"where_hu": "Váz 24 · Váltóház 6",
-"where_en": "Frame 24 · Gearbox housing 6",
-"groups": [
+"Rögzítés",
 "Váltóház",
 "Váz"
 ],
@@ -32,41 +21,125 @@
 },
 {
 "partno": "2780",
-"name": "Technic Pin with Friction and Slots",
-"qty": 25,
-"where_hu": "Váz 15 · Váltóház 2 · Burkolat 8",
-"where_en": "Frame 15 · Gearbox housing 2 · Body 8",
+"name": "Technic Pin with Friction Ridges Lengthwise and Slots",
+"qty": 55,
+"where_hu": "Váz 15 · Váltóház 2 · Rögzítés 36 · Hátsó híd 2",
+"where_en": "Frame 15 · Gearbox housing 2 · Fastening 36 · Rear axle 2",
 "groups": [
-"Burkolat",
+"Hátsó híd",
+"Rögzítés",
 "Váltóház",
 "Váz"
 ],
 "note": ""
 },
 {
-"partno": "32062",
-"name": "Technic Axle  2 Notched",
-"qty": 14,
-"where_hu": "Váz 4 · Első osztómű 2 · Burkolat 8",
-"where_en": "Frame 4 · Front axle drive 2 · Body 8",
+"partno": "6536",
+"name": "Technic Axle and Pin Connector Perpendicular",
+"qty": 40,
+"where_hu": "Váz 24 · Váltóház 6 · Rögzítés 8 · Hátsó híd 2",
+"where_en": "Frame 24 · Gearbox housing 6 · Fastening 8 · Rear axle 2",
 "groups": [
-"Burkolat",
-"Első osztómű",
+"Hátsó híd",
+"Rögzítés",
+"Váltóház",
 "Váz"
 ],
 "note": ""
 },
 {
-"partno": "4519",
-"name": "Technic Axle  3",
-"qty": 14,
-"where_hu": "Váz 4 · Váltóház 2 · Első futómű 2 · Első osztómű 2 · Középső hajtáslánc 2 · Hátsó híd 2",
-"where_en": "Frame 4 · Gearbox housing 2 · Front suspension 2 · Front axle drive 2 · Centre driveline 2 · Rear axle 2",
+"partno": "6558",
+"name": "Technic Pin Long with Friction Ridges Lengthwise",
+"qty": 31,
+"where_hu": "Hátsó híd 4 · Váltóház 1 · Burkolat 16 · Rögzítés 10",
+"where_en": "Rear axle 4 · Gearbox housing 1 · Body 16 · Fastening 10",
 "groups": [
+"Burkolat",
+"Hátsó híd",
+"Rögzítés",
+"Váltóház"
+],
+"note": ""
+},
+{
+"partno": "4519",
+"name": "Technic Axle 3",
+"qty": 20,
+"where_hu": "Első osztómű 2 · Első futómű 2 · Középső hajtáslánc 2 · Váz 4 · Hátsó híd 2 · Váltóház 2 · Burkolat 4 · Rögzítés 2",
+"where_en": "Front axle drive 2 · Front suspension 2 · Centre driveline 2 · Frame 4 · Rear axle 2 · Gearbox housing 2 · Body 4 · Fastening 2",
+"groups": [
+"Burkolat",
 "Első futómű",
 "Első osztómű",
 "Hátsó híd",
 "Középső hajtáslánc",
+"Rögzítés",
+"Váltóház",
+"Váz"
+],
+"note": ""
+},
+{
+"partno": "41677",
+"name": "Technic Beam 2 x 0.5 Liftarm with Two Axle Holes",
+"qty": 19,
+"where_hu": "Váz 8 · Hátsó híd 3 · Rögzítés 8",
+"where_en": "Frame 8 · Rear axle 3 · Fastening 8",
+"groups": [
+"Hátsó híd",
+"Rögzítés",
+"Váz"
+],
+"note": ""
+},
+{
+"partno": "32062",
+"name": "Technic Axle 2 Notched",
+"qty": 16,
+"where_hu": "Első osztómű 2 · Váz 4 · Rögzítés 6 · Hátsó híd 4",
+"where_en": "Front axle drive 2 · Frame 4 · Fastening 6 · Rear axle 4",
+"groups": [
+"Első osztómű",
+"Hátsó híd",
+"Rögzítés",
+"Váz"
+],
+"note": ""
+},
+{
+"partno": "32291",
+"name": "Technic Axle and Pin Connector Perpendicular Double",
+"qty": 15,
+"where_hu": "Váz 10 · Váltóház 1 · Rögzítés 4",
+"where_en": "Frame 10 · Gearbox housing 1 · Fastening 4",
+"groups": [
+"Rögzítés",
+"Váltóház",
+"Váz"
+],
+"note": ""
+},
+{
+"partno": "32526",
+"name": "Technic Beam 3 x 5 Bent 90",
+"qty": 14,
+"where_hu": "Burkolat 8 · Rögzítés 6",
+"where_en": "Body 8 · Fastening 6",
+"groups": [
+"Burkolat",
+"Rögzítés"
+],
+"note": ""
+},
+{
+"partno": "3705",
+"name": "Technic Axle 4",
+"qty": 14,
+"where_hu": "Váz 4 · Váltó 3 · Váltóház 3 · Burkolat 4",
+"where_en": "Frame 4 · Gearbox 3 · Gearbox housing 3 · Body 4",
+"groups": [
+"Burkolat",
+"Váltó",
 "Váltóház",
 "Váz"
 ],
@@ -87,19 +160,6 @@
 "note": ""
 },
 {
-"partno": "3705",
-"name": "Technic Axle  4",
-"qty": 12,
-"where_hu": "Váz 6 · Váltóház 3 · Váltó 3",
-"where_en": "Frame 6 · Gearbox housing 3 · Gearbox 3",
-"groups": [
-"Váltó",
-"Váltóház",
-"Váz"
-],
-"note": ""
-},
-{
 "partno": "6628",
 "name": "Technic Pin Towball with Friction",
 "qty": 12,
@@ -112,50 +172,28 @@
 "note": ""
 },
 {
-"partno": "32291",
-"name": "Technic Cross Block 2 x 2 (Axle/Twin Pin)",
-"qty": 11,
-"where_hu": "Váz 10 · Váltóház 1",
-"where_en": "Frame 10 · Gearbox housing 1",
-"groups": [
-"Váltóház",
-"Váz"
-],
-"note": ""
-},
-{
-"partno": "32524",
-"name": "Technic Beam  7",
-"qty": 11,
-"where_hu": "Váz 7 · Burkolat 4",
-"where_en": "Frame 7 · Body 4",
-"groups": [
-"Burkolat",
-"Váz"
-],
-"note": ""
-},
-{
-"partno": "3706",
-"name": "Technic Axle  6",
-"qty": 11,
-"where_hu": "Váz 6 · Váltóház 1 · Első osztómű 1 · Váltó 3",
-"where_en": "Frame 6 · Gearbox housing 1 · Front axle drive 1 · Gearbox 3",
-"groups": [
-"Első osztómű",
-"Váltó",
-"Váltóház",
-"Váz"
-],
-"note": ""
-},
-{
 "partno": "11478",
 "name": "Technic Beam  5 x  0.5 Liftarm with Axle Holes at Both Ends",
 "qty": 10,
 "where_hu": "Váz 4 · Váltóház 6",
 "where_en": "Frame 4 · Gearbox housing 6",
 "groups": [
+"Váltóház",
+"Váz"
+],
+"note": ""
+},
+{
+"partno": "32073",
+"name": "Technic Axle 5",
+"qty": 10,
+"where_hu": "Első futómű 2 · Kormány 1 · Váz 4 · Középső hajtáslánc 1 · Váltóház 1 · Burkolat 1",
+"where_en": "Front suspension 2 · Steering 1 · Frame 4 · Centre driveline 1 · Gearbox housing 1 · Body 1",
+"groups": [
+"Burkolat",
+"Első futómű",
+"Kormány",
+"Középső hajtáslánc",
 "Váltóház",
 "Váz"
 ],
@@ -174,13 +212,13 @@
 "note": ""
 },
 {
-"partno": "41677",
-"name": "Technic Beam  2 x  0.5 Liftarm",
+"partno": "44294",
+"name": "Technic Axle 7",
 "qty": 10,
-"where_hu": "Váz 8 · Hátsó híd 2",
-"where_en": "Frame 8 · Rear axle 2",
+"where_hu": "Váz 3 · Váltóház 7",
+"where_en": "Frame 3 · Gearbox housing 7",
 "groups": [
-"Hátsó híd",
+"Váltóház",
 "Váz"
 ],
 "note": ""
@@ -210,15 +248,28 @@
 "note": ""
 },
 {
-"partno": "32073",
-"name": "Technic Axle  5",
+"partno": "3706",
+"name": "Technic Axle 6",
 "qty": 9,
-"where_hu": "Váz 4 · Váltóház 1 · Első futómű 2 · Kormány 1 · Középső hajtáslánc 1",
-"where_en": "Frame 4 · Gearbox housing 1 · Front suspension 2 · Steering 1 · Centre driveline 1",
+"where_hu": "Első osztómű 1 · Váz 4 · Váltó 3 · Burkolat 1",
+"where_en": "Front axle drive 1 · Frame 4 · Gearbox 3 · Body 1",
 "groups": [
-"Első futómű",
-"Kormány",
-"Középső hajtáslánc",
+"Burkolat",
+"Első osztómű",
+"Váltó",
+"Váz"
+],
+"note": ""
+},
+{
+"partno": "6632",
+"name": "Technic Beam 3 x 0.5 Liftarm",
+"qty": 9,
+"where_hu": "Első osztómű 2 · Váz 1 · Hátsó híd 5 · Váltóház 1",
+"where_en": "Front axle drive 2 · Frame 1 · Rear axle 5 · Gearbox housing 1",
+"groups": [
+"Első osztómű",
+"Hátsó híd",
 "Váltóház",
 "Váz"
 ],
@@ -280,26 +331,24 @@
 "note": ""
 },
 {
-"partno": "44294",
-"name": "Technic Axle  7",
+"partno": "32524",
+"name": "Technic Beam  7",
 "qty": 7,
-"where_hu": "Váz 1 · Váltóház 6",
-"where_en": "Frame 1 · Gearbox housing 6",
+"where_hu": "Váz 7",
+"where_en": "Frame 7",
 "groups": [
-"Váltóház",
 "Váz"
 ],
 "note": ""
 },
 {
-"partno": "6632",
-"name": "Technic Beam  3 x  0.5 Liftarm",
-"qty": 7,
-"where_hu": "Váz 1 · Váltóház 1 · Első osztómű 2 · Hátsó híd 3",
-"where_en": "Frame 1 · Gearbox housing 1 · Front axle drive 2 · Rear axle 3",
+"partno": "23948",
+"name": "Technic Axle 11",
+"qty": 6,
+"where_hu": "Váz 3 · Váltó 1 · Váltóház 2",
+"where_en": "Frame 3 · Gearbox 1 · Gearbox housing 2",
 "groups": [
-"Első osztómű",
-"Hátsó híd",
+"Váltó",
 "Váltóház",
 "Váz"
 ],
@@ -320,8 +369,8 @@
 "partno": "3708",
 "name": "Technic Axle 12",
 "qty": 6,
-"where_hu": "Váz 2 · Váltóház 2 · Hátsó híd 2",
-"where_en": "Frame 2 · Gearbox housing 2 · Rear axle 2",
+"where_hu": "Váz 2 · Hátsó híd 2 · Váltóház 2",
+"where_en": "Frame 2 · Rear axle 2 · Gearbox housing 2",
 "groups": [
 "Hátsó híd",
 "Váltóház",
@@ -331,10 +380,10 @@
 },
 {
 "partno": "60485",
-"name": "Technic Axle  9",
+"name": "Technic Axle 9",
 "qty": 6,
-"where_hu": "Váz 3 · Kormány 1 · Váltó 2",
-"where_en": "Frame 3 · Steering 1 · Gearbox 2",
+"where_hu": "Kormány 1 · Váz 3 · Váltó 2",
+"where_en": "Steering 1 · Frame 3 · Gearbox 2",
 "groups": [
 "Kormány",
 "Váltó",
@@ -367,19 +416,6 @@
 "note": ""
 },
 {
-"partno": "23948",
-"name": "Technic Axle 11",
-"qty": 5,
-"where_hu": "Váz 2 · Váltóház 2 · Váltó 1",
-"where_en": "Frame 2 · Gearbox housing 2 · Gearbox 1",
-"groups": [
-"Váltó",
-"Váltóház",
-"Váz"
-],
-"note": ""
-},
-{
 "partno": "32063",
 "name": "Technic Beam  6 x  0.5",
 "qty": 5,
@@ -395,22 +431,11 @@
 "partno": "32523",
 "name": "Technic Beam  3",
 "qty": 5,
-"where_hu": "Váltóház 1 · Első futómű 4",
-"where_en": "Gearbox housing 1 · Front suspension 4",
+"where_hu": "Első futómű 4 · Váltóház 1",
+"where_en": "Front suspension 4 · Gearbox housing 1",
 "groups": [
 "Első futómű",
 "Váltóház"
-],
-"note": ""
-},
-{
-"partno": "32525",
-"name": "Technic Beam 11",
-"qty": 5,
-"where_hu": "Váz 5",
-"where_en": "Frame 5",
-"groups": [
-"Váz"
 ],
 "note": ""
 },
@@ -437,18 +462,6 @@
 "Első osztómű",
 "Hátsó híd",
 "Középső hajtáslánc"
-],
-"note": ""
-},
-{
-"partno": "6558",
-"name": "Technic Pin Long with Friction and Slot",
-"qty": 5,
-"where_hu": "Váltóház 1 · Hátsó híd 4",
-"where_en": "Gearbox housing 1 · Rear axle 4",
-"groups": [
-"Hátsó híd",
-"Váltóház"
 ],
 "note": ""
 },
@@ -499,12 +512,12 @@
 },
 {
 "partno": "32316",
-"name": "Technic Beam  5",
+"name": "Technic Beam 5",
 "qty": 4,
-"where_hu": "Burkolat 4",
-"where_en": "Body 4",
+"where_hu": "Rögzítés 4",
+"where_en": "Fastening 4",
 "groups": [
-"Burkolat"
+"Rögzítés"
 ],
 "note": ""
 },
@@ -516,6 +529,18 @@
 "where_en": "Frame 3 · Gearbox housing 1",
 "groups": [
 "Váltóház",
+"Váz"
+],
+"note": ""
+},
+{
+"partno": "41239",
+"name": "Technic Beam 13",
+"qty": 4,
+"where_hu": "Váz 2 · Rögzítés 2",
+"where_en": "Frame 2 · Fastening 2",
+"groups": [
+"Rögzítés",
 "Váz"
 ],
 "note": ""
@@ -573,6 +598,17 @@
 "groups": [
 "Kormány",
 "Középső hajtáslánc"
+],
+"note": ""
+},
+{
+"partno": "32525",
+"name": "Technic Beam 11",
+"qty": 3,
+"where_hu": "Váz 3",
+"where_en": "Frame 3",
+"groups": [
+"Váz"
 ],
 "note": ""
 },
@@ -736,18 +772,6 @@
 "note": ""
 },
 {
-"partno": "3707",
-"name": "Technic Axle  8",
-"qty": 2,
-"where_hu": "Kormány 1 · Burkolat 1",
-"where_en": "Steering 1 · Body 1",
-"groups": [
-"Burkolat",
-"Kormány"
-],
-"note": ""
-},
-{
 "partno": "57515",
 "name": "Technic Suspension Arm  2 x  6",
 "qty": 2,
@@ -880,8 +904,30 @@
 "note": ""
 },
 {
+"partno": "3707",
+"name": "Technic Axle 8",
+"qty": 1,
+"where_hu": "Kormány 1",
+"where_en": "Steering 1",
+"groups": [
+"Kormány"
+],
+"note": ""
+},
+{
 "partno": "40490",
 "name": "Technic Beam  9",
+"qty": 1,
+"where_hu": "Váz 1",
+"where_en": "Frame 1",
+"groups": [
+"Váz"
+],
+"note": ""
+},
+{
+"partno": "50451",
+"name": "Technic Axle 16",
 "qty": 1,
 "where_hu": "Váz 1",
 "where_en": "Frame 1",
@@ -953,6 +999,10 @@
 [
 "Burkolat",
 "Body"
+],
+[
+"Rögzítés",
+"Fastening"
 ]
 ]
 }

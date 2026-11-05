@@ -1,3 +1,8 @@
+# !!! [JAVÍTVA 11-05, tools/cv_adapter.py: a 32494 CV-gömb csonkja a J→C féltengely-irányba fordul; a kehely/kerék változatlan] TODO a következő újragenerálásnál (felhasználói hibajelzés, 11-05 este, képernyőképpel):
+# !!! A "rugozas" (és minden rugózást tartalmazó) klipben az ELSŐ KERÉKAGYBAN LÉVŐ CSUKLÓ (CV-kehely 92909 / féltengely /
+# !!! kardán a kerékagynál) NEM MOZOG a kerékkel – a kerék rugózik, a csukló áll. Javítandó: a hajtott féltengely + CV-elemek
+# !!! pózát a rugózási állapot (hL/hR, AC.side_pose / A1c a1_uj_outer, placed_D2) szerint kell számolni a kinematikában
+# !!! (a6d_anim.front_scene_A5 / full_scene), és rugózás + kormányzás alatt ellenőrizni (képkocka-összevetés h=-14/0/+14).
 #!/usr/bin/env python3
 """MOZGÓ 3D-MODELL a weboldalra: a teljes autó (A6d 443 elem + A7 V2 burkolat 42 elem, pótkerék állítva a plató végén)
 animált glTF-ként, a previs_v3 kinematikájával (export_frames.kin() -> a6d_anim.full_scene(); semmi sincs újraszámolva).
@@ -82,6 +87,17 @@ def st_full(th=0.0, hL=0.0, hR=0.0, s=0.0, kd=0.0, h_r=0.0, roll=0.0, gear=1, kp
                 thA=DR["thA0"] + math.radians(90 * k), thB=DR["thB0"] - math.radians(90 * k),
                 C=A4.RATIOS.get(gear, 0.0) * psi_v if C is None else C)
 
+import cv_adapter                              # 11-05: a 32494 CV-gömb a féltengely irányába (lásd tools/cv_adapter.py)
+CV = cv_adapter.install(E, names, M.AC.J_L)
+RMODE = bool(os.environ.get("TT_GEOM"))   # R: rögzítés-javított elemlista (tools/r_remap.py), a kinematika változatlan
+if RMODE:
+    import r_remap
+    names, parts, grps, kinds, ag, _moving, RG, RREP = r_remap.setup(E, names, parts, grps, kinds, ag, _moving, st_full())
+    NE = len(names)
+    GEO = {n: e for n, e in RG.items() if not n.startswith("B_")}; BODYJ = {n: e for n, e in RG.items() if n.startswith("B_")}
+    for e in RG.values(): LDN.setdefault(e["partno"], e.get("ldraw_nev", ""))
+    SG = [site_group(j) for j in range(NE)]
+    print("  R:", NE, "elem; mozgó gazdájú új elem:", RREP["uj_mozgo"])
 REST = E.kin(st_full())                                           # nyugalmi póz: 1. fokozat, minden 0
 W_REV = 2 * math.pi * E.SPIN                                      # +1 kerékfordulat előre
 
@@ -129,29 +145,83 @@ def valtas_sim(n1, n2, n3, nN, ns, wps):
         out.append(dict(th=th, k=k, cA=prev["SA"], cB=prev["SB"], g=g, C=C))
     return out
 
+VALTAS_RPM = {}
 def clip_valtas():
-    wps, ns = 0.5, int(0.6 * FPS)                       # 0.5 kerékfordulat/s; váltás 0.6 s
-    per_rev = int(round(FPS / wps))
+    """11-05 FELHASZNÁLÓI DÖNTÉS: a MOTOR (főtengely, dugattyúk) fordulata ÁLLANDÓ, a kerék és a hajtáslánc fordulata a
+    fokozattal változik (1. lassú, 2. közepes, 3. gyors; N: a kerék nem kap hajtást, fokozatosan megáll, a motor jár tovább;
+    N -> 1: a kerék felgyorsul az 1. fokozat sebességére – „kuplung"). Narratíva: a motor hajtja a kereket.
+    Hurok: a főtengely egész fordulatot, a kerék 9 egész fordulatot tesz (9 · 7/3 és 9 · 49/9 egész -> a kúpkerekek, kardánok,
+    a váltó tengelyei is záródnak; a 2. fokozat 20T kereke pontosan 8 fogat lép); a pontos 9 fordulatot az N-beli kifutás hossza állítja be."""
+    K = abs(k_v * k_s * B3.RATIO)                        # váltó-bemenet (psi_v) / kerék
+    ns = int(round(0.6 * FPS))                           # váltás 0.6 s (a tetőgomb 90°-ot fordul)
+    w_wheel = lambda g, we: we / (A4.RATIOS[g] * K)      # kerék-fordulat/s a főtengely we fordulat/s-ából
+    NREV = 9.0                                           # 9 · 7/3 és 9 · 49/9 egész -> kerék, kúpkerekek, kardánok, V-tengely záródik;
+                                                         # a 20T G2 (35185) 0,4 fordulatot = pontosan 8 fogat lép (minden 45-re lenne egész)
+    OFF = 9                                              # a 3 -> N váltás kezdetétől a hajtás megszűnéséig (kocka; a gyűrű-szimulációból, lent ellenőrizve)
     best = None
-    for n1 in range(int(1.6 * FPS), int(2.4 * FPS)):
-        base = n1 + int(2.0 * FPS) + int(2.0 * FPS) + 4 * ns
-        for nN in range(int(1.2 * FPS), int(2.6 * FPS)):
-            if (base + nN) % per_rev: continue
-            S = valtas_sim(n1, int(2.0 * FPS), int(2.0 * FPS), nN, ns, wps)
-            r = abs(math.remainder(S[-1]["C"], 2 * math.pi))
-            if best is None or r < best[0]: best = (r, n1, nN, S)
-            break
-    r, n1, nN, S = best
-    print(f"  valtas: n1={n1} nN={nN} kocka={len(S) - 1} főtengely-maradék {math.degrees(r):.1f}° (korrekció az 1. fokozat szakaszára)")
-    # a maradékot az 1. fokozatú szakasz főtengely-szögére osztjuk szét (≤ néhány %), hogy a hurok pontosan záródjon
-    Ct = S[-1]["C"]; res = math.remainder(Ct, 2 * math.pi)
-    i1 = n1; C1 = S[i1]["C"]
-    corr = [(-res * min(1.0, i / i1)) if i <= i1 else -res for i in range(len(S))]
-    print(f"  valtas: 1. fokozat sebesség-korrekció {100 * (-res) / C1:+.1f} %")
-    frames = [E.kin(st_full(th=f["th"], gear=f["g"], kpos=f["k"], cA=f["cA"], cB=f["cB"], C=f["C"] + c)) for f, c in zip(S, corr)]
-    marks = []; prevg = None
-    for i, f in enumerate(S):
-        if f["g"] != prevg: marks.append(dict(t=round(i / FPS, 3), gear=f["g"])); prevg = f["g"]
+    for we_c in (2.0, 2.25, 2.5):                  # főtengely fordulat/s
+        for n1 in range(int(2.4 * FPS), int(4.2 * FPS) + 1):
+            n2 = n1; n3 = n1
+            for nN in range(int(1.4 * FPS), int(3.2 * FPS) + 1):
+                nf = n1 + n2 + n3 + nN + 4 * ns
+                if abs(nf * we_c / FPS - round(nf * we_c / FPS)) > 1e-9: continue
+                w1, w2, w3 = (w_wheel(g, we_c) for g in (1, 2, 3))
+                # állandó szakaszok + váltás-átmenetek (smoothstep-átlag = (a+b)/2) + N->1 felfutás (w1/2)
+                base = (n1 * w1 + n2 * w2 + (n3 + OFF) * w3 + ns * (w1 + w2) / 2 + ns * (w2 + w3) / 2 + ns * w1 / 2) / FPS
+                need = NREV - base                                # a kifutásra (a hajtás megszűnésétől) jutó fordulat
+                Tc = need * 2 / w3                                # smoothstep-lassulás: w3 · Tc / 2
+                avail = (ns - OFF + nN) / FPS
+                if not (0.9 <= Tc <= avail - 0.25): continue
+                score = abs(n1 / FPS - 3.2) + abs(Tc - 1.6) + 0.3 * abs(we_c - 2.0)
+                if best is None or score < best[0]: best = (score, we_c, n1, n2, n3, nN, Tc)
+    _, we_c, n1, n2, n3, nN, Tc = best
+    w1, w2, w3 = (w_wheel(g, we_c) for g in (1, 2, 3))
+    # tervezett szakaszok: (fajta, kockák, fokozat)
+    plan = [("d", n1, 1), ("s", ns, 1), ("d", n2, 2), ("s", ns, 2), ("d", n3, 3), ("s", ns, 3), ("d", nN, 0), ("s", ns, 0)]
+    nf = sum(p[1] for p in plan)
+    kseq, seg = [0.0], [("d", 1, 0.0)]; kk = 0
+    for kind, n, g in plan:
+        for i in range(n):
+            x = (i + 1) / n
+            kseq.append(kk + (float(smooth(x)) if kind == "s" else 0.0)); seg.append((kind, g, x))
+        if kind == "s": kk += 1
+    # 1) tetőgomb -> választók -> gyűrűk -> kapcsolt fokozat (kockánként)
+    prev = {"SA": DR["cA"][1], "SB": DR["cB"][1]}; ring = []
+    for i in range(nf + 1):
+        k = kseq[i]; thA = DR["thA0"] + math.radians(90 * k); thB = DR["thB0"] - math.radians(90 * k)
+        rp = A4.ring_positions(thA, thB, False, False, prev); prev = {s_: rp[s_][0] for s_ in rp}
+        ring.append((k, prev["SA"], prev["SB"], M.engaged(prev["SA"], prev["SB"])))
+    t0 = next(i for i in range(n1 + n2 + n3 + 2 * ns, nf + 1) if ring[i][3] == 0)      # itt szűnik meg a hajtás (3 -> N)
+    tr = nf - ns                                                                       # N -> 1 felfutás kezdete
+    # 2) kerék-fordulat/s kockánként
+    wfull = []
+    for i in range(nf + 1):
+        kind, g, x = seg[i]
+        if i >= tr and i > t0: w = w1 * float(smooth((i - tr) / ns))                     # N -> 1: felfutás („kuplung")
+        elif i >= t0: w = w3 * (1.0 - float(smooth(min(1.0, (i - t0) / FPS / Tc))))     # hajtás nélkül kifut
+        elif kind == "d": w = {1: w1, 2: w2, 3: w3}[g]
+        elif g in (1, 2): w = (w1, w2)[g - 1] + ((w2, w3)[g - 1] - (w1, w2)[g - 1]) * float(smooth(x))
+        else: w = w3                                                                     # 3 -> N váltás eleje (még kapcsolva)
+        wfull.append(w)
+    wfull = np.array(wfull)
+    th_rev = np.concatenate([[0.0], np.cumsum((wfull[1:] + wfull[:-1]) / 2 / FPS)])
+    res = NREV - th_rev[-1]
+    cN = np.array([1.0 if t0 < i < tr else 0.0 for i in range(nf + 1)])                # csak a kifutást skálázzuk
+    wN = wfull * cN; add = np.concatenate([[0.0], np.cumsum((wN[1:] + wN[:-1]) / 2 / FPS)])
+    wfull = wfull + wN * res / add[-1]
+    th_rev = np.concatenate([[0.0], np.cumsum((wfull[1:] + wfull[:-1]) / 2 / FPS)])
+    print(f"  valtas: főtengely {we_c:.2f} ford/s ({60 * we_c:.0f} 1/min, ÁLLANDÓ); kerék 1./2./3. = {w1:.3f}/{w2:.3f}/{w3:.3f} ford/s; "
+          f"szakaszok {n1}/{n2}/{n3}/N{nN} + 4×{ns} kocka = {nf} ({nf / FPS:.2f} s); kerék {th_rev[-1]:.4f} ford, főtengely {nf * we_c / FPS:.3f} ford; "
+          f"hajtás megszűnik {t0 / FPS:.2f} s, kifutás {Tc:.2f} s (korr. {100 * res / max(add[-1], 1e-9):+.1f} %)")
+    frames = []; marks = []; prevg = None
+    sgn_c = -1.0                                          # a főtengely forgásiránya a régi integrálással egyező (C = RATIOS · psi_v, psi_v = -K·th)
+    for i in range(nf + 1):
+        k, cA, cB, g = ring[i]
+        th = W_REV * th_rev[i]
+        C = sgn_c * 2 * math.pi * we_c * i / FPS
+        frames.append(E.kin(st_full(th=th, gear=g, kpos=k, cA=cA, cB=cB, C=C)))
+        if g != prevg and i < nf: marks.append(dict(t=round(i / FPS, 3), gear=g)); prevg = g
+    VALTAS_RPM.update(fps=FPS, crank_rpm=[round(60 * we_c, 1)] * (nf + 1), wheel_rpm=[round(60 * w, 1) for w in wfull])
     return frames, marks
 
 def explode_vectors():
@@ -233,7 +303,8 @@ def lin(hexc):
 
 def build():
     G = GLB(); g = G.g
-    MS = np.load(os.path.join(PREVIS, "cache/meshes.npz"))
+    MS = dict(np.load(os.path.join(PREVIS, "cache/meshes.npz")))
+    if RMODE: MS.update(dict(np.load("/home/claude/work/export/py/R/mesh_new.npz")))
     # anyagok: <csoport>_<fajta>
     mats = {}
     def mat(gid, kind):
@@ -324,8 +395,8 @@ CLIP_META = [
      "A tetőkormány az oszlopon és két kardánon át a pinion → léc láncot hajtja, a kerekek végállásig fordulnak.",
      "The roof wheel drives the pinion → rack through the column and two U-joints; the wheels steer lock to lock."),
     ("valtas", "Váltás 1 → 2 → 3 → N", "Shifting 1 → 2 → 3 → N",
-     "A tetőgomb 90°-onként fordítja a választókat, azok tolják a kapcsológyűrűket – a dugattyúk sebessége fokozatonként változik, N-ben állnak.",
-     "The roof knob turns the selector drums 90° per step, which slide the shift rings – piston speed changes with each gear and stops in N."),
+     "A V8 állandó fordulattal jár, a motor hajtja a kereket: a tetőgomb 90°-onként fordítja a választókat, azok tolják a kapcsológyűrűket – 1. fokozatban lassan, 2.-ban közepesen, 3.-ban gyorsan forog a kerék, N-ben hajtás nélkül kifut és megáll, a motor tovább jár.",
+     "The V8 runs at constant speed and drives the wheels: the roof knob turns the selector drums 90° per step, which slide the shift rings – the wheels turn slowly in 1st, faster in 2nd, fastest in 3rd; in N they coast to a stop while the engine keeps running."),
     ("robbantas", "Robbantás", "Explode",
      "A részegységek szétválnak, majd visszaállnak (a previs robbantási vektoraival).",
      "Sub-assemblies fly apart and return (same explode vectors as the film previs)."),
@@ -343,9 +414,9 @@ if __name__ == "__main__":
     print(" ".join(cmd)); subprocess.run(cmd, check=True)
     print(f"tömörített GLB: {os.path.getsize(out) / 1e6:.2f} MB")
     pj = dict(version=3, units="mm (gyökér-scale 0.001)", axes="+X előre, +Y fel, +Z jobbra", placeholder=False,
-              source="A6d teljes jármű (443 elem, a6d_anim.full_scene kinematika) + A7 V2 burkolat (42 elem, pótkerék állítva) – LDraw-hálók; tools/build_anim_glb.py",
+              source=("R rögzítés-javított teljes jármű (%d elem: A6d + A7 V2 burkolat + R tartók/csapok/perselyek, pótkerék fektetve; a6d_anim.full_scene kinematika, az új elemek a gazdájukhoz kötve – tools/r_remap.py) – LDraw-hálók; tools/build_anim_glb.py" % NE) if RMODE else "A6d teljes jármű (443 elem, a6d_anim.full_scene kinematika) + A7 V2 burkolat (42 elem, pótkerék állítva) – LDraw-hálók; tools/build_anim_glb.py",
               compression="EXT_meshopt_compression + KHR_mesh_quantization (gltfpack)",
               animations=[dict(name=n, loop_s=round(info[n][0], 3), moving=info[n][1], hu=hu, en=en, desc_hu=dh, desc_en=de) for n, hu, en, dh, de in CLIP_META],
-              gear_marks=marks, groups=[dict(id=a, hu=b, en=c, color=d, count=SG.count(a)) for a, b, c, d in GROUPS], parts=pinfo)
+              gear_marks=marks, valtas_rpm=VALTAS_RPM, groups=[dict(id=a, hu=b, en=c, color=d, count=SG.count(a)) for a, b, c, d in GROUPS], parts=pinfo)
     json.dump(pj, open(os.path.join(SITE, "assets/model/parts.json"), "w"), ensure_ascii=False, indent=1)
     print("parts.json kész")
