@@ -216,13 +216,13 @@
     <h2 class="reveal" data-i18n="film.title"></h2>
     <p class="intro reveal" data-i18n="film.intro"></p>
     <div class="tabs reveal" id="vidTabs" role="tablist">
-      <button class="tab" type="button" role="tab" data-v="previs" aria-selected="true" data-i18n="film.t1"></button>
+      <button class="tab" type="button" role="tab" data-v="final" aria-selected="true" data-i18n="film.t4"></button>
+      <button class="tab" type="button" role="tab" data-v="previs" aria-selected="false" data-i18n="film.t1"></button>
       <button class="tab" type="button" role="tab" data-v="s1" aria-selected="false" data-i18n="film.t2"></button>
       <button class="tab" type="button" role="tab" data-v="s2" aria-selected="false" data-i18n="film.t3"></button>
-      <button class="tab" type="button" role="tab" data-v="final" aria-selected="false" data-i18n="film.t4"></button>
     </div>
     <div class="film reveal" id="filmBox">
-      <video controls playsinline preload="none" muted></video>
+      <video controls playsinline preload="metadata"></video>
       <span class="badge badge--wip" id="vidBadge" data-i18n="film.wip"></span>
       <div class="film__soon" hidden><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M19 15l14 9-14 9z" fill="currentColor"/></svg><span data-i18n="film.soon"></span></div>
     </div>

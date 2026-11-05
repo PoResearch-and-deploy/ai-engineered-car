@@ -69,21 +69,22 @@ addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
 // --- videók: munkaverziók + helyőrző a végleges filmnek ---
 (() => {
   const box = $('#filmBox'), v = box.querySelector('video'), soon = box.querySelector('.film__soon'), badge = $('#vidBadge'), tabs = [...document.querySelectorAll('#vidTabs .tab')];
-  const V = { previs: { src: () => 'assets/video/previs_v3.mp4', poster: 'assets/video/previs_v3.webp', d: 'film.d1' },
+  const V = { final: { src: () => 'assets/video/film_v3.mp4', poster: 'assets/video/film_v3.webp', d: 'film.d4', fin: true },
+              previs: { src: () => 'assets/video/previs_v3.mp4', poster: 'assets/video/previs_v3.webp', d: 'film.d1' },
               s1: { src: () => `assets/video/S1_vem_${lang()}.mp4`, poster: 'assets/video/S1_vem.webp', d: 'film.d2' },
               s2: { src: () => `assets/video/S2_hajtaslanc_${lang()}.mp4`, poster: 'assets/video/S2_hajtaslanc.webp', d: 'film.d3' },
-              final: { d: 'film.d4' } };
-  let cur = 'previs';
+              };
+  let cur = 'final';
   const show = (k, force) => {
     if (k === cur && !force) return; cur = k; const c = V[k];
     tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.v === k)));
     v.pause();
-    if (c.src) { v.hidden = false; soon.hidden = true; badge.hidden = false; v.poster = c.poster; v.src = c.src(); v.controls = true; }
+    if (c.src) { v.hidden = false; soon.hidden = true; badge.hidden = !!c.fin; v.muted = !c.fin; v.poster = c.poster; v.src = c.src(); v.controls = true; }
     else { v.removeAttribute('src'); v.load(); v.hidden = true; soon.hidden = false; badge.hidden = true; }
     $('#vidDesc').textContent = t(c.d);
   };
   tabs.forEach(b => b.addEventListener('click', () => show(b.dataset.v)));
-  show('previs', true);
+  show('final', true);
   onLang(() => { const was = !v.paused; show(cur, true); if (was) v.play().catch(() => {}); });
 })();
 
