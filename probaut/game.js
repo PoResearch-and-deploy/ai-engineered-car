@@ -385,7 +385,7 @@ function step(dt) {
       const ref = Math.max(Math.abs(vl), 4.0);
       let Fy = -Fmax * Math.max(-1, Math.min(1, (vs / ref) / 0.14));
       const tot = Math.hypot(Fx, Fy); let slip = 0;
-      if (tot > Fmax) { slip = tot / Fmax - 1; Fx *= Fmax / tot; Fy *= Fmax / tot; }
+      if (tot > Fmax) { slip = Fmax > 1e-3 ? Math.min(5, tot / Fmax - 1) : 5; const f = Fmax > 0 ? Fmax / tot : 0; Fx *= f; Fy *= f; }
       wp.slip = slip + Math.min(1, Math.abs(vs) / 6);
       const hApp = com.y * 0.55;                       // árkád: a gumi-erő a talaj fölött hat (kisebb borulási nyomaték)
       _o.copy(wp.cp).addScaledVector(upW, hApp);
@@ -461,7 +461,7 @@ addEventListener('keyup', e => { if (keymap[e.code]) ctl[keymap[e.code]] = 0; })
 addEventListener('blur', () => { for (const k in ctl) ctl[k] = 0; });
 document.querySelectorAll('#touch [data-k]').forEach(b => {
   const k = b.dataset.k, hold = ['gas', 'brake', 'left', 'right'].includes(k);
-  b.addEventListener('pointerdown', e => { e.preventDefault(); b.setPointerCapture?.(e.pointerId); b.classList.add('on'); if (hold) ctl[k] = 1; else action(k); });
+  b.addEventListener('pointerdown', e => { e.preventDefault(); try { b.setPointerCapture?.(e.pointerId); } catch (_) {} b.classList.add('on'); if (hold) ctl[k] = 1; else action(k); });
   const up = e => { b.classList.remove('on'); if (hold) ctl[k] = 0; };
   b.addEventListener('pointerup', up); b.addEventListener('pointercancel', up); b.addEventListener('lostpointercapture', up);
 });
@@ -498,7 +498,7 @@ function hud(dt) {
 const dustCol = new THREE.Vector3();
 function emitDust(dt) {
   for (const wp of wheelsP) { if (!wp.contact) continue;
-    const v = Math.abs(wp.omega * RW); const rate = Math.min(1, v / 18) * 40 + wp.slip * 50; let n = rate * dt; if (MOBILE) n *= 0.6;
+    const v = Math.abs(wp.omega * RW); const rate = Math.min(1, v / 18) * 40 + wp.slip * 50; let n = rate * dt; if (MOBILE) n *= 0.6; if (!(n > 0)) continue; n = Math.min(n, 4);   // felső korlát: földetéréskor a csúszás nagy lehet
     while (n > 0) { if (Math.random() < n) { const vp = pointVel(wp.cp, _v);
         dust.emit(wp.cp.x + (Math.random() - 0.5) * 0.8, wp.cp.y + 0.15, wp.cp.z + (Math.random() - 0.5) * 0.8, -vp.x * 0.25 + (Math.random() - 0.5) * 2, 0.6 + Math.random() * 1.2, -vp.z * 0.25 + (Math.random() - 0.5) * 2, 0.9 + Math.random() * 0.8); }
       n -= 1; } }
@@ -520,6 +520,7 @@ let last = performance.now(), acc = 0, frames = 0, fpsT = 0, fps = 0, simT = 0;
 renderer.setAnimationLoop(() => {
   const now = performance.now(); let dt = Math.min(0.1, (now - last) / 1000); last = now;
   acc += dt; let n = 0; while (acc >= DT && n < 10) { step(DT); acc -= DT; n++; simT += DT; } if (n === 10) acc = 0;
+  if (!Number.isFinite(body.p.x + body.p.y + body.p.z + body.v.x + body.v.y + body.v.z + body.q.w)) { resetCar(true); for (const wp of wheelsP) wp.slip = 0; }   // NaN-védelem
   syncVisual(); emitDust(dt); dust.update(dt); updateCamera(dt, false); hud(dt);
   dust.m.uniforms.uScale.value = innerHeight * renderer.getPixelRatio() * 0.5;
   renderer.render(scene, camera);
