@@ -33,6 +33,8 @@ tools/                      generáló szkriptek (python) + check.js (Playwright
 | **Napló** | Másold a projekt `claude/naplo.md`-jét `content/naplo.md`-be → `python3 tools/build_naplo.py`. |
 | **BOM / számítás / könyvtár** | `python3 tools/build_data.py` (források: calc/bom.csv, layout/layout_v2.json, cadlib/manifest_*.json). |
 | **Szövegek** | `content/i18n/hu.json` és `en.json` (azonos kulcsok). |
+| **Rendelési lista** | `python3 tools/build_bricklink.py` → `downloads/TT_bricklink_wanted.xml` (BrickLink: Want → Upload) + `content/bricklink.json`. LDraw→BrickLink cikkszám-leképezés a szkriptben (`MAP`); a kétséges tételek REMARKS-ban „CHECK ID”. Színek = a digitális modell színei. Kimarad: u9409-f1 rugó (a rugóstag-egység része). |
+| **Koncepciók, útmutató-minta** | `assets/fig/next/*.webp`; generálás: `tools/concept/` (models.py, render.py – Blender bpy; instr.py + compose_instr.py – LEGO-útmutató-stílus). |
 
 ## truck.glb konvenció / convention
 - glTF tengelyek: **+X előre, +Y fel, +Z jobbra**; egység mm, a gyökér `truck` csomópont `scale = 0.001`.

@@ -393,3 +393,42 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border:0;border-radiu
 .drive__go{flex:none;display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:var(--accent-ink);font-weight:650;padding:10px 18px;border-radius:999px}
 .drive__go svg{width:14px;height:14px}
 @media (max-width:640px){.drive{flex-wrap:wrap}.drive__go{width:100%;justify-content:center}}
+
+/* a következő autó a tiéd */
+.flowline{font:500 14px var(--mono);color:var(--fg2);letter-spacing:.01em;margin:-24px 0 64px;padding:12px 18px;border:1px solid var(--line);border-radius:999px;display:inline-block;max-width:100%}
+.next__p{max-width:720px;margin:0 0 28px}
+.concepts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.concept{margin:0;background:var(--panel);border-radius:var(--r);overflow:hidden;cursor:zoom-in}
+.concept__img{position:relative;aspect-ratio:16/10;background:#0b0e14;overflow:hidden}
+.concept__img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.concept:hover img{transform:scale(1.03)}
+.badge--concept{position:absolute;left:12px;right:auto;top:12px;font:600 11px var(--font);letter-spacing:.03em;padding:4px 10px;border-radius:999px;background:rgba(10,10,12,.72);color:var(--fg);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px)}
+.concept figcaption{padding:16px 18px 18px;display:grid;gap:4px}
+.concept figcaption b{font-weight:600}
+.concept figcaption span{color:var(--fg2);font-size:14px}
+.concept__n{font-style:normal;font:500 12px var(--mono);color:var(--fg3);margin-top:4px}
+.next__two{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;margin-top:96px;align-items:start}
+.order .btn{margin-top:8px}
+.order__meta{margin:12px 0 28px;font-family:var(--mono)}
+.order__h{margin:0 0 8px;font-size:15px;font-weight:600}
+.order__how{margin:0 0 20px;padding-left:20px;color:var(--fg2);font-size:15px}
+.order__how li{margin:4px 0}
+.order__doubt{margin:8px 0 0;padding-left:18px;color:var(--fg2)}
+.order__doubt li{margin:3px 0}
+.order__doubt code{font-family:var(--mono);color:var(--fg)}
+.guide__fig{margin:8px 0 0;cursor:zoom-in}
+.guide__img{position:relative;background:#eef3f7;border-radius:var(--r);overflow:hidden;aspect-ratio:7/5}
+.guide__img img{width:100%;height:100%;object-fit:contain;display:block}
+.guide__img .badge--concept{left:auto;right:12px;background:rgba(255,255,255,.85);color:#1d1d1f;border-color:rgba(0,0,0,.12)}
+.guide__fig figcaption{padding:12px 2px 0;font-size:14px;color:var(--fg2);min-height:3em}
+.guide__fig figcaption b{color:var(--fg);font-weight:600}
+.guide__nav{display:flex;align-items:center;gap:14px;margin-top:6px}
+.guide__dots{display:flex;gap:8px}
+.guide__dots button{width:9px;height:9px;padding:0;border-radius:50%;border:0;background:var(--line2);cursor:pointer}
+.guide__dots button[aria-selected=true]{background:var(--accent);width:22px;border-radius:999px}
+.next__close{margin-top:110px;text-align:center}
+.next__close h3{font-size:clamp(26px,3.6vw,40px);letter-spacing:-.02em;line-height:1.15;margin:0 0 14px}
+.next__close p{max-width:620px;margin:0 auto 28px}
+.next__cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+@media (max-width:1060px){.concepts{grid-template-columns:1fr 1fr}.next__two{grid-template-columns:1fr;gap:72px}}
+@media (max-width:720px){.concepts{grid-template-columns:1fr}.flowline{border-radius:14px;margin-bottom:48px}.next__two{margin-top:72px}.next__close{margin-top:80px}}

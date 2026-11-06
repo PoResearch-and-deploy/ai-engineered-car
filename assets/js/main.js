@@ -141,6 +141,39 @@ addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
   draw(); onLang(draw);
 })();
 
+// --- „A következő autó a tiéd”: koncepciók, BrickLink-lista, útmutató-minta ---
+(async () => {
+  if (!$('#next')) return;
+  const bl = await getJSON('content/bricklink.json').catch(() => null);
+  const G = 4; let gi = 0;
+  const dots = $('#guideDots');
+  dots.innerHTML = Array.from({ length: G }, (_, i) => `<button type="button" role="tab" data-g="${i}"></button>`).join('');
+  const showG = i => {
+    gi = (i + G) % G;
+    const im = $('#guideImg'); im.src = `assets/fig/next/utmutato_${gi + 1}.webp`;
+    im.alt = `${t('next.sample')} – ${t('next.step', { n: gi + 1 })}`;
+    $('#guideCap').innerHTML = `<b>${esc(t('next.step', { n: gi + 1 }))}</b> · ${esc(t('next.s' + (gi + 1)))}`;
+    dots.querySelectorAll('button').forEach((b, k) => { b.setAttribute('aria-selected', String(k === gi)); b.setAttribute('aria-label', t('next.step', { n: k + 1 })); });
+  };
+  $('#guidePrev').addEventListener('click', () => showG(gi - 1));
+  $('#guideNext').addEventListener('click', () => showG(gi + 1));
+  dots.addEventListener('click', e => { const b = e.target.closest('button'); if (b) showG(+b.dataset.g); });
+  const draw = () => {
+    const L = lang();
+    document.querySelectorAll('#next .concept').forEach((f, k) => {
+      f.querySelector('img').alt = `${t('next.c' + (k + 1))} – ${t('next.badge')}`;
+      const n = f.querySelector('.concept__n'); n.textContent = t('next.parts', { n: n.dataset.n });
+    });
+    if (bl) {
+      $('#blMeta').textContent = t('next.orderMeta', { lots: bl.lots, pcs: bl.pieces, types: bl.types });
+      $('#blDoubt').innerHTML = bl.doubtful.map(d => `<li><code>${esc(d.bl)}</code>${d.bl !== d.ldraw ? ` <span class="muted">(LDraw ${esc(d.ldraw)})</span>` : ''} – ${esc(d[L])}</li>`).join('')
+        + bl.skipped.map(s => `<li>${esc(t('next.skipped', { p: s.ldraw, n: s.qty, why: s[L] }))}</li>`).join('');
+    }
+    showG(gi);
+  };
+  draw(); onLang(draw);
+})();
+
 // --- 3D és VEM: lusta betöltés, amikor a szekció közel ér ---
 const lazy = (el, fn) => new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { o.disconnect(); fn(); } }, { rootMargin: '400px' }).observe(el);
 lazy($('#truckStage'), () => import('./viewer.js').then(m => m.initViewer($('#truckStage'))).catch(e => console.error(e)));

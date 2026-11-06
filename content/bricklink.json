@@ -1,0 +1,72 @@
+{
+ "lots": 105,
+ "pieces": 588,
+ "bom_pieces": 592,
+ "types": 79,
+ "colors": {
+  "White": 10,
+  "Orange": 63,
+  "Red": 5,
+  "Black": 347,
+  "Dark Bluish Gray": 126,
+  "Light Bluish Gray": 37
+ },
+ "doubtful": [
+  {
+   "ldraw": "62520",
+   "bl": "62520",
+   "hu": "kardáncsukló-vég; lásd 62519",
+   "en": "U-joint end; see 62519"
+  },
+  {
+   "ldraw": "2850",
+   "bl": "2850b",
+   "hu": "változat (2850a/2850b) – ellenőrizd",
+   "en": "variant (2850a/2850b) – check"
+  },
+  {
+   "ldraw": "62519",
+   "bl": "62519",
+   "hu": "kardáncsukló-belső; BrickLinken lehet, hogy csak egységként (61903) kapható",
+   "en": "U-joint centre; may only be sold as the complete 61903"
+  },
+  {
+   "ldraw": "2909",
+   "bl": "2909",
+   "hu": "rugóstag-henger – a rugóval együtt egységként érdemes keresni",
+   "en": "shock cylinder – best bought as a complete unit with spring"
+  },
+  {
+   "ldraw": "2910",
+   "bl": "2910",
+   "hu": "rugóstag-dugattyúrúd – lásd 2909",
+   "en": "shock piston rod – see 2909"
+  },
+  {
+   "ldraw": "32005",
+   "bl": "32005b",
+   "hu": "„Type 2” – BrickLinken valószínűleg 32005b, ellenőrizd",
+   "en": "'Type 2' – probably 32005b on BrickLink, check"
+  },
+  {
+   "ldraw": "76537",
+   "bl": "76537",
+   "hu": "teljes rugóstag – a BrickLink-azonosító eltérhet (c01 utótag)",
+   "en": "complete shock – BrickLink ID may carry a c01 suffix"
+  },
+  {
+   "ldraw": "62821",
+   "bl": "62821b",
+   "hu": "változat (62821a/b) – ellenőrizd",
+   "en": "variant (62821a/b) – check"
+  }
+ ],
+ "skipped": [
+  {
+   "ldraw": "u9409-f1",
+   "qty": 4,
+   "hu": "a rugó a rugóstag-egység része – nincs a listában",
+   "en": "spring is part of the shock unit – not listed"
+  }
+ ]
+}

@@ -34,14 +34,24 @@ document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click'
 applyLang(LANG);
 const fmt = (x, d = 0) => x.toLocaleString(LANG === 'hu' ? 'hu-HU' : 'en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
 
+
+// --- diagnosztika: hibák és WebGL-kontextusvesztés láthatóan (telefonos hibakereséshez) ---
+const diagBox = (msg) => { let d = document.getElementById('diag'); if (!d) { d = document.createElement('div'); d.id = 'diag';
+  d.style.cssText = 'position:fixed;left:8px;right:8px;top:56px;z-index:99;background:rgba(160,20,20,.92);color:#fff;font:12px/1.4 monospace;padding:8px 10px;border-radius:8px;white-space:pre-wrap'; document.body.appendChild(d); }
+  d.textContent += (d.textContent ? '\n' : '') + msg; };
+addEventListener('error', e => diagBox('Hiba: ' + (e.message || e.type) + (e.lineno ? ' @' + e.lineno : '')));
+addEventListener('unhandledrejection', e => diagBox('Hiba (promise): ' + (e.reason && (e.reason.message || e.reason))));
 // ------------------------------------------------------------------ renderer, jelenet
 const MOBILE = matchMedia('(hover:none) and (pointer:coarse)').matches;
-const LOWQ = new URLSearchParams(location.search).get('q') === 'low';      // ?q=low: gyenge gépre (nincs árnyék, 1× felbontás)
+const QP = new URLSearchParams(location.search).get('q');
+// mobilon alapból könnyített mód (nincs árnyék, 1× felbontás); ?q=high felülírja, ?q=low asztalin is kéri
+const LOWQ = QP === 'low' || (QP !== 'high' && (MOBILE || (navigator.deviceMemory || 8) <= 4));
 const cv = document.getElementById('cv');
-const renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: !MOBILE, powerPreference: 'high-performance' });
+const renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: !MOBILE, powerPreference: LOWQ ? 'default' : 'high-performance' });
 renderer.setPixelRatio(LOWQ ? 1 : Math.min(devicePixelRatio, MOBILE ? 1.5 : 1.75));
 renderer.shadowMap.enabled = !LOWQ; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.0;
+cv.addEventListener('webglcontextlost', e => { e.preventDefault(); diagBox('A grafikus kontextus elveszett (memória?). Próbáld: ?q=low'); });
 const scene = new THREE.Scene();
 const HORIZON = new THREE.Color(0xe9c9a0), ZENITH = new THREE.Color(0x3d7fc4);
 scene.fog = new THREE.Fog(HORIZON, 140, 520);
@@ -67,7 +77,7 @@ const SUN_DIR = new THREE.Vector3(-0.45, 0.62, 0.35).normalize();
 }
 const hemi = new THREE.HemisphereLight(0xcfe2ff, 0xc99a63, 1.1); scene.add(hemi);
 const sun = new THREE.DirectionalLight(0xfff1dc, 2.6);
-sun.castShadow = true; sun.shadow.mapSize.set(MOBILE ? 1024 : 2048, MOBILE ? 1024 : 2048);
+sun.castShadow = !LOWQ; sun.shadow.mapSize.set(MOBILE ? 1024 : 2048, MOBILE ? 1024 : 2048);
 Object.assign(sun.shadow.camera, { left: -16, right: 16, top: 16, bottom: -16, near: 1, far: 120 });
 sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.03;
 scene.add(sun, sun.target);
@@ -120,7 +130,7 @@ function sandTex() {
 }
 const SANDTEX = sandTex();
 {
-  const N = MOBILE ? 220 : 320, S = HALF * 2;
+  const N = LOWQ ? 160 : 320, S = HALF * 2;
   const g = new THREE.PlaneGeometry(S, S, N, N); g.rotateX(-Math.PI / 2);
   const p = g.attributes.position, col = new Float32Array(p.count * 3), uv = g.attributes.uv, c = new THREE.Color();
   for (let i = 0; i < p.count; i++) {
@@ -185,7 +195,7 @@ const ROCKS = [], CONES = [];
 }
 
 // ------------------------------------------------------------------ por-részecskék
-const DUST_N = MOBILE ? 360 : 700;
+const DUST_N = LOWQ ? 240 : 700;
 const dust = (() => {
   const g = new THREE.BufferGeometry();
   const pos = new Float32Array(DUST_N * 3), size = new Float32Array(DUST_N), alpha = new Float32Array(DUST_N);
